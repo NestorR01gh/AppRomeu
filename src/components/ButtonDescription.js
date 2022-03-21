@@ -15,7 +15,7 @@ export class ButtonDescription extends Component {
                 </View>
                 <View style={styles.viewLogin}>
                     <View style={styles.touchableOpacity}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.onPress}>
                             <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>{this.props.ButtonText}</Button>
                         </TouchableOpacity>
                     </View>
@@ -28,7 +28,6 @@ export class ButtonDescription extends Component {
 const styles = StyleSheet.create({
     cajaLogin: {
         flex: 1,
-        backgroundColor: 'white',
     },
     viewLogin: {
         justifyContent: 'center',
@@ -40,7 +39,8 @@ const styles = StyleSheet.create({
         padding: 10
     },
     button: {
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        borderRadius: 7
     },
     buttonText: {
         fontSize: 14,
