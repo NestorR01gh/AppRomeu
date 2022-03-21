@@ -39,7 +39,7 @@ export class LoginScreen extends Component {
                         <Image style={styles.imageLogo} source={require('../assets/images/logoRomeu.png')} />
                     </View>
                     <View style={styles.viewInfo}>
-                        <ButtonDescription onPress={() => this.props.navigation.navigate('Main')} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
+                        <ButtonDescription onPress={() => this.props.navigation.navigate('MainStack')} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
                     </View>
                 </View>
             </Provider>
