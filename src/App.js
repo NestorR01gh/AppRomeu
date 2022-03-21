@@ -1,41 +1,38 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ImageBackground, Image, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { backgroundColor, fontFamily } from './utils/Constants';
 
 
 class App extends Component {
-
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground style={styles.backgroundImage} resizeMode='cover' source={require('./assets/loginBackgroundImage.jpg')}>
-          <View style={styles.cajaLogin}>
-            <View style={styles.viewLogo}>
-              <Image style={styles.imageLogo} source={require('./assets/logoRomeu.png')} />
+        <View style={styles.cajaLogin}>
+          <View style={styles.viewLogo}>
+            <Image style={styles.imageLogo} source={require('./assets/images/logoRomeu.png')} />
+          </View>
+          <View style={styles.viewInfo}>
+            <View style={styles.textView}>
+              <Text style={styles.text}>Login for external employees</Text>
             </View>
-            <View style={styles.viewInfo}>
-              <View style={styles.textView}>
-                <Text style={styles.text}>Login for external employees</Text>
-              </View>
-              <View style={styles.textView}>
-                <Text style={styles.text}>Login for GRM employees</Text>
-              </View>
-            </View>
-            <View style={styles.viewLogin}>
-              <View style={styles.touchableOpacity}>
-                <TouchableOpacity>
-                  <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>EXTERNAL LOGIN</Button>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.touchableOpacity} >
-                <TouchableOpacity>
-                  <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>ROMEU LOGIN</Button>
-                </TouchableOpacity>
-              </View>
+            <View style={styles.textView}>
+              <Text style={styles.text}>Login for GRM employees</Text>
             </View>
           </View>
-        </ImageBackground>
+          <View style={styles.viewLogin}>
+            <View style={styles.touchableOpacity}>
+              <TouchableOpacity>
+                <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>EXTERNAL LOGIN</Button>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.touchableOpacity} >
+              <TouchableOpacity>
+                <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>ROMEU LOGIN</Button>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -45,31 +42,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  backgroundImage: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   cajaLogin: {
+    flex: 1,
     backgroundColor: 'white',
-    width: "80%",
-    height: "60%",
     borderWidth: 2,
     borderColor: backgroundColor
   },
   viewLogo: {
     flex: 2,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   viewLogin: {
-    flex: 0.5,
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 70
   },
   imageLogo: {
-    flex: 1,
-    margin: 80
+    height: 150,
+    width: 250,
+    resizeMode: 'contain'
   },
   touchableOpacity: {
     flex: 1,
@@ -79,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: backgroundColor
   },
   buttonText: {
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: fontFamily
   },
   viewInfo: {
