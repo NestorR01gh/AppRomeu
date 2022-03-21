@@ -23,7 +23,7 @@ class App extends Component {
               </View>
             </View>
             <View style={styles.viewLogin}>
-              <View style={styles.touchableOpacity} >
+              <View style={styles.touchableOpacity}>
                 <TouchableOpacity>
                   <Button labelStyle={styles.buttonText} style={styles.button} mode='contained'>EXTERNAL LOGIN</Button>
                 </TouchableOpacity>
