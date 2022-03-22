@@ -36,7 +36,7 @@ export class LoginScreen extends Component {
                         <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
                     </View>
                     <View style={styles.viewLogo}>
-                        <Image style={styles.imageLogo} source={require('../assets/images/logoRomeu.png')} />
+                        <Image style={styles.imageLogo} source={require('../assets/logos/login.png')} />
                     </View>
                     <View style={styles.viewInfo}>
                         <ButtonDescription onPress={() => this.props.navigation.navigate('Main')} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
