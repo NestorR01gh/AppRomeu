@@ -32,14 +32,14 @@ class App extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={this.login} />
-          <Stack.Screen name="Main" component={this.main} />
-          <Stack.Screen name="Employee" component={EmployeeScreen}/>
-        </Stack.Navigator>
-      </NavigationContainer>
-      //<NewsList list={newsList}/>
+      // <NavigationContainer>
+      //   <Stack.Navigator screenOptions={{ headerShown: false }}>
+      //     <Stack.Screen name="Login" component={this.login} />
+      //     <Stack.Screen name="Main" component={this.main} />
+      //     <Stack.Screen name="Employee" component={EmployeeScreen}/>
+      //   </Stack.Navigator>
+      // </NavigationContainer>
+      <NewsList list={newsList}/>
     );
   }
 }

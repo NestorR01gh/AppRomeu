@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import { Modal, Portal, Provider } from 'react-native-paper';
+import { backgroundColor } from '../utils/Constants';
 import { News } from './News';
+import { NewsModal } from './NewsModal';
 
 
 export class NewsList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalData: { title: "a", date: "", image: "", description: "" },
+            visible: true,
+            title: "aa"
+        }
+    }
 
-    getNews(list) {
+    setModalData = (title) => {
+        this.setState({ title: title });
+    }
+
+    setVisibility = (visible) => {
+        this.setState({ visible: visible });
+    }
+
+    getNews = (list, setVisibility, setModalData) => {
         return (
             list.map(function (item, index) {
-                return <News key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews}/>
+                return <News setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews} date={item.date} />
             })
         );
     }
@@ -16,13 +35,22 @@ export class NewsList extends Component {
 
     render() {
         return (
-            <ScrollView>
-                {this.getNews(this.props.list)}
-            </ScrollView>
+            <Provider>
+                <NewsModal setVisibility={this.setVisibility} modalData={this.state.title} visible={this.state.visible}/>
+                <ScrollView>
+                    {this.getNews(this.props.list, this.setVisibility, this.setModalData)}
+                </ScrollView>
+            </Provider>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    
+    modal: {
+        backgroundColor: 'white',
+        alignSelf: 'center',
+        width: "90%",
+        height: "95%",
+        borderRadius: 15
+    }
 });
