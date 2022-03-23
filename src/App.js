@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { LoginScreen } from './screens/LoginScreen';
 import { StaffScreen } from './screens/StaffScreen';
@@ -13,7 +14,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 const Stack = createNativeStackNavigator();
-//const Drawer = createDrawerNavigator(); <-- EL CREATE DRAWER PETA 
+//const Drawer = createDrawerNavigator();
 
 class App extends Component {
 
@@ -46,3 +47,4 @@ class App extends Component {
 
 
 export default App;
+
