@@ -125,7 +125,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: "90%",
         height: "95%",
-        borderRadius: 15
+        borderRadius: 15,
+        borderWidth: 2,
+        borderColor: backgroundColor,
     },
     publishedClipView: {
         flex: 1,
@@ -149,10 +151,6 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 5,
-        borderWidth: 2,
-        borderColor: backgroundColor,
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15
     },
     title: {
         color: 'white',
@@ -164,8 +162,8 @@ const styles = StyleSheet.create({
     header: {
         flex: 1,
         backgroundColor: backgroundColor,
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
+        borderTopLeftRadius: 12,
+        borderTopRightRadius: 12,
         flexDirection: 'row'
     },
     titleView: {
