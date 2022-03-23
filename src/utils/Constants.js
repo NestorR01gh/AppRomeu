@@ -10,7 +10,9 @@ export const newsList = [
         section: "COMPLIANCE",
         date: "21/3/22",
         logo: require('../assets/logos/2.png'),
-        read: true
+        read: true,
+        hasFile: true,
+        fileLink: "https://grmproportalblobstorage.blob.core.windows.net/filecontainer/d94d769b-d71d-4e16-a691-2c3238ac3f5d.png?sv=2020-04-08&se=2022-03-23T17%3A05%3A23Z&sr=b&sp=r&sig=z%2F%2B5WUh80xxP20ZTML1HitXY5VYR7SKu6GDZqW75t9Q%3D"
     },
     {
         id: 2,
@@ -20,7 +22,9 @@ export const newsList = [
         section: "",
         date: "21/3/22",
         logo: require('../assets/logos/4.png'),
-        read: true
+        read: true,
+        hasFile: false,
+        fileLink: ""
     },
     {
         id: 3,
@@ -30,7 +34,9 @@ export const newsList = [
         section: "",
         date: "21/3/22",
         logo: require('../assets/logos/178.png'),
-        read: false
+        read: false,
+        hasFile: false,
+        fileLink: ""
     },
     {
         id: 4,
@@ -40,7 +46,9 @@ export const newsList = [
         section: "",
         date: "21/3/22",
         logo: require('../assets/logos/35.png'),
-        read: false
+        read: false,
+        hasFile: false,
+        fileLink: ""
     },
     {
         id: 5,
@@ -50,6 +58,8 @@ export const newsList = [
         section: "",
         date: "21/3/22",
         logo: require('../assets/logos/39.png'),
-        read: false
+        read: true,
+        hasFile: false,
+        fileLink: ""
     }
 ]

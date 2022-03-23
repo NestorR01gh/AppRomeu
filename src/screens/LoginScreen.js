@@ -10,7 +10,7 @@ export class LoginScreen extends Component {
         this.state = {
             showDropDown: false,
             language: "es",
-            languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }]
+        languages: [{ label: "ES", value: "es" }*/, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }*/]
         }
     }
 

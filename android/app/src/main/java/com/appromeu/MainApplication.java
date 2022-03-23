@@ -32,14 +32,16 @@ public class MainApplication extends Application implements ReactApplication {
           return packages;
         }
 
-        @Override
-        protected JSIModulePackage getJSIModulePackage() {
-          return new ReanimatedJSIModulePackage();
-        }
+        
 
         @Override
         protected String getJSMainModuleName() {
           return "index";
+        }
+
+        @Override
+        protected JSIModulePackage getJSIModulePackage() {
+          return new ReanimatedJSIModulePackage();
         }
       };
 

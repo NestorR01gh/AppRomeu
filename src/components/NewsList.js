@@ -14,15 +14,19 @@ export class NewsList extends Component {
             title: "",
             description: "",
             image: "",
-            date: ""
+            date: "",
+            hasFile: "",
+            fileLink: ""
         }
     }
 
-    setModalData = (title, desc, image, date) => {
+    setModalData = (title, desc, image, date, hasFile, fileLink) => {
         this.setState({ title: title });
         this.setState({ description: desc });
         this.setState({ image: image });
         this.setState({ date: date });
+        this.setState({ hasFile: hasFile });
+        this.setState({ fileLink: fileLink });
     }
 
     setVisibility = (visible) => {
@@ -32,7 +36,7 @@ export class NewsList extends Component {
     getNews = (list, setVisibility, setModalData) => {
         return (
             list.map(function (item, index) {
-                return <News setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews} date={item.date} />
+                return <News setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews} date={item.date} hasFile={item.hasFile} fileLink={item.fileLink} />
             })
         );
     }
@@ -40,7 +44,7 @@ export class NewsList extends Component {
     render() {
         return (
             <Provider>
-                <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} visible={this.state.visible} />
+                <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                 <ScrollView>
                     {this.getNews(this.props.list, this.setVisibility, this.setModalData)}
                 </ScrollView>

@@ -1,13 +1,85 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator } from 'react-native';
 import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
-
+import RNFetchBlob from 'rn-fetch-blob';
+import HtmlText from 'react-native-html-to-text';
 
 export class NewsModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: false
+        }
+    }
 
     handlePress = () => {
-        this.props.setVisibility(false)
+        if(!this.state.loading){
+            this.props.setVisibility(false)
+        }
+    }
+
+    handleClipPress() {
+        //Function to check the platform
+        //If iOS the start downloading
+        //If Android then ask for runtime permission
+        if (this.props.hasFile) {
+            this.setState({ loading: true });
+            if (Platform.OS === 'ios') {
+                this.downloadHistory();
+            } else {
+                try {
+                    PermissionsAndroid.request(
+                        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                        {
+                            title: 'storage title',
+                            message: 'storage_permission',
+                        },
+                    ).then(granted => {
+                        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                            //Once user grant the permission start downloading
+                            console.log('Storage Permission Granted.');
+                            this.downloadHistory();
+                        } else {
+                            //If permission denied then show alert 'Storage Permission Not Granted'
+                            Alert.alert('storage_permission');
+                        }
+                    });
+                } catch (err) {
+                    //To handle permission related issue
+                    console.log('error', err);
+                }
+            }
+        }
+    }
+
+    async downloadHistory() {
+        const { config, fs } = RNFetchBlob;
+        let dir = fs.dirs.DownloadDir;
+        let date = new Date();
+        let options = {
+            fileCache: true,
+            appendExt: ".pdf",
+            addAndroidDownloads: {
+                //Related to the Android only
+                useDownloadManager: true,
+                notification: true,
+                path:
+                    dir + '/pdf_' + Math.floor(date.getTime() + date.getSeconds() / 2) + ".pdf",
+                description: 'Risk Report Download'
+            }
+        };
+        config(options)
+            .fetch('GET', this.props.fileLink)
+            .then((res) => {
+                //Showing alert after successful downloading
+                console.log("RUTA " + options.path);
+                console.log('res -> ', JSON.stringify(res));
+                alert('Report Downloaded Successfully.');
+            }).catch(function (e) {
+                console.error(e);
+        })
+        this.setState({ loading: false });
     }
 
     render() {
@@ -24,17 +96,20 @@ export class NewsModal extends Component {
                             </View>
                         </View>
                         <View style={styles.body}>
+                        <ActivityIndicator size={30} style={{ opacity: this.state.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end' }} />
                             <View style={styles.bodyHeader}>
                                 <View style={styles.imageView}>
                                     <Image style={styles.image} source={{ uri: this.props.image }} />
                                 </View>
-                                <View style={{ flex: 1.5, alignItems: 'center', justifyContent: 'space-evenly', padding: 10 }}>
-                                    <IconButton style={{ margin: -20, rotation: -50 }} size={45} icon="paperclip" />
-                                    <Text style={{ fontFamily: fontFamily, fontSize: 17, color: 'black', textAlign: 'center' }}>Publicado el {this.props.date}</Text>
+                                <View style={styles.publishedClipView}>
+                                    <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
+                                    <Text style={{ fontFamily: fontFamily, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.hasFile ? 0 : -60 }}>Publicado el {this.props.date}</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 5, backgroundColor: 'blue' }}>
-
+                            <View style={{ flex: 5, padding: 20 }}>
+                                <ScrollView>
+                                    <HtmlText html={this.props.description} />
+                                </ScrollView>
                             </View>
                         </View>
                     </View>
@@ -51,6 +126,11 @@ const styles = StyleSheet.create({
         width: "90%",
         height: "95%",
         borderRadius: 15
+    },
+    publishedClipView: {
+        flex: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
     },
     image: {
         height: 150,
