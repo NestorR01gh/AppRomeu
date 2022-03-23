@@ -10,14 +10,19 @@ export class NewsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalData: { title: "a", date: "", image: "", description: "" },
-            visible: true,
-            title: "aa"
+            visible: false,
+            title: "",
+            description: "",
+            image: "",
+            date: ""
         }
     }
 
-    setModalData = (title) => {
+    setModalData = (title, desc, image, date) => {
         this.setState({ title: title });
+        this.setState({ description: desc });
+        this.setState({ image: image });
+        this.setState({ date: date });
     }
 
     setVisibility = (visible) => {
@@ -32,11 +37,10 @@ export class NewsList extends Component {
         );
     }
 
-
     render() {
         return (
             <Provider>
-                <NewsModal setVisibility={this.setVisibility} modalData={this.state.title} visible={this.state.visible}/>
+                <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} visible={this.state.visible} />
                 <ScrollView>
                     {this.getNews(this.props.list, this.setVisibility, this.setModalData)}
                 </ScrollView>

@@ -6,7 +6,7 @@ export const newsList = [
         id: 1,
         image: "https://www.ceupe.com/images/easyblog_articles/1700/Compliance-Risks-Artificial-Intelligence.jpg",
         isNews: true,
-        title: "Nuevas medidas para la mejora de la sostenibilidad en el transporte",
+        title: "Romeu Shipping División participa como uno de los actores principales de la operación Marhaba 2021 ¡Dale al play!",
         section: "COMPLIANCE",
         date: "21/3/22",
         logo: require('../assets/logos/2.png'),
