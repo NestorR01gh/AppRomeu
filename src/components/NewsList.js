@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
-import { Modal, Portal, Provider } from 'react-native-paper';
-import { backgroundColor } from '../utils/Constants';
+import { StyleSheet, ScrollView } from 'react-native';
+import { Provider } from 'react-native-paper';
 import { News } from './News';
 import { NewsModal } from './NewsModal';
 import { newsList } from '../utils/Constants';

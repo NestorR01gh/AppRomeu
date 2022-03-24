@@ -75,9 +75,9 @@ export class NewsModal extends Component {
                 //Showing alert after successful downloading
                 console.log("RUTA " + options.path);
                 console.log('res -> ', JSON.stringify(res));
-                alert('Report Downloaded Successfully.');
+                alert('Se ha descargado correctamente');
             }).catch(function (e) {
-                console.error(e);
+                alert(e);
         })
         this.setState({ loading: false });
     }
@@ -124,10 +124,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignSelf: 'center',
         width: "90%",
-        height: "95%",
+        height: "100%",
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
+        marginBottom: 30
     },
     publishedClipView: {
         flex: 1,

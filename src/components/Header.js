@@ -33,5 +33,5 @@ export class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-
+    
 });

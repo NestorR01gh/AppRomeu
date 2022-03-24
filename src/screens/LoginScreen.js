@@ -3,6 +3,8 @@ import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Provider } from 'react-native-paper';
 import { ButtonDescription } from '../components/ButtonDescription';
+import { Client, RedirectComponent } from 'react-native-oidc-client';
+
 
 export class LoginScreen extends Component {
     constructor(props) {
@@ -10,7 +12,7 @@ export class LoginScreen extends Component {
         this.state = {
             showDropDown: false,
             language: "es",
-        languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }]
+            languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }]
         }
     }
 
@@ -28,6 +30,26 @@ export class LoginScreen extends Component {
         this.setState({ languages: languages });
     }
 
+    async handlePress() {
+        const config = {
+            response_type: 'code',
+            scope: 'openid roles gr-portal email profile',
+            client_id: 'Gr.Portal.Mobile',
+            client_secret: '6k_2Sd-&wA4n2CZn',
+            redirect_uri: 'https://com.example',
+            acr_values: 'http://oidc.contact.de',
+            acr: 'default',
+            // prompt: 'consent login',
+            authority: 'https://grm-dev-identityserver.azurewebsites.net',
+            browser_type: 'default',
+        };
+        const client = new Client(config);
+        const tokenResponse = await client.authorize();
+        console.log(tokenResponse);
+        //const accessToken = await client.getToken();
+        this.props.navigation.navigate('Main')
+    }
+
     render() {
         return (
             <Provider>
@@ -39,9 +61,10 @@ export class LoginScreen extends Component {
                         <Image style={styles.imageLogo} source={require('../assets/logos/login.png')} />
                     </View>
                     <View style={styles.viewInfo}>
-                        <ButtonDescription onPress={() => this.props.navigation.navigate('Main')} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
+                        <ButtonDescription onPress={() => this.handlePress()} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
                     </View>
                 </View>
+                <RedirectComponent/>
             </Provider>
         );
     }
