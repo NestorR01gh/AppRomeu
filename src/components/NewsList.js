@@ -4,7 +4,7 @@ import { Modal, Portal, Provider } from 'react-native-paper';
 import { backgroundColor } from '../utils/Constants';
 import { News } from './News';
 import { NewsModal } from './NewsModal';
-
+import { newsList } from '../utils/Constants';
 
 export class NewsList extends Component {
     constructor(props) {
@@ -33,9 +33,9 @@ export class NewsList extends Component {
         this.setState({ visible: visible });
     }
 
-    getNews = (list, setVisibility, setModalData) => {
+    getNews = (setVisibility, setModalData) => {
         return (
-            list.map(function (item, index) {
+            newsList.map(function (item, index) {
                 return <News setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews} date={item.date} hasFile={item.hasFile} fileLink={item.fileLink} />
             })
         );
@@ -46,7 +46,7 @@ export class NewsList extends Component {
             <Provider>
                 <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                 <ScrollView>
-                    {this.getNews(this.props.list, this.setVisibility, this.setModalData)}
+                    {this.getNews(this.setVisibility, this.setModalData)}
                 </ScrollView>
             </Provider>
         );
