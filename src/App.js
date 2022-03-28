@@ -6,7 +6,9 @@ import { MainScreen } from './screens/MainScreen';
 import { EmployeeScreen } from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
+import { backgroundColor } from './utils/Constants';
+import { DrawerItem } from './components/DrawerItem';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,11 +24,20 @@ class App extends Component {
     return <MainScreen navigation={navigation} />
   }
 
+  customDrawerContent = ({ navigation }) => {
+    return (
+      <DrawerContentScrollView style={{ backgroundColor: backgroundColor }}>
+        <DrawerItem icon="home" label="Principal" onPress={() => navigation.navigate('MainDrawer')} />
+        <DrawerItem icon="account" label="Staff" onPress={() => navigation.navigate('Staff')} />
+      </DrawerContentScrollView>
+    );
+  }
+
   main = ({ navigation }) => {
     return (
-      <Drawer.Navigator screenOptions={{ headerShown: false }}>
-        <Drawer.Screen name="Principal" component={this.mainScreen} />
-        <Drawer.Screen name="Personal" component={StaffScreen} />
+      <Drawer.Navigator drawerContent={this.customDrawerContent} screenOptions={{ headerShown: false }}>
+        <Drawer.Screen name="MainDrawer" component={this.mainScreen} />
+        <Drawer.Screen name="Staff" component={StaffScreen} />
       </Drawer.Navigator>
     );
   }
