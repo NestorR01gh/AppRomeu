@@ -9,12 +9,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { backgroundColor } from './utils/Constants';
 import { DrawerItem } from './components/DrawerItem';
+import { LogBox } from 'react-native';
 
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
+LogBox.ignoreAllLogs();
+
 class App extends Component {
+
 
   login = ({ navigation }) => {
     return <LoginScreen navigation={navigation} />;

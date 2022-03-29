@@ -53,7 +53,7 @@ export class LoginScreen extends Component {
         //     scope: 'openid roles gr-portal email profile',
         //     client_id: 'Gr.Portal.Mobile',
         //     client_secret: '6k_2Sd-&wA4n2CZn',
-        //     redirect_uri: 'com.appromeu.auth',
+        //     redirect_uri: 'com.appromeu.app',
         //     acr_values: 'http://oidc.contact.de',
         //     acr: 'default',
         //     // prompt: 'consent login',
