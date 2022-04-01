@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import AutocompleteInput from 'react-native-autocomplete-input';
 import { IconButton, List, TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import { CustomDropdown } from './CustomDropdown';
 
-const list = ["Todos", "BeGreen", "", "", "", "", ""]
+const listSection = ["Todos", "BeGreen", "Compliance", "Comunication", "FreightLab", "General", "IT", "Management", "RRHH"]
+const listTipo = ["Todos", "Noticias", "Comunicados"]
 
 export class NewsFilters extends Component {
     constructor(props) {
@@ -26,10 +28,7 @@ export class NewsFilters extends Component {
                     <List.Section style={styles.listSection}>
                         <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
                             <TextInput onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
-                            <View style={styles.dropdownViews}>
-                                <CustomDropdown list={list} />
-                                <CustomDropdown/>
-                            </View>
+                            <List.Item><AutocompleteInput data={listSection} /></List.Item>
                         </List.Accordion>
                     </List.Section>
                 </View>
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     dropdownViews: {
-        flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center'
     }
 });

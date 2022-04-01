@@ -1,12 +1,33 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import AutocompleteInput from 'react-native-autocomplete-input';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 
 export class CustomDropdown extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showDropDown: false,
+            value: "Todos"
+        }
+    }
+
+    setValue = (callback) => {
+        this.setState(state => ({
+            value: callback(state.value)
+        }));
+    }
+
+    setDropDownState = (state) => {
+        this.setState({ showDropDown: state });
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                
+            <View>
+                <Text>{this.props.title}</Text>
+                <AutocompleteInput data={this.props.list} />
             </View>
         );
     }
@@ -14,6 +35,6 @@ export class CustomDropdown extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
 });

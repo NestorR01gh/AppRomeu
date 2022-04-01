@@ -26,16 +26,12 @@ export class LoginScreen extends Component {
         this.setState({ showDropDown: state });
     }
 
-    setLanguages = (languages) => {
-        this.setState({ languages: languages });
-    }
-
     async handlePress() {
         // ESTO ME PARECE MÁS CORRECTO PERO LA REDIRECT URI DA ERROR
         // const config = {
         //     issuer: 'https://grm-dev-identityserver.azurewebsites.net',
         //     clientId: 'Gr.Portal.Mobile',
-        //     redirectUrl: 'com.appromeu.app',
+        //     redirectUrl: '',
         //     scopes: ['openid roles gr-portal email profile'],
         //     clientSecret: '6k_2Sd-&wA4n2CZn'
         // };
