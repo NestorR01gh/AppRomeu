@@ -20,7 +20,7 @@ export class News extends Component {
                 <View style={styles.container}>
                     <ImageBackground style={styles.newsImage} source={{ uri: this.props.image }}>
                         <View style={styles.dateReadView}>
-                            <View style={{ backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, paddingLeft: 3 }}>
+                            <View style={{ backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, paddingLeft: 3, borderTopRightRadius: 10 }}>
                                 <Text style={styles.ImageBackgroundText}>{this.props.date}</Text>
                             </View>
                         </View>
@@ -36,7 +36,7 @@ export class News extends Component {
                             <Text style={styles.titleText}>{this.props.title}</Text>
                         </View>
                         <View style={styles.businessView}>
-                            <View style={{ opacity: this.props.read ? 1 : 0, backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1 }}>
+                            <View style={{ opacity: this.props.read ? 1 : 0, backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, borderTopRightRadius: 10 }}>
                                 <Text style={styles.ImageBackgroundText}>Leído</Text>
                             </View>
                             <Image style={styles.imageBusiness} source={this.props.logo} />

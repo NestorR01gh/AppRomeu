@@ -7,9 +7,9 @@ import { EmployeeScreen } from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
-import { backgroundColor } from './utils/Constants';
+import { backgroundColor, fontFamily } from './utils/Constants';
 import { DrawerItem } from './components/DrawerItem';
-import { LogBox } from 'react-native';
+import { LogBox, Text } from 'react-native';
 
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +31,7 @@ class App extends Component {
   customDrawerContent = ({ navigation }) => {
     return (
       <DrawerContentScrollView style={{ backgroundColor: backgroundColor }}>
+        <Text style={{ padding: 20, alignSelf: 'center', fontFamily: fontFamily, color: 'white', fontSize: 40, textDecorationLine: 'underline' }}>MENÚ</Text>
         <DrawerItem icon="home" label="Principal" onPress={() => navigation.navigate('MainDrawer')} />
         <DrawerItem icon="account" label="Staff" onPress={() => navigation.navigate('Staff')} />
       </DrawerContentScrollView>

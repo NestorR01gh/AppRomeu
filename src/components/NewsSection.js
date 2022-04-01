@@ -4,6 +4,7 @@ import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
 import { NewsModal } from './NewsModal';
 import { Provider } from 'react-native-paper';
+import { NewsFooter } from './NewsFooter';
 
 export class NewsSection extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ export class NewsSection extends Component {
                     <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                     <NewsFilters />
                     <NewsList setVisibility={this.setVisibility} setModalData={this.setModalData} />
+                    <NewsFooter />
                 </Provider>
             </View>
 
