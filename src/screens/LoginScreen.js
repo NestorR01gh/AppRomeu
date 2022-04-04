@@ -27,21 +27,21 @@ export class LoginScreen extends Component {
     }
 
     async handlePress() {
-        // ESTO ME PARECE MÁS CORRECTO PERO LA REDIRECT URI DA ERROR
-        // const config = {
-        //     issuer: 'https://grm-dev-identityserver.azurewebsites.net',
-        //     clientId: 'Gr.Portal.Mobile',
-        //     redirectUrl: '',
-        //     scopes: ['openid roles gr-portal email profile'],
-        //     clientSecret: '6k_2Sd-&wA4n2CZn'
-        // };
+        const config = {
+            issuer: 'https://grm-dev-identityserver.azurewebsites.net',
+            clientId: 'Gr.Portal.Mobile',
+            redirectUrl: 'https://romeunet-api.development.grm.zone/oauth2-redirect.html',
+            scopes: ['openid roles gr-portal email profile'],
+            clientSecret: '6k_2Sd-&wA4n2CZn'
+        };
 
-        // try {
-        //     const result = await authorize(config);
-        //     console.log(result)
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            const result = await authorize(config);
+            
+            console.log(result)
+        } catch (error) {
+            console.log(error);
+        }
 
         //ESTO PERTENECE A REACT-NATIVE-OIDC-CLIENTE
         // const config = {

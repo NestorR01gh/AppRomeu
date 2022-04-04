@@ -10,6 +10,7 @@ import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigatio
 import { backgroundColor, fontFamily } from './utils/Constants';
 import { DrawerItem } from './components/DrawerItem';
 import { LogBox, Text } from 'react-native';
+import { Header } from 'react-navigation-stack';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,7 +41,7 @@ class App extends Component {
 
   main = ({ navigation }) => {
     return (
-      <Drawer.Navigator drawerContent={this.customDrawerContent} screenOptions={{ headerShown: false }}>
+      <Drawer.Navigator useLegacyImplementation={true} drawerContent={this.customDrawerContent} screenOptions={{ headerShown: false }}>
         <Drawer.Screen name="MainDrawer" component={this.mainScreen} />
         <Drawer.Screen name="Staff" component={StaffScreen} />
       </Drawer.Navigator>

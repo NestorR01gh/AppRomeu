@@ -6,7 +6,7 @@ export class EmployeeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Employee</Text>
+                <Text>Employee nº {this.props.route.params.employeeId}</Text>
             </View>
         );
     }

@@ -1,56 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { Button, TextInput } from 'react-native-paper';
+import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
-
 export class StaffFilters extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pageSize: 5,
-            pageSizes: [{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }],
-            showDropDown: false
-        }
-    }
-
-    setPageSize = (callback) => {
-        this.setState(state => ({
-            pageSize: callback(state.value)
-        }));
-    }
-
-    setDropDownState = (state) => {
-        this.setState({ showDropDown: state });
-    }
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
                     <TextInput placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} />
-                    <TextInput keyboardType='numeric' placeholder='Teléfono' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} />
                 </View>
-                <View style={styles.filterLine}>
-                    <TextInput placeholder='Posición' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} />
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                </View>
-                <View style={styles.filterLine}>
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                </View>
-                <View style={styles.filterLine}>
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                </View>
-                <View style={styles.filterLine}>
-                    <DropDownPicker textStyle={styles.dropDownText} containerStyle={styles.dropdown} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                    <View style={styles.buttonView}>
-                        <Button color={backgroundColor} labelStyle={styles.buttonLabel} mode='contained' style={styles.button}>Buscar</Button>
-                        <Button color='white' labelStyle={styles.buttonLabel} mode='contained' style={styles.button}>Limpiar</Button>
-                    </View>
-                </View>
+                <KeyboardAvoidingView keyboardVerticalOffset={-1000}  style={styles.buttonView}>
+                    <TouchableHighlight style={styles.buttonSearch}><Text style={styles.buttonLabelSearch}>Buscar</Text></TouchableHighlight>
+                    <TouchableHighlight style={styles.buttonClean}><Text style={styles.buttonLabelClean}>Limpiar</Text></TouchableHighlight>
+                </KeyboardAvoidingView>
             </View>
         );
     }
@@ -58,7 +23,8 @@ export class StaffFilters extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.75,
+        flex: 2 ,
+        padding: 7
     },
     filterLine: {
         flex: 1,
@@ -79,26 +45,45 @@ const styles = StyleSheet.create({
     dropdown: {
         flex: 1,
         color: backgroundColor,
-        margin: 10,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 10,
+        marginRight: 10
     },
     dropDownText: {
         fontFamily: fontFamily,
         fontSize: 15
     },
     buttonView: {
-        flex: 1.10,
-        flexDirection: 'row'
-    },
-    button: {
         flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    buttonSearch: {
+        margin: 5,
+        justifyContent: 'center',
+        borderRadius: 12,
+        backgroundColor: backgroundColor,
+        padding: 10,
+        height: 50
+    },
+    buttonClean: {
         margin: 5,
         justifyContent: 'center',
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: backgroundColor
+        borderColor: backgroundColor,
+        padding: 10,
+        backgroundColor: 'white',
+        height: 50
     },
-    buttonLabel: {
-        fontSize: 10
+    buttonLabelSearch: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    buttonLabelClean: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: backgroundColor
     }
 });

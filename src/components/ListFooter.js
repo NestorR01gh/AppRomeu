@@ -4,7 +4,7 @@ import { IconButton } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-export class NewsFooter extends Component {
+export class ListFooter extends Component {
     constructor(props) {
         super(props);
         this.state = {

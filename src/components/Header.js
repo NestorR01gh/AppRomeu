@@ -36,9 +36,8 @@ export class Header extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <IconButton onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())} style={styles.menuIcon} color="white" size={50} icon="menu" />
-                <TextInput onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} underlineColor="transparent" activeUnderlineColor="transparent" placeholderTextColor={backgroundColor} placeholder={this.props.placeholder} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} style={styles.input}></TextInput>
-                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Image style={{ flex: 1, height: 55, width: 55, resizeMode: 'contain', borderRadius: 100 }} source={{ uri: this.props.image }} /></TouchableOpacity>}>
+                <IconButton onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())} color="white" size={50} icon="menu" />
+                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Image style={styles.image} source={{ uri: this.props.image }} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title="Salir" onPress={() => this.handleExit()}/>
                 </Menu>
             </View>
@@ -51,10 +50,8 @@ const styles = StyleSheet.create({
         flex: 1.5,
         flexDirection: 'row',
         backgroundColor: backgroundColor,
-        alignItems: 'center'
-    },
-    menuIcon: {
-        flex: 1
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     image: {
         flex: 1,
@@ -63,15 +60,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         borderRadius: 100,
         padding: 10
-    },
-    input: {
-        flex: 4,
-        height: 50,
-        color: backgroundColor,
-        borderRadius: 20,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        fontFamily: fontFamily
     },
     text: {
         fontFamily: fontFamily,
