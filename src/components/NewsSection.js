@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
 import { NewsModal } from './NewsModal';
 import { Provider } from 'react-native-paper';
 import { ListFooter } from './ListFooter';
+import { fontFamily, backgroundColor } from '../utils/Constants';
 
 export class NewsSection extends Component {
     constructor(props) {
@@ -37,10 +38,11 @@ export class NewsSection extends Component {
         return (
             <View style={styles.container}>
                 <Provider>
+                    <Text style={styles.title}>NOTICIAS</Text>
                     <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                     <NewsFilters />
                     <NewsList setVisibility={this.setVisibility} setModalData={this.setModalData} />
-                    <ListFooter />
+                    {/* <ListFooter /> */}
                 </Provider>
             </View>
 
@@ -52,5 +54,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 10,
         justifyContent: 'center'
+    },
+    title: {
+        fontFamily: fontFamily,
+        fontSize: 30,
+        color: backgroundColor,
+        alignSelf: 'center',
+        marginTop: 10
     }
 });

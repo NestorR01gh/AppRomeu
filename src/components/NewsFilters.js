@@ -23,7 +23,6 @@ export class NewsFilters extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>NOTICIAS</Text>
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
                         <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
@@ -43,13 +42,6 @@ export class NewsFilters extends Component {
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center'
-    },
-    title: {
-        fontFamily: fontFamily,
-        fontSize: 30,
-        color: backgroundColor,
-        alignSelf: 'center',
-        marginTop: 10
     },
     listAccordion: {
         borderRadius: 15,

@@ -8,10 +8,18 @@ export class ListFooter extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            page: 0,
             pageSize: 5,
             pageSizes: [{ label: "5", value: 5 }, { label: "10", value: 10 }, { label: "15", value: 15 }],
             showDropDown: false
         }
+    }
+
+    getRange = () => {
+        let page = this.state.page + 1;
+        let top = page * this.state.pageSize;
+        let bot = top - this.state.pageSize - 1;
+        return bot + "-" + top + " de " + this.props.totalCount;
     }
 
     setPageSize = (callback) => {
@@ -28,7 +36,7 @@ export class ListFooter extends Component {
         return (
             <View style={styles.container}>
                 <DropDownPicker textStyle={styles.dropDownText} containerStyle={{ width: 80 }} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
-                <Text>1-{this.state.pageSize} de 264</Text>
+                <Text>{this.getRange()}</Text>
                 <View style={styles.buttonsView}>
                     <IconButton onPress={() => this.props.firstPage()} icon="arrow-collapse-left" size={20} color={backgroundColor} />
                     <IconButton onPress={() => this.props.prevPage()} icon="arrow-expand-left" size={20} color={backgroundColor} />
