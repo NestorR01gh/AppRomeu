@@ -29,21 +29,20 @@ export class LoginScreen extends Component {
         const config = {
             issuer: 'https://grm-dev-identityserver.azurewebsites.net',
             clientId: 'Gr.Portal.Mobile',
-            redirectUrl: 'net.azurewebsites.grm-dev-identityserver:/oauthredirect',
+            redirectUrl: 'net.azurewebsites.grm-dev-identityserver:/oauth2redirect',
             scopes: ['openid', 'roles', 'gr-portal', 'email', 'profile'],
-            //usePKCE: true,
             clientSecret: '6k_2Sd-&wA4n2CZn'
         };
 
         try {
             const result = await authorize(config);
-            
-            console.log(result)
+            console.log(result.accessTokenExpirationDate);
+            this.props.navigation.navigate('Main');
         } catch (error) {
             console.error(error);
         }
 
-        //ESTO PERTENECE A REACT-NATIVE-OIDC-CLIENTE
+        //ESTO PERTENECE A REACT-NATIVE-OIDC-CLIENT
         // const config = {
         //     response_type: 'code',
         //     scope: 'openid roles gr-portal email profile',
@@ -60,7 +59,6 @@ export class LoginScreen extends Component {
         // const tokenResponse = await client.authorize();
         // console.log(tokenResponse);
         // const accessToken = await client.getToken();
-        this.props.navigation.navigate('Main')
     }
 
     render() {
