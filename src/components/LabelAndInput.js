@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
@@ -25,9 +26,9 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: backgroundColor,
         height: 40,
-        borderRadius: 20,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+        borderRadius: 15,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
         borderWidth: 0.8,
         borderColor: backgroundColor
     }

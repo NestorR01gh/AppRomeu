@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 import { LabelAndInput } from '../components/LabelAndInput';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
@@ -10,7 +11,7 @@ export class EmployeeScreen extends Component {
             name: "Néstor Roldán",
             image: "https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1425034585/content-items/001/228/844/sesion-estudio-barcelona-10-original.jpg?1425034585",
             position: "Developer GRM",
-            company: "Grupo Romeu Multiservices S.L.",
+            company: "TERMINAL DE RECONOCIMIENTOS ADUANEROS DE ALICANTE, S.L.",
             mail: "neroldan@romeu.com",
             adress: 'Calle JJ Domine, 1 planta 4',
             country: 'Spain',
@@ -24,6 +25,7 @@ export class EmployeeScreen extends Component {
             department: 'GROUP'
         }
     }
+
     render() {
         return (
             <View style={styles.container}>
@@ -37,7 +39,7 @@ export class EmployeeScreen extends Component {
                         </View>
                     </View>
                     <View style={styles.body}>
-                        <LabelAndInput editable={false} label="Correo" value={this.state.company} />
+                        <LabelAndInput editable={false} label="Correo" value={this.state.mail} />
                         <LabelAndInput editable={false} label="Dirección" value={this.state.adress} />
                         <LabelAndInput editable={false} label="Mánager" value={this.state.manager} />
                         <View style={styles.doubleInputView}>

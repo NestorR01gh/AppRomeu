@@ -34,7 +34,7 @@ export class StaffFilters extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.7,
         padding: 7
     },
     filterLine: {
