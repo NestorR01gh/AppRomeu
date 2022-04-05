@@ -3,7 +3,6 @@ import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Provider } from 'react-native-paper';
 import { ButtonDescription } from '../components/ButtonDescription';
-import { Client, RedirectComponent } from 'react-native-oidc-client';
 import { authorize } from 'react-native-app-auth';
 
 export class LoginScreen extends Component {
@@ -30,8 +29,9 @@ export class LoginScreen extends Component {
         const config = {
             issuer: 'https://grm-dev-identityserver.azurewebsites.net',
             clientId: 'Gr.Portal.Mobile',
-            redirectUrl: 'https://romeunet-api.development.grm.zone/oauth2-redirect.html',
+            redirectUrl: 'com.appromeu:/callback',
             scopes: ['openid roles gr-portal email profile'],
+            usePKCE: true,
             clientSecret: '6k_2Sd-&wA4n2CZn'
         };
 
@@ -40,7 +40,7 @@ export class LoginScreen extends Component {
             
             console.log(result)
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
 
         //ESTO PERTENECE A REACT-NATIVE-OIDC-CLIENTE
