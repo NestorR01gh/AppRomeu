@@ -6,6 +6,14 @@ import { StaffFilters } from './StaffFilters';
 import { StaffList } from './StaffList';
 
 export class StaffSection extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 0,
+            pageSize: 5,
+            totalCount: 2709
+        }
+    }
 
     firstPage = () => {
 
@@ -28,8 +36,8 @@ export class StaffSection extends Component {
             <View style={styles.container}>
                 <Provider>
                     <StaffFilters />
-                    <StaffList navigation={this.props.navigation}/>
-                    <ListFooter totalCount={2709} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage}/>
+                    <StaffList navigation={this.props.navigation} />
+                    <ListFooter page={this.state.page} pageSize={this.state.pageSize} setPageSize={this.setPageSize} totalCount={this.state.totalCount} firstPage={this.firstPage} prevPage={this.prevPage} nextPage={this.nextPage} lastPage={this.lastPage} />
                 </Provider>
             </View>
 
