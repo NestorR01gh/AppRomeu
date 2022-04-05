@@ -30,8 +30,8 @@ export class LoginScreen extends Component {
             issuer: 'https://grm-dev-identityserver.azurewebsites.net',
             clientId: 'Gr.Portal.Mobile',
             redirectUrl: 'net.azurewebsites.grm-dev-identityserver:/oauthredirect',
-            scopes: ['openid roles gr-portal email profile'],
-            usePKCE: true,
+            scopes: ['openid', 'roles', 'gr-portal', 'email', 'profile'],
+            //usePKCE: true,
             clientSecret: '6k_2Sd-&wA4n2CZn'
         };
 

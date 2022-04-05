@@ -47,7 +47,7 @@ export class Header extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1.5,
+        flex: 1,
         flexDirection: 'row',
         backgroundColor: backgroundColor,
         alignItems: 'center',
