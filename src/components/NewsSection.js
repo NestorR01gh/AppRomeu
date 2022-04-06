@@ -7,7 +7,8 @@ import { DataTable, Provider } from 'react-native-paper';
 import { ListFooter } from './ListFooter';
 import { fontFamily, backgroundColor } from '../utils/Constants';
 
-const newsPerPage = [5, 10, 16]
+const newsPerPageList = [5, 10, 15]
+const totalCount = 3043;
 
 export class NewsSection extends Component {
     constructor(props) {
@@ -19,7 +20,9 @@ export class NewsSection extends Component {
             image: "",
             date: "",
             hasFile: "",
-            fileLink: ""
+            fileLink: "",
+            page: 0,
+            newsPerPage: newsPerPageList[0]
         }
     }
 
@@ -36,6 +39,18 @@ export class NewsSection extends Component {
         this.setState({ visible: visible });
     }
 
+    setPage = (page) => {
+        this.setState({ page: page });
+    }
+
+    setNewsPerPage = (npp) => {
+        this.setState({ newsPerPage: npp });
+    }
+
+    getPaginationLabel = () => {
+        return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, totalCount)} of ${totalCount}`
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -44,9 +59,13 @@ export class NewsSection extends Component {
                     <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                     <NewsFilters />
                     <NewsList setVisibility={this.setVisibility} setModalData={this.setModalData} />
-                    <DataTable.Pagination showFastPaginationControls />
                     {/* <ListFooter /> */}
                 </Provider>
+                <View style={styles.paginationView}>
+                    <DataTable>
+                        <DataTable.Pagination onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    </DataTable>
+                </View>
             </View>
 
         );
@@ -64,5 +83,9 @@ const styles = StyleSheet.create({
         color: backgroundColor,
         alignSelf: 'center',
         marginTop: 10
+    },
+    paginationView: {
+        borderTopWidth: 1,
+        borderTopColor: backgroundColor
     }
 });

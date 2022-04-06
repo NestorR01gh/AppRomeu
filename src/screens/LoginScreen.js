@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Provider } from 'react-native-paper';
+import { ActivityIndicator, Portal, Provider } from 'react-native-paper';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
+import { backgroundColor } from '../utils/Constants';
+import { LoadingModal } from '../components/LoadingModal';
 
 export class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: false,
             showDropDown: false,
             language: "es",
             languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }]
@@ -26,6 +29,7 @@ export class LoginScreen extends Component {
     }
 
     async handlePress() {
+        this.setState({ loading: true });
         const config = {
             issuer: 'https://grm-dev-identityserver.azurewebsites.net',
             clientId: 'Gr.Portal.Mobile',
@@ -36,34 +40,19 @@ export class LoginScreen extends Component {
 
         try {
             const result = await authorize(config);
-            console.log(result.accessTokenExpirationDate);
             this.props.navigation.navigate('Main');
+            this.setState({ loading: false });
         } catch (error) {
             console.error(error);
         }
-
-        //ESTO PERTENECE A REACT-NATIVE-OIDC-CLIENT
-        // const config = {
-        //     response_type: 'code',
-        //     scope: 'openid roles gr-portal email profile',
-        //     client_id: 'Gr.Portal.Mobile',
-        //     client_secret: '6k_2Sd-&wA4n2CZn',
-        //     redirect_uri: 'com.appromeu.app',
-        //     acr_values: 'http://oidc.contact.de',
-        //     acr: 'default',
-        //     // prompt: 'consent login',
-        //     authority: 'https://grm-dev-identityserver.azurewebsites.net',
-        //     browser_type: 'default',
-        // };
-        // const client = new Client(config);
-        // const tokenResponse = await client.authorize();
-        // console.log(tokenResponse);
-        // const accessToken = await client.getToken();
     }
 
     render() {
         return (
             <Provider>
+                <Portal>
+                    <LoadingModal animating={this.state.loading} color={backgroundColor}/>
+                </Portal>
                 <View style={styles.container}>
                     <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
                         <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />

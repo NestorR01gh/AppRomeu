@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import { StyleSheet, Image, View, TouchableOpacity } from 'react-native';
-import { IconButton, Menu, TextInput } from 'react-native-paper';
+import { Avatar, IconButton, Menu, TextInput } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
 
 export class Header extends Component {
@@ -37,7 +37,7 @@ export class Header extends Component {
         return (
             <View style={styles.container}>
                 <IconButton onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())} color="white" size={50} icon="menu" />
-                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Image style={styles.image} source={{ uri: this.props.image }} /></TouchableOpacity>}>
+                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={{ uri: this.props.image }} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title="Salir" onPress={() => this.handleExit()}/>
                 </Menu>
             </View>
