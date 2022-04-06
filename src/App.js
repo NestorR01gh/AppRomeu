@@ -10,7 +10,6 @@ import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigatio
 import { backgroundColor, fontFamily } from './utils/Constants';
 import { DrawerItem } from './components/DrawerItem';
 import { LogBox, Text } from 'react-native';
-import { Header } from 'react-navigation-stack';
 
 
 const Stack = createNativeStackNavigator();

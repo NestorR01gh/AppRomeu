@@ -1,1 +1,1 @@
-export let usu = 1;
+export let token = {data:""};

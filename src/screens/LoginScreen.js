@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { ActivityIndicator, Portal, Provider } from 'react-native-paper';
+import { Portal, Provider } from 'react-native-paper';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
 import { backgroundColor } from '../utils/Constants';
 import { LoadingModal } from '../components/LoadingModal';
+import { token } from '../utils/Variables';
 
 export class LoginScreen extends Component {
     constructor(props) {
@@ -40,6 +41,7 @@ export class LoginScreen extends Component {
 
         try {
             const result = await authorize(config);
+            token.data = result;
             this.props.navigation.navigate('Main');
             this.setState({ loading: false });
         } catch (error) {

@@ -6,6 +6,7 @@ import { NewsModal } from './NewsModal';
 import { DataTable, Provider } from 'react-native-paper';
 import { ListFooter } from './ListFooter';
 import { fontFamily, backgroundColor } from '../utils/Constants';
+import { jestResetJsReanimatedModule } from 'react-native-reanimated/src/reanimated2/core';
 
 const newsPerPageList = [5, 10, 15]
 const totalCount = 3043;
@@ -48,7 +49,9 @@ export class NewsSection extends Component {
     }
 
     getPaginationLabel = () => {
-        return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, totalCount)} of ${totalCount}`
+        return this.state.page + 1 + "/" + Math.ceil(totalCount / this.state.newsPerPage);
+        //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
+        //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, totalCount)} of ${totalCount}`
     }
 
     render() {
@@ -62,9 +65,7 @@ export class NewsSection extends Component {
                     {/* <ListFooter /> */}
                 </Provider>
                 <View style={styles.paginationView}>
-                    <DataTable>
-                        <DataTable.Pagination onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(totalCount / this.state.newsPerPage)} showFastPaginationControls />
-                    </DataTable>
+                    <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
 
