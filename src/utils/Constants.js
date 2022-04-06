@@ -1,6 +1,6 @@
 export const backgroundColor = "#0D1A32";
 export const fontFamily = "default";
-export const urlApi = "";
+export const urlApi = "https://romeunet-api.development.grm.zone/api/";
 
 export const newsList = [
     {

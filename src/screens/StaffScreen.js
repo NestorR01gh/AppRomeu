@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, BackHandler, Alert} from 'react-native';
 import { Provider } from 'react-native-paper';
 import { Header } from '../components/Header';
 import { StaffSection } from '../components/StaffSection';
 
 export class StaffScreen extends Component {
+
     render() {
         return (
             <View style={styles.container}>

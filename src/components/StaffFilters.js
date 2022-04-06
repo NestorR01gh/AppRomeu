@@ -24,7 +24,7 @@ export class StaffFilters extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput onChangeText={() => this.setInputValue()} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.inputValue} />
+                    <TextInput left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={() => this.setInputValue()} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.inputValue} />
                     <TouchableHighlight onPress={() => this.clean()} style={styles.buttonClean}><Text style={styles.buttonLabelClean}>Limpiar</Text></TouchableHighlight>
                 </View>
             </View>

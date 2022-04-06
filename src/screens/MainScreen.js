@@ -6,11 +6,6 @@ import { NewsSection } from '../components/NewsSection';
 import { urlApi } from '../utils/Constants';
 import { token } from '../utils/Variables';
 
-const setDatos = async () => {
-    const response = await axios.get(`${urlApi}/User/GetUserPhoto`, { responseType: 'blob' });
-    console.log(response);
-}
-
 export class MainScreen extends Component {
     constructor(props) {
         super(props);
@@ -18,11 +13,6 @@ export class MainScreen extends Component {
             image: ""
         }
     }
-
-    componentDidMount() {
-        setDatos();
-    }
-
     render() {
         return (
             <View style={styles.container}>

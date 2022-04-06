@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
-import { ActivityIndicator } from 'react-native-paper';
 import { LabelAndInput } from '../components/LabelAndInput';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
@@ -8,7 +7,7 @@ export class EmployeeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "Néstor Roldán",
+            name: "Abigail Sofia Alatorres Aparicio",
             image: "https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1425034585/content-items/001/228/844/sesion-estudio-barcelona-10-original.jpg?1425034585",
             position: "Developer GRM",
             company: "TERMINAL DE RECONOCIMIENTOS ADUANEROS DE ALICANTE, S.L.",

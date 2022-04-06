@@ -41,7 +41,7 @@ export class LoginScreen extends Component {
 
         try {
             const result = await authorize(config);
-            token.data = result;
+            token.data = result.accessToken;
             this.props.navigation.navigate('Main');
             this.setState({ loading: false });
         } catch (error) {

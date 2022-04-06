@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         borderWidth: 0.8,
-        borderColor: backgroundColor,
-        textAlignVertical: 'center'
+        borderColor: backgroundColor
     }
 });

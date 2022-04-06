@@ -8,7 +8,6 @@ export class NewsFilters extends Component {
         super(props);
         this.state = {
             focused: false,
-            checked: false
         }
     }
 
@@ -17,7 +16,7 @@ export class NewsFilters extends Component {
     }
 
     handleCheck = () => {
-        this.setState({ checked: !this.state.checked });
+        this.props.handleCheck();
     }
 
     render() {
@@ -28,8 +27,8 @@ export class NewsFilters extends Component {
                         <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
                             <TextInput onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
                             <View style={styles.viewRead}>
-                                <Text style={styles.label}>Leído: </Text>
-                                <Checkbox color={backgroundColor} onPress={() => this.handleCheck()} status={this.state.checked ? 'checked' : 'unchecked'} />
+                                <Text style={styles.label}>No leído: </Text>
+                                <Checkbox color={backgroundColor} onPress={() => this.handleCheck()} status={this.props.checked ? 'checked' : 'unchecked'} />
                             </View>
                         </List.Accordion>
                     </List.Section>
@@ -67,6 +66,7 @@ const styles = StyleSheet.create({
     viewRead: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginLeft: -40
     },
     label: {
         fontFamily: fontFamily,
