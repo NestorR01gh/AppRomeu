@@ -5,14 +5,32 @@ import { Header } from '../components/Header';
 import { NewsSection } from '../components/NewsSection';
 import { urlApi } from '../utils/Constants';
 import { token } from '../utils/Variables';
+import { Request } from '../utils/Request';
 
 export class MainScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: ""
+            image: undefined
         }
     }
+
+    getPhoto = () => {
+        let request = new Request(urlApi + "User/GetUserPhoto", "GET");
+        request.withAuth();
+        let res;
+        try {
+            res = request.execute();
+        } catch (e) {
+            this.setState({ image: undefined });
+        }
+        console.log(res);
+    }
+
+    componentDidMount(){
+        this.getPhoto();
+    }
+
     render() {
         return (
             <View style={styles.container}>

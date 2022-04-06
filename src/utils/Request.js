@@ -16,6 +16,6 @@ export class Request {
 
     execute = async () => {
         const res = await axios.request({method: this.method, url: this.url, headers: this.headers })
-        console.log(res.data.data);
+        return res;
     }
 }
