@@ -33,7 +33,7 @@ class App extends Component {
       <DrawerContentScrollView style={{ backgroundColor: backgroundColor }}>
         <Text style={{ padding: 20, alignSelf: 'center', fontFamily: fontFamily, color: 'white', fontSize: 40, textDecorationLine: 'underline' }}>MENÚ</Text>
         <DrawerItem icon="home" label="Principal" onPress={() => navigation.navigate('MainDrawer')} />
-        <DrawerItem icon="account" label="Staff" onPress={() => navigation.navigate('Staff')} />
+        <DrawerItem icon="account" label="Personal" onPress={() => navigation.navigate('Staff')} />
       </DrawerContentScrollView>
     );
   }

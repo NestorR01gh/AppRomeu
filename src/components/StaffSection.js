@@ -5,15 +5,16 @@ import { StaffFilters } from './StaffFilters';
 import { StaffList } from './StaffList';
 import { backgroundColor } from '../utils/Constants';
 
-const newsPerPageList = [5, 10, 15]
+const staffPerPageList = [5, 10, 15]
 
 export class StaffSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             page: 0,
-            newsPerPage: newsPerPageList[0],
-            totalCount: 1
+            staffPerPage: staffPerPageList[0],
+            totalCount: 1,
+            search: ""
         }
     }
 
@@ -21,25 +22,29 @@ export class StaffSection extends Component {
         this.setState({ page: page });
     }
 
-    setNewsPerPage = (npp) => {
-        this.setState({ newsPerPage: npp });
+    setStaffPerPage = (npp) => {
+        this.setState({ staffPerPage: npp });
     }
 
     getPaginationLabel = () => {
-        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
+        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.staffPerPage);
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
-        //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${totalCount}`
+        //return `${this.state.page * this.state.staffPerPage + 1}-${Math.min((this.state.page + 1) * this.state.staffPerPage, this.state.totalCount)} of ${totalCount}`
+    }
+
+    handleSearch = (search) => {
+        this.setState({ search: search });
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <Provider>
-                    <StaffFilters />
+                    <StaffFilters handleSearch={this.handleSearch} />
                     <StaffList navigation={this.props.navigation} />
                 </Provider>
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
         );

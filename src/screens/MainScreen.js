@@ -4,7 +4,6 @@ import { Provider } from 'react-native-paper';
 import { Header } from '../components/Header';
 import { NewsSection } from '../components/NewsSection';
 import { urlApi } from '../utils/Constants';
-import { token } from '../utils/Variables';
 import { Request } from '../utils/Request';
 
 export class MainScreen extends Component {

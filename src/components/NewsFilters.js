@@ -8,6 +8,7 @@ export class NewsFilters extends Component {
         super(props);
         this.state = {
             focused: false,
+            search: ""
         }
     }
 
@@ -24,7 +25,11 @@ export class NewsFilters extends Component {
     }
 
     handleChangeText = (text) => {
-        this.props.setSearch(text)
+        this.setState({ search: text })
+    }
+
+    handleSearch = () => {
+        this.props.handleSearch(this.state.search);
     }
 
     render() {
@@ -33,7 +38,7 @@ export class NewsFilters extends Component {
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
                         <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
-                            <TextInput onChangeText={() => this.handleChangeText()} onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                            <TextInput onSubmitEditing={() => this.handleSearch} onChangeText={this.handleChangeText} onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
                             <View style={styles.viewCheckboxes}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
                                     <Text style={styles.label}>No leído: </Text>
