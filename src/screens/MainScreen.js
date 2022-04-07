@@ -15,18 +15,18 @@ export class MainScreen extends Component {
         }
     }
 
-    getPhoto = () => {
-        let req = new Request(urlApi + "User/GetUser", "POST");
+    getPhoto = async () => {
+        let req = new Request(urlApi + "User/GetUserPhoto", "POST");
         req.withAuth();
         try {
-            let res = req.execute();
-            console.log(res);
+            let res = await req.execute();
+            this.setState({ image: res.data });
         } catch (e) {
             this.setState({ image: undefined });
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getPhoto();
     }
 
