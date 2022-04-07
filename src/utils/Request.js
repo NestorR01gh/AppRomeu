@@ -14,7 +14,7 @@ export class Request {
     }
 
     execute = async () => {
-        let algo = await axios.request({url: this.url,method: this.method, headers: this.headers });
-        return algo.data;
+        let algo = await axios.request({url: this.url,method: this.method, headers: this.headers }).then(response=>{return response});
+        console.log(algo.data);
     }
 }
