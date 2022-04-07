@@ -41,6 +41,7 @@ export class LoginScreen extends Component {
 
         try {
             const result = await authorize(config);
+            console.log(result.accessTokenExpirationDate);
             token.data = result.accessToken;
             this.props.navigation.navigate('Main');
             this.setState({ loading: false });

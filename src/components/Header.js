@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { backgroundColor, fontFamily } from '../utils/Constants';
-import { StyleSheet, Image, View, TouchableOpacity } from 'react-native';
-import { Avatar, IconButton, Menu, TextInput } from 'react-native-paper';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
 
 export class Header extends Component {
@@ -14,19 +14,11 @@ export class Header extends Component {
     }
 
     handlePress = () => {
-        if (this.state.visible) {
-            this.setState({ visible: false });
-        } else {
-            this.setState({ visible: true });
-        }
+        this.setState({ visible: !this.state.visible });
     }
 
     handleFocus = () => {
-        if (!this.state.focused) {
-            this.setState({ focused: true });
-        } else {
-            this.setState({ focused: false });
-        }
+        this.setState({ focused: !this.state.focused });
     }
 
     handleExit = () => {

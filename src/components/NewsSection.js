@@ -4,9 +4,8 @@ import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
 import { NewsModal } from './NewsModal';
 import { DataTable, Provider } from 'react-native-paper';
-import { fontFamily, backgroundColor, newsList, urlApi } from '../utils/Constants';
+import { fontFamily, backgroundColor, newsList, urlApi, idLanguage } from '../utils/Constants';
 import { Request } from '../utils/Request';
-import { Method } from 'axios';
 
 const newsPerPageList = [5, 10, 15]
 const totalCount = 3043;
@@ -24,7 +23,8 @@ export class NewsSection extends Component {
             fileLink: "",
             page: 0,
             newsPerPage: newsPerPageList[0],
-            checked: false,
+            read: false,
+            signed: false
         }
     }
 
@@ -37,8 +37,12 @@ export class NewsSection extends Component {
         this.setState({ fileLink: fileLink });
     }
 
-    setChecked = () => {
-        this.setState({ checked: !this.state.checked });
+    setRead = () => {
+        this.setState({ read: !this.state.read });
+    }
+
+    setSigned = () => {
+        this.setState({ signed: !this.state.signed });
     }
 
     setVisibility = (visible) => {
@@ -54,15 +58,16 @@ export class NewsSection extends Component {
     }
 
     getPaginationLabel = () => {
-        return this.state.page + 1 + "/" + Math.ceil(totalCount / this.state.newsPerPage);
+        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
+
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
         //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, totalCount)} of ${totalCount}`
     }
 
     getNewsList = () => {
-        let request = new Request(urlApi + "User/GetUser", "POST");
-        request.withAuth();
-        request.execute();
+        // let request = new Request(urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}&search=${this.state.search}&isNotRead=false&isNotSigned=false`, "GET");
+        // request.withAuth();
+        // let response = request.execute();
     }
 
     componentDidMount() {
@@ -75,11 +80,11 @@ export class NewsSection extends Component {
                 <Provider>
                     <Text style={styles.title}>NOTICIAS</Text>
                     <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
-                    <NewsFilters checked={this.state.checked} handleCheck={this.setChecked} />
+                    <NewsFilters read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned}/>
                     <NewsList list={newsList} setVisibility={this.setVisibility} setModalData={this.setModalData} />
                 </Provider>
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
 

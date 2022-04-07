@@ -7,7 +7,7 @@ export class EmployeeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "Abigail Sofia Alatorres Aparicio",
+            name: "Néstor Roldán",
             image: "https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1425034585/content-items/001/228/844/sesion-estudio-barcelona-10-original.jpg?1425034585",
             position: "Developer GRM",
             company: "TERMINAL DE RECONOCIMIENTOS ADUANEROS DE ALICANTE, S.L.",

@@ -1,6 +1,5 @@
 import { token } from "./Variables";
 import axios from "axios";
-import { AxiosRequestConfig } from "axios";
 
 export class Request {
     constructor(url, method) {
@@ -15,7 +14,7 @@ export class Request {
     }
 
     execute = async () => {
-        const res = await axios.request({method: this.method, url: this.url, headers: this.headers })
-        return res;
+        let algo = await axios.request({url: this.url,method: this.method, headers: this.headers });
+        return algo.data;
     }
 }

@@ -15,8 +15,16 @@ export class NewsFilters extends Component {
         this.setState({ focused: !this.state.focused });
     }
 
-    handleCheck = () => {
-        this.props.handleCheck();
+    handleRead = () => {
+        this.props.handleRead();
+    }
+
+    handleSigned = () => {
+        this.props.handleSigned();
+    }
+
+    handleChangeText = (text) => {
+        this.props.setSearch(text)
     }
 
     render() {
@@ -25,10 +33,16 @@ export class NewsFilters extends Component {
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
                         <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
-                            <TextInput onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
-                            <View style={styles.viewRead}>
-                                <Text style={styles.label}>No leído: </Text>
-                                <Checkbox color={backgroundColor} onPress={() => this.handleCheck()} status={this.props.checked ? 'checked' : 'unchecked'} />
+                            <TextInput onChangeText={() => this.handleChangeText()} onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                            <View style={styles.viewCheckboxes}>
+                                <View style={{ flex: 1, flexDirection: 'row' }}>
+                                    <Text style={styles.label}>No leído: </Text>
+                                    <Checkbox color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
+                                </View>
+                                <View style={{ flex: 1, flexDirection: 'row' }}>
+                                    <Text style={styles.label}>No firmado: </Text>
+                                    <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
+                                </View>
                             </View>
                         </List.Accordion>
                     </List.Section>
@@ -63,9 +77,10 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily,
         fontSize: 20
     },
-    viewRead: {
+    viewCheckboxes: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         marginLeft: -40
     },
     label: {
