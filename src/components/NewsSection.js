@@ -25,7 +25,10 @@ export class NewsSection extends Component {
             read: false,
             signed: false,
             search: "",
-            totalCount: 1
+            totalCount: 1,
+            data: undefined,
+            newsList: newsList,
+            updated: false
         }
     }
 
@@ -70,13 +73,21 @@ export class NewsSection extends Component {
     }
 
     getNewsList = async () => {
-        let request = new Request(urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}&search=${this.state.search}&isNotRead=${this.state.read}&isNotSigned=${this.state.signed}`, "GET");
+        //let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}&search=${this.state.search}&isNotRead=${this.state.read}&isNotSigned=${this.state.signed}`;
+        let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
+        let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
-        console.log(response)
+        console.log(response.data.data[0])
+        this.setState({ newsList: response.data.data[0].items });
+
     }
 
     componentDidMount() {
+        this.getNewsList();
+    }
+
+    componentDidUpdate() {
         this.getNewsList();
     }
 
@@ -87,7 +98,7 @@ export class NewsSection extends Component {
                     <Text style={styles.title}>NOTICIAS</Text>
                     <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
                     <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                    <NewsList list={newsList} setVisibility={this.setVisibility} setModalData={this.setModalData} />
+                    <NewsList list={this.state.newsList} setVisibility={this.setVisibility} setModalData={this.setModalData} />
                     <View style={styles.paginationView}>
                         <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                     </View>
@@ -112,6 +123,7 @@ const styles = StyleSheet.create({
     },
     paginationView: {
         borderTopWidth: 1,
-        borderTopColor: backgroundColor
+        borderTopColor: backgroundColor,
+        flexWrap: 'wrap'
     }
 });

@@ -7,7 +7,9 @@ export class NewsList extends Component {
     getNews = (setVisibility, setModalData, list) => {
         return (
             list.map(function (item, index) {
-                return <News id={item.id} setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.title} logo={item.logo} image={item.image} section={item.section} read={item.read} isNews={item.isNews} date={item.date} hasFile={item.hasFile} fileLink={item.fileLink} />
+                let logo = "../assets/logos/"+item.CompaniaPublicadora+".png";
+                console.log(logo);
+                return <News id={item.IdNews} setModalData={setModalData} setVisibility={setVisibility} key={index} title={item.Titulo} logo={require('../assets/logos/39.png')} image={item.ImageUrl} section={item.SectionName} read={item.ReadDate != null ? true : false} isNews={item.Type == "Comunicados" ? false : true} date={item.FechaPublicacion != undefined ? item.FechaPublicacion.split("T")[0] : undefined} hasFile={item.hasFile} fileLink={item.fileLink} />
             })
         );
     }

@@ -108,7 +108,7 @@ export class NewsModal extends Component {
                             </View>
                             <View style={{ flex: 5, padding: 20 }}>
                                 <ScrollView>
-                                    <HtmlText html={this.props.description} />
+                                    <HtmlText html={"<iframe frameborder=\"0\" width=\"560\" height=\"315\" src=\"https://biteable.com/watch/embed/3548307/0829a697b869be6bea5ee5263424eee4\" allowfullscreen=\"true\" allow=\"autoplay\"> </iframe> "} />
                                 </ScrollView>
                             </View>
                         </View>
