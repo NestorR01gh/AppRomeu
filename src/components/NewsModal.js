@@ -65,7 +65,7 @@ export class NewsModal extends Component {
                 useDownloadManager: true,
                 notification: true,
                 path:
-                    dir + '/pdf_' + Math.floor(date.getTime() + date.getSeconds() / 2) + ".pdf",
+                    dir + '/file_' + Math.floor(date.getTime() + date.getSeconds() / 2) + this.props.fileExtension,
                 description: 'Risk Report Download'
             }
         };
@@ -96,7 +96,7 @@ export class NewsModal extends Component {
                             </View>
                         </View>
                         <View style={styles.body}>
-                        <ActivityIndicator size={30} style={{ opacity: this.state.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end' }} />
+                        <ActivityIndicator size={30} style={{ opacity: this.state.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end', flex: 0.5 }} />
                             <View style={styles.bodyHeader}>
                                 <View style={styles.imageView}>
                                     <Image style={styles.image} source={{ uri: this.props.image }} />
@@ -106,9 +106,9 @@ export class NewsModal extends Component {
                                     <Text style={{ fontFamily: fontFamily, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.hasFile ? 0 : -60 }}>Publicado el {this.props.date}</Text>
                                 </View>
                             </View>
-                            <View style={{ flex: 5, padding: 20 }}>
+                            <View style={styles.descriptionView}>
                                 <ScrollView>
-                                    <HtmlText html={"<iframe frameborder=\"0\" width=\"560\" height=\"315\" src=\"https://biteable.com/watch/embed/3548307/0829a697b869be6bea5ee5263424eee4\" allowfullscreen=\"true\" allow=\"autoplay\"> </iframe> "} />
+                                    <HtmlText html={this.props.description} />
                                 </ScrollView>
                             </View>
                         </View>
@@ -124,11 +124,11 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         alignSelf: 'center',
         width: "90%",
-        height: "100%",
+        height: "90%",
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
-        marginBottom: 30
+        marginBottom: 90
     },
     publishedClipView: {
         flex: 1,
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        height: 150,
-        width: 150,
+        height: 110,
+        width: 110,
         resizeMode: 'contain'
     },
     imageView: {
@@ -147,8 +147,9 @@ const styles = StyleSheet.create({
         padding: 10
     },
     bodyHeader: {
-        flex: 2,
-        flexDirection: 'row'
+        flex: 1.5,
+        flexDirection: 'row',
+        padding: 10
     },
     body: {
         flex: 5,
@@ -176,5 +177,9 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end'
+    },
+    descriptionView: {
+        flex: 5,
+        padding: 20,
     }
 });

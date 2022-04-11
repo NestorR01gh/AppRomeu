@@ -41,7 +41,6 @@ export class LoginScreen extends Component {
 
         try {
             const result = await authorize(config);
-            console.log(result.accessTokenExpirationDate);
             token.data = result.accessToken;
             this.props.navigation.navigate('Main');
             this.setState({ loading: false });
@@ -53,9 +52,7 @@ export class LoginScreen extends Component {
     render() {
         return (
             <Provider>
-                <Portal>
-                    <LoadingModal animating={this.state.loading} color={backgroundColor}/>
-                </Portal>
+                <LoadingModal animating={this.state.loading} color={backgroundColor}/>
                 <View style={styles.container}>
                     <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
                         <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />

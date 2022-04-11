@@ -6,6 +6,7 @@ import { NewsModal } from './NewsModal';
 import { DataTable, Provider } from 'react-native-paper';
 import { fontFamily, backgroundColor, newsList, urlApi, idLanguage } from '../utils/Constants';
 import { Request } from '../utils/Request';
+import { LoadingModal } from './LoadingModal';
 
 const newsPerPageList = [5, 10, 15]
 
@@ -28,41 +29,52 @@ export class NewsSection extends Component {
             totalCount: 1,
             data: undefined,
             newsList: newsList,
-            updated: false
+            updated: false,
+            loading: false,
+            fileExtension: ""
         }
     }
 
-    setModalData = (title, desc, image, date, hasFile, fileLink) => {
+    setModalData = (title, desc, image, date, hasFile, fileLink, fileExtension) => {
         this.setState({ title: title });
         this.setState({ description: desc });
         this.setState({ image: image });
         this.setState({ date: date });
         this.setState({ hasFile: hasFile });
         this.setState({ fileLink: fileLink });
+        this.setState({ fileExtension: fileExtension });
     }
 
-    setRead = () => {
-        this.setState({ read: !this.state.read });
+    setRead = async () => {
+        await this.setState({ read: !this.state.read });
+        await this.setState({ page: 0 });
+        this.getNewsList();
     }
 
-    setSigned = () => {
-        this.setState({ signed: !this.state.signed });
+    setSigned = async () => {
+        await this.setState({ signed: !this.state.signed });
+        await this.setState({ page: 0 });
+        this.getNewsList();
     }
 
     setVisibility = (visible) => {
         this.setState({ visible: visible });
     }
 
-    setPage = (page) => {
-        this.setState({ page: page });
+    setPage = async (page) => {
+        await this.setState({ page: page });
+        this.getNewsList();
     }
 
-    setNewsPerPage = (npp) => {
-        this.setState({ newsPerPage: npp });
+    setNewsPerPage = async (npp) => {
+        await this.setState({ newsPerPage: npp });
+        this.getNewsList();
     }
 
-    setSearch = (search) => {
-        this.setState({ search: search });
+    setSearch = async (search) => {
+        await this.setState({ search: search });
+        await this.setState({ page: 0 });
+        this.getNewsList();
     }
 
     getPaginationLabel = () => {
@@ -73,21 +85,26 @@ export class NewsSection extends Component {
     }
 
     getNewsList = async () => {
-        //let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}&search=${this.state.search}&isNotRead=${this.state.read}&isNotSigned=${this.state.signed}`;
+        await this.setState({ loading: true });
         let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
+        if (this.state.search != "") {
+            requestString += `&search=${this.state.search}`
+        }
+        if (this.state.read) {
+            requestString += `&isNotRead=${this.state.read}`
+        }
+        if (this.state.signed) {
+            requestString += `&isNotSigned=${this.state.signed}`
+        }
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
-        console.log(response.data.data[0])
         this.setState({ newsList: response.data.data[0].items });
-
+        this.setState({ totalCount: response.data.data[0].totalCount });
+        await this.setState({ loading: false });
     }
 
     componentDidMount() {
-        this.getNewsList();
-    }
-
-    componentDidUpdate() {
         this.getNewsList();
     }
 
@@ -95,14 +112,15 @@ export class NewsSection extends Component {
         return (
             <View style={styles.container}>
                 <Provider>
-                    <Text style={styles.title}>NOTICIAS</Text>
-                    <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} />
+                    <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                    <Text style={styles.title}>NOTICIAS {this.state.search}</Text>
+                    <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} fileExtension={this.state.fileExtension}/>
                     <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                     <NewsList list={this.state.newsList} setVisibility={this.setVisibility} setModalData={this.setModalData} />
-                    <View style={styles.paginationView}>
-                        <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
-                    </View>
                 </Provider>
+                <View style={styles.paginationView}>
+                    <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                </View>
             </View>
 
         );
@@ -123,7 +141,6 @@ const styles = StyleSheet.create({
     },
     paginationView: {
         borderTopWidth: 1,
-        borderTopColor: backgroundColor,
-        flexWrap: 'wrap'
+        borderTopColor: backgroundColor
     }
 });
