@@ -9,8 +9,7 @@ import { Request } from '../utils/Request';
 export class News extends Component {
 
     handlePress = async () => {
-        //Aquí se llama a la api y se consigue la descripción con la id pasada por props
-        //Es probable que también necesite si tiene archivo y cuál es en vez de pasarlo por props
+        this.props.setLoading(true);
         let news = await this.getNews();
         let description = news.newsLanguages[idLanguage].description;
         let creationDate = news.creationDate.split("T")[0];
@@ -19,6 +18,7 @@ export class News extends Component {
         let fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
         let fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
         this.props.setModalData(title, description, news.imageUrl, creationDate, hasFile, fileUrl, fileExtension);
+        this.props.setLoading(false);
         this.props.setVisibility(true);
     }
 

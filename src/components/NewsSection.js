@@ -14,13 +14,6 @@ export class NewsSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible: false,
-            title: "",
-            description: "",
-            image: "",
-            date: "",
-            hasFile: "",
-            fileLink: "",
             page: 0,
             newsPerPage: newsPerPageList[0],
             read: false,
@@ -30,19 +23,12 @@ export class NewsSection extends Component {
             data: undefined,
             newsList: newsList,
             updated: false,
-            loading: false,
-            fileExtension: ""
+            loading: false
         }
     }
 
-    setModalData = (title, desc, image, date, hasFile, fileLink, fileExtension) => {
-        this.setState({ title: title });
-        this.setState({ description: desc });
-        this.setState({ image: image });
-        this.setState({ date: date });
-        this.setState({ hasFile: hasFile });
-        this.setState({ fileLink: fileLink });
-        this.setState({ fileExtension: fileExtension });
+    setLoading = (loading) => {
+        this.setState({ loading: loading });
     }
 
     setRead = async () => {
@@ -55,10 +41,6 @@ export class NewsSection extends Component {
         await this.setState({ signed: !this.state.signed });
         await this.setState({ page: 0 });
         this.getNewsList();
-    }
-
-    setVisibility = (visible) => {
-        this.setState({ visible: visible });
     }
 
     setPage = async (page) => {
@@ -78,10 +60,10 @@ export class NewsSection extends Component {
     }
 
     getPaginationLabel = () => {
-        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
+        //return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
 
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
-        //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, totalCount)} of ${totalCount}`
+        return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
 
     getNewsList = async () => {
@@ -114,9 +96,8 @@ export class NewsSection extends Component {
                 <Provider>
                     <LoadingModal color={backgroundColor} animating={this.state.loading} />
                     <Text style={styles.title}>NOTICIAS {this.state.search}</Text>
-                    <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} fileExtension={this.state.fileExtension}/>
                     <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                    <NewsList list={this.state.newsList} setVisibility={this.setVisibility} setModalData={this.setModalData} />
+                    <NewsList setLoading={this.setLoading} list={this.state.newsList} setVisibility={this.props.setVisibility} setModalData={this.props.setModalData} />
                 </Provider>
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />

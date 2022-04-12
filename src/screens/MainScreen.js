@@ -5,13 +5,36 @@ import { Header } from '../components/Header';
 import { NewsSection } from '../components/NewsSection';
 import { urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
+import { NewsModal } from '../components/NewsModal';
 
 export class MainScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: undefined
+            profileImage: undefined,
+            visible: false,
+            title: "",
+            description: "",
+            image: "",
+            date: "",
+            hasFile: "",
+            fileLink: "",
+            fileExtension: "",
         }
+    }
+
+    setVisibility = (visible) => {
+        this.setState({ visible: visible });
+    }
+
+    setModalData = (title, desc, image, date, hasFile, fileLink, fileExtension) => {
+        this.setState({ title: title });
+        this.setState({ description: desc });
+        this.setState({ image: image });
+        this.setState({ date: date });
+        this.setState({ hasFile: hasFile });
+        this.setState({ fileLink: fileLink });
+        this.setState({ fileExtension: fileExtension });
     }
 
     getPhoto = async () => {
@@ -19,9 +42,9 @@ export class MainScreen extends Component {
         req.withAuth();
         try {
             let res = await req.execute();
-            this.setState({ image: res.data });
+            this.setState({ profileImage: res.data });
         } catch (e) {
-            this.setState({ image: undefined });
+            this.setState({ profileImage: undefined });
         }
     }
 
@@ -33,8 +56,9 @@ export class MainScreen extends Component {
         return (
             <View style={styles.container}>
                 <Provider>
-                    <Header image={this.state.image} navigation={this.props.navigation} />
-                    <NewsSection />
+                    <Header image={this.state.profileImage} navigation={this.props.navigation} />
+                    <NewsModal setVisibility={this.setVisibility} title={this.state.title} description={this.state.description} image={this.state.image} date={this.state.date} hasFile={this.state.hasFile} fileLink={this.state.fileLink} visible={this.state.visible} fileExtension={this.state.fileExtension} />
+                    <NewsSection setModalData={this.setModalData} setVisibility={this.setVisibility}/>
                 </Provider>
             </View>
         );
