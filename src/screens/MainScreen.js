@@ -19,7 +19,6 @@ export class MainScreen extends Component {
     }
 
     load = async () => {
-        console.log("kidwobodpin");
         let news = await this.getNews();
         let data = this.state.data;
         data.title = news.newsLanguages[idLanguage].title;

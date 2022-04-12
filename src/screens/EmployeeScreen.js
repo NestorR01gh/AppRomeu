@@ -16,9 +16,9 @@ export class EmployeeScreen extends Component {
             country: 'Spain',
             office: 'Valencia',
             loginName: 'neroldan',
-            ext: '',
+            ext: '8856',
             phone: '954 672 342',
-            mobileExt: '',
+            mobileExt: '8834',
             mobilePhone: '654 672 342',
             manager: 'Jerónimo Morales',
             department: 'GROUP'
@@ -35,7 +35,7 @@ export class EmployeeScreen extends Component {
                             <Image resizeMode='cover' source={{ uri: this.state.image }} style={styles.image} />
                             <View style={styles.labelsImageView}>
                                 <LabelAndInput editable={false} label="Posición" icon="account-cog" value={this.state.position} />
-                                <LabelAndInput editable={false} label="Compañía" value={this.state.company} />
+                                <LabelAndInput editable={false} label="Compañía" icon="briefcase-variant-outline" value={this.state.company} />
                             </View>
                         </View>
                         <View style={styles.body}>
@@ -43,20 +43,20 @@ export class EmployeeScreen extends Component {
                             <LabelAndInput editable={false} label="Dirección" icon="map-marker" value={this.state.adress} />
                             <LabelAndInput editable={false} label="Mánager" icon="account-tie" value={this.state.manager} />
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput editable={false} label="Oficina" icon="briefcase-variant-outline" value={this.state.office} />
+                                <LabelAndInput editable={false} label="Oficina" icon="office-building-marker" value={this.state.office} />
                                 <LabelAndInput editable={false} label="Nombre inicio sesión" icon="account-lock-open" value={this.state.loginName} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput flex={0.5} editable={false} label="Extensión" value={this.state.ext} />
+                                <LabelAndInput flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.ext} />
                                 <LabelAndInput editable={false} label="Teléfono" icon="phone" value={this.state.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput flex={0.5} editable={false} label="Extensión" value={this.state.mobileExt} />
+                                <LabelAndInput flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.mobileExt} />
                                 <LabelAndInput editable={false} label="Teléfono móvil" icon="cellphone" value={this.state.mobilePhone} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput editable={false} label="País" value={this.state.country} />
-                                <LabelAndInput editable={false} label="Departamento" value={this.state.department} />
+                                <LabelAndInput editable={false} label="País" icon="flag" value={this.state.country} />
+                                <LabelAndInput editable={false} label="Departamento" icon="account-group" value={this.state.department} />
                             </View>
                         </View>
                     </View>

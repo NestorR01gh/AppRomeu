@@ -4,8 +4,6 @@ import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import HtmlText from 'react-native-html-to-text';
-import { Request } from '../utils/Request';
-import { urlApi, idLanguage } from '../utils/Constants';
 
 export class NewsModal extends Component {
     constructor(props) {
