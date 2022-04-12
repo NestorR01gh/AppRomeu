@@ -34,25 +34,25 @@ export class EmployeeScreen extends Component {
                         <View style={styles.viewImageAndLabels}>
                             <Image resizeMode='cover' source={{ uri: this.state.image }} style={styles.image} />
                             <View style={styles.labelsImageView}>
-                                <LabelAndInput editable={false} label="Posición" value={this.state.position} />
+                                <LabelAndInput editable={false} label="Posición" icon="account-cog" value={this.state.position} />
                                 <LabelAndInput editable={false} label="Compañía" value={this.state.company} />
                             </View>
                         </View>
                         <View style={styles.body}>
-                            <LabelAndInput editable={false} label="Correo" value={this.state.mail} />
-                            <LabelAndInput editable={false} label="Dirección" value={this.state.adress} />
-                            <LabelAndInput editable={false} label="Mánager" value={this.state.manager} />
+                            <LabelAndInput editable={false} label="Correo" icon="email" value={this.state.mail} />
+                            <LabelAndInput editable={false} label="Dirección" icon="map-marker" value={this.state.adress} />
+                            <LabelAndInput editable={false} label="Mánager" icon="account-tie" value={this.state.manager} />
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput editable={false} label="Oficina" value={this.state.office} />
-                                <LabelAndInput editable={false} label="Nombre inicio sesión" value={this.state.loginName} />
+                                <LabelAndInput editable={false} label="Oficina" icon="briefcase-variant-outline" value={this.state.office} />
+                                <LabelAndInput editable={false} label="Nombre inicio sesión" icon="account-lock-open" value={this.state.loginName} />
                             </View>
                             <View style={styles.doubleInputView}>
                                 <LabelAndInput flex={0.5} editable={false} label="Extensión" value={this.state.ext} />
-                                <LabelAndInput editable={false} label="Teléfono" value={this.state.phone} />
+                                <LabelAndInput editable={false} label="Teléfono" icon="phone" value={this.state.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
                                 <LabelAndInput flex={0.5} editable={false} label="Extensión" value={this.state.mobileExt} />
-                                <LabelAndInput editable={false} label="Teléfono móvil" value={this.state.mobilePhone} />
+                                <LabelAndInput editable={false} label="Teléfono móvil" icon="cellphone" value={this.state.mobilePhone} />
                             </View>
                             <View style={styles.doubleInputView}>
                                 <LabelAndInput editable={false} label="País" value={this.state.country} />
