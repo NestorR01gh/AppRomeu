@@ -97,7 +97,7 @@ export class NewsSection extends Component {
                     <LoadingModal color={backgroundColor} animating={this.state.loading} />
                     <Text style={styles.title}>NOTICIAS {this.state.search}</Text>
                     <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                    <NewsList setLoading={this.setLoading} list={this.state.newsList} setVisibility={this.props.setVisibility} setModalData={this.props.setModalData} />
+                    <NewsList list={this.state.newsList} setModalData={this.props.setModalData} />
                 </Provider>
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />

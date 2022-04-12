@@ -9,25 +9,7 @@ import { Request } from '../utils/Request';
 export class News extends Component {
 
     handlePress = async () => {
-        this.props.setLoading(true);
-        let news = await this.getNews();
-        let description = news.newsLanguages[idLanguage].description;
-        let creationDate = news.creationDate.split("T")[0];
-        let title = news.newsLanguages[idLanguage].title;
-        let hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
-        let fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
-        let fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
-        this.props.setModalData(title, description, news.imageUrl, creationDate, hasFile, fileUrl, fileExtension);
-        this.props.setLoading(false);
-        this.props.setVisibility(true);
-    }
-
-    getNews = async () => {
-        let requestString = urlApi + `News/${this.props.id}`;
-        let request = new Request(requestString, "GET");
-        request.withAuth();
-        let response = await request.execute();
-        return response.data.data[0];
+        this.props.setModalData(this.props.id);
     }
 
     render() {

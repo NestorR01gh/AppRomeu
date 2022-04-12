@@ -4,6 +4,8 @@ import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import HtmlText from 'react-native-html-to-text';
+import { Request } from '../utils/Request';
+import { urlApi, idLanguage } from '../utils/Constants';
 
 export class NewsModal extends Component {
     constructor(props) {
@@ -14,16 +16,13 @@ export class NewsModal extends Component {
     }
 
     handlePress = () => {
-        if(!this.state.loading){
+        if (!this.state.loading) {
             this.props.setVisibility(false)
         }
     }
 
     handleClipPress() {
-        //Function to check the platform
-        //If iOS the start downloading
-        //If Android then ask for runtime permission
-        if (this.props.hasFile) {
+        if (this.props.data.hasFile) {
             this.setState({ loading: true });
             if (Platform.OS === 'ios') {
                 this.downloadHistory();
@@ -41,12 +40,10 @@ export class NewsModal extends Component {
                             console.log('Storage Permission Granted.');
                             this.downloadHistory();
                         } else {
-                            //If permission denied then show alert 'Storage Permission Not Granted'
                             Alert.alert('storage_permission');
                         }
                     });
                 } catch (err) {
-                    //To handle permission related issue
                     console.log('error', err);
                 }
             }
@@ -65,12 +62,12 @@ export class NewsModal extends Component {
                 useDownloadManager: true,
                 notification: true,
                 path:
-                    dir + '/file_' + Math.floor(date.getTime() + date.getSeconds() / 2) + this.props.fileExtension,
+                    dir + '/file_' + Math.floor(date.getTime() + date.getSeconds() / 2) + this.props.data.fileExtension,
                 description: 'Risk Report Download'
             }
         };
         config(options)
-            .fetch('GET', this.props.fileLink)
+            .fetch('GET', this.props.data.fileUrl)
             .then((res) => {
                 //Showing alert after successful downloading
                 console.log("RUTA " + options.path);
@@ -78,7 +75,7 @@ export class NewsModal extends Component {
                 alert('Se ha descargado correctamente');
             }).catch(function (e) {
                 alert(e);
-        })
+            })
         this.setState({ loading: false });
     }
 
@@ -89,26 +86,26 @@ export class NewsModal extends Component {
                     <View style={styles.modal}>
                         <View style={styles.header}>
                             <View style={styles.titleView}>
-                                <Text style={styles.title}>{this.props.title}</Text>
+                                <Text style={styles.title}>{this.props.data.title}</Text>
                             </View>
                             <View style={styles.closeView}>
                                 <IconButton onPress={() => this.handlePress()} size={35} icon="close-circle" color='white' />
                             </View>
                         </View>
                         <View style={styles.body}>
-                        <ActivityIndicator size={30} style={{ opacity: this.state.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end', flex: 0.5 }} />
+                            <ActivityIndicator size={30} style={{ opacity: this.props.data.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end', flex: 0.5 }} />
                             <View style={styles.bodyHeader}>
                                 <View style={styles.imageView}>
-                                    <Image style={styles.image} source={{ uri: this.props.image }} />
+                                    <Image style={styles.image} source={{ uri: this.props.data.imageUrl }} />
                                 </View>
                                 <View style={styles.publishedClipView}>
-                                    <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
-                                    <Text style={{ fontFamily: fontFamily, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.hasFile ? 0 : -60 }}>Publicado el {this.props.date}</Text>
+                                    <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.data.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
+                                    <Text style={{ fontFamily: fontFamily, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
                                 </View>
                             </View>
                             <View style={styles.descriptionView}>
                                 <ScrollView>
-                                    <HtmlText html={this.props.description} />
+                                    <HtmlText html={this.props.data.description} />
                                 </ScrollView>
                             </View>
                         </View>
