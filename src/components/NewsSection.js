@@ -44,6 +44,7 @@ export class NewsSection extends Component {
 
     setNewsPerPage = async (npp) => {
         await this.setState({ newsPerPage: npp });
+        this.setState({ page: 0 });
         this.getNewsList();
     }
 

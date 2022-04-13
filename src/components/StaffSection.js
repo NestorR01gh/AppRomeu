@@ -30,6 +30,7 @@ export class StaffSection extends Component {
 
     setStaffPerPage = (npp) => {
         this.setState({ staffPerPage: npp });
+        this.setState({ page: 0 });
         this.getStaffList();
     }
 
