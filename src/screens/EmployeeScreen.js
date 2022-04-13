@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
-import { Provider } from 'react-native-paper';
-import { LabelAndInput } from '../components/LabelAndInput';
+import { DisplayDataBox } from '../components/DisplayDataBox';
 import { LoadingModal } from '../components/LoadingModal';
 import { backgroundColor, fontFamily, urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
@@ -45,35 +44,40 @@ export class EmployeeScreen extends Component {
         return (
             <View style={styles.container}>
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
-                <Text style={styles.title}>{this.state.data.userName} - {this.state.data.iusu}</Text>
+                <View style={styles.viewTitle}>
+                    <Text style={styles.title}>{this.state.data.userName}</Text>
+                </View>
                 <ScrollView>
                     <View style={{ flex: 1, padding: 10 }}>
                         <View style={styles.viewImageAndLabels}>
-                            <Image resizeMode='cover' source={require('../assets/images/usr.png')} style={styles.image} />
+                            <View style={{ flex: 1, alignItems: 'center' }}>
+                                <Image resizeMode='cover' source={this.state.data.photo == undefined ? require("../assets/images/usr.png") : { uri: `data:image/png;base64,${this.state.data.photo}` }} style={styles.image} />
+                                <Text style={styles.title}>{this.state.data.iusu}</Text>
+                            </View>
                             <View style={styles.labelsImageView}>
-                                <LabelAndInput editable={false} label="Posición" icon="account-cog" value={this.state.data.title} />
-                                <LabelAndInput editable={false} label="Compañía" icon="briefcase-variant-outline" value={this.state.data.company} />
+                                <DisplayDataBox editable={false} label="Posición" icon="account-cog" value={this.state.data.title} />
+                                <DisplayDataBox editable={false} label="Compañía" icon="briefcase-variant-outline" value={this.state.data.company} />
                             </View>
                         </View>
                         <View style={styles.body}>
-                            <LabelAndInput editable={false} label="Correo" icon="email" value={this.state.data.emailAddress} />
-                            <LabelAndInput editable={false} label="Dirección" icon="map-marker" value={this.state.streetAddress} />
-                            <LabelAndInput editable={false} label="Mánager" icon="account-tie" value={this.state.data.manager} />
+                            <DisplayDataBox editable={false} label="Correo" icon="email" value={this.state.data.emailAddress} />
+                            <DisplayDataBox editable={false} label="Dirección" icon="map-marker" value={this.state.streetAddress} />
+                            <DisplayDataBox editable={false} label="Mánager" icon="account-tie" value={this.state.data.manager} />
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput editable={false} label="Oficina" icon="office-building-marker" value={this.state.data.office} />
-                                <LabelAndInput editable={false} label="Nombre inicio sesión" icon="account-lock-open" value={this.props.route.params.loginName} />
+                                <DisplayDataBox editable={false} label="Oficina" icon="office-building-marker" value={this.state.data.office} />
+                                <DisplayDataBox editable={false} label="Nombre inicio sesión" icon="account-lock-open" value={this.props.route.params.loginName} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.data.extension} />
-                                <LabelAndInput editable={false} label="Teléfono" icon="phone" value={this.state.data.phone} />
+                                <DisplayDataBox flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.data.extension} />
+                                <DisplayDataBox editable={false} label="Teléfono" icon="phone" value={this.state.data.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.data.extensionMobile} />
-                                <LabelAndInput editable={false} label="Teléfono móvil" icon="cellphone" value={this.state.data.mobile} />
+                                <DisplayDataBox flex={0.5} editable={false} icon="numeric" label="Extensión" value={this.state.data.extensionMobile} />
+                                <DisplayDataBox editable={false} label="Teléfono móvil" icon="cellphone" value={this.state.data.mobile} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <LabelAndInput editable={false} label="País" icon="flag" value={this.state.data.country} />
-                                <LabelAndInput editable={false} label="Departamento" icon="account-group" value={this.state.data.department} />
+                                <DisplayDataBox editable={false} label="País" icon="flag" value={this.state.data.country} />
+                                <DisplayDataBox editable={false} label="Departamento" icon="account-group" value={this.state.data.department} />
                             </View>
                         </View>
                     </View>
@@ -91,8 +95,12 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily,
         fontSize: 30,
         color: backgroundColor,
-        alignSelf: 'center',
-        marginTop: 10
+    },
+    viewTitle: {
+        padding: 15,
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: backgroundColor
     },
     viewImageAndLabels: {
         flex: 1,
@@ -103,16 +111,16 @@ const styles = StyleSheet.create({
         flex: 3
     },
     image: {
-        height: 110,
-        width: 110,
+        height: 90,
+        width: 90,
         borderRadius: 150,
-        margin: 20,
         borderWidth: 1,
         borderColor: backgroundColor
     },
     labelsImageView: {
         flex: 2,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 25
     },
     doubleInputView: {
         flex: 1,

@@ -8,7 +8,7 @@ export class StaffChip extends Component {
     render() {
         return (
             <TouchableOpacity onPress={this.props.onPress} style={styles.container}>
-                <Image source={require("../assets/images/usr.png")} style={styles.image} />
+                <Image source={this.props.image == undefined ? require("../assets/images/usr.png") : {uri: `data:image/png;base64,${this.props.image}`}} style={styles.image} />
                 <Text style={styles.text}>{this.props.name}</Text>
             </TouchableOpacity>
         );
