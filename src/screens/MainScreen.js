@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Provider } from 'react-native-paper';
 import { Header } from '../components/Header';
 import { NewsSection } from '../components/NewsSection';
 import { urlApi, idLanguage } from '../utils/Constants';

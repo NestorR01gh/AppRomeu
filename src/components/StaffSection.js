@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Provider, DataTable } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { DataTable } from 'react-native-paper';
 import { StaffFilters } from './StaffFilters';
 import { StaffList } from './StaffList';
 import { backgroundColor, urlApi } from '../utils/Constants';
@@ -49,6 +49,7 @@ export class StaffSection extends Component {
     getStaffList = async () => {
         await this.setState({ loading: true });
         let requestString = urlApi + `IPCalls/GetCallUsersPaged?page=${this.state.page}&pageSize=${this.state.staffPerPage}&orderColumn=userName&ascendingOrder=ASC`;
+        console.log(requestString);
         let request = new Request(requestString, "POST", { "searchtext": `${this.state.search}` });
         request.withAuth();
         let response = await request.execute();
@@ -68,7 +69,7 @@ export class StaffSection extends Component {
                 <StaffFilters handleSearch={this.setSearch} />
                 <StaffList loading={this.state.loading} list={this.state.staffList} navigation={this.props.navigation} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.staffPerPage)} showFastPaginationControls />
                 </View>
             </View>
         );
