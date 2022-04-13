@@ -43,6 +43,7 @@ export class MainScreen extends Component {
 
     setVisibility = (visible) => {
         this.setState({ visible: visible });
+        this.forceUpdate();
     }
 
     setModalData = async (id) => {
@@ -72,7 +73,7 @@ export class MainScreen extends Component {
                 <Provider>
                     <Header image={this.state.profileImage} navigation={this.props.navigation} />
                     <NewsModal visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
-                    <NewsSection setModalData={this.setModalData} setVisibility={this.setVisibility} />
+                    <NewsSection setModalData={this.setModalData} />
                 </Provider>
             </View>
         );

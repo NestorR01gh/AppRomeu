@@ -15,7 +15,7 @@ export class NewsModal extends Component {
 
     handlePress = () => {
         if (!this.state.loading) {
-            this.props.setVisibility(false)
+            this.props.setVisibility(false);
         }
     }
 

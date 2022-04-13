@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Portal, Provider } from 'react-native-paper';
+import { Provider } from 'react-native-paper';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
-import { backgroundColor } from '../utils/Constants';
+import { backgroundColor, fontFamily } from '../utils/Constants';
 import { LoadingModal } from '../components/LoadingModal';
 import { token } from '../utils/Variables';
 
@@ -15,7 +15,8 @@ export class LoginScreen extends Component {
             loading: false,
             showDropDown: false,
             language: "es",
-            languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }]
+            languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }],
+            error: ""
         }
     }
 
@@ -42,9 +43,12 @@ export class LoginScreen extends Component {
         try {
             const result = await authorize(config);
             token.data = result.accessToken;
+            this.setState({ error: "" })
             this.props.navigation.navigate('Main');
             this.setState({ loading: false });
         } catch (error) {
+            this.setState({ error: error.toString() })
+            this.setState({ loading: false });
             console.error(error);
         }
     }
@@ -52,7 +56,7 @@ export class LoginScreen extends Component {
     render() {
         return (
             <Provider>
-                <LoadingModal animating={this.state.loading} color={backgroundColor}/>
+                <LoadingModal animating={this.state.loading} color={backgroundColor} />
                 <View style={styles.container}>
                     <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
                         <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
@@ -62,6 +66,9 @@ export class LoginScreen extends Component {
                     </View>
                     <View style={styles.viewInfo}>
                         <ButtonDescription onPress={() => this.handlePress()} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
+                        <View style={{ alignItems: 'center' }}>
+                            <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fontFamily, fontSize: 20 }}>{this.state.error}</Text>
+                        </View>
                     </View>
                 </View>
             </Provider>
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fafafa'
     },
     viewLogo: {
-        flex: 2,
+        flex: 2.5,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -85,10 +92,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     viewInfo: {
-        flex: 0,
-        flexDirection: 'row',
-        paddingLeft: 100,
-        paddingRight: 100
+        flex: 1,
+        paddingBottom: 30
     },
     listItem: {
         borderRadius: 7

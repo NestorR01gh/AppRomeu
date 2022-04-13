@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
-import { NewsModal } from './NewsModal';
 import { DataTable, Provider } from 'react-native-paper';
 import { fontFamily, backgroundColor, newsList, urlApi, idLanguage } from '../utils/Constants';
 import { Request } from '../utils/Request';
