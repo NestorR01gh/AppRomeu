@@ -12,8 +12,8 @@ export class StaffFilters extends Component {
         }
     }
 
-    clean = () => {
-        this.setState({ search: "" });
+    clean = async () => {
+        await this.setState({ search: "" });
         this.props.handleSearch(this.state.search);
     }
 

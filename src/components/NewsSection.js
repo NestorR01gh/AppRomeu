@@ -90,7 +90,7 @@ export class NewsSection extends Component {
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
                 <Text style={styles.title}>NOTICIAS</Text>
                 <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                <NewsList list={this.state.newsList} setModalData={this.props.setModalData} />
+                <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.props.setModalData} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
@@ -107,10 +107,11 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fontFamily,
-        fontSize: 30,
+        fontSize: 40,
         color: backgroundColor,
         alignSelf: 'center',
-        marginTop: 10
+        padding: 15,
+        fontWeight: 'bold'
     },
     paginationView: {
         borderTopWidth: 1,

@@ -65,7 +65,7 @@ export class StaffSection extends Component {
             <View style={styles.container}>
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
                 <StaffFilters handleSearch={this.setSearch} />
-                <StaffList list={this.state.staffList} navigation={this.props.navigation} />
+                <StaffList loading={this.state.loading} list={this.state.staffList} navigation={this.props.navigation} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>

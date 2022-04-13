@@ -25,9 +25,13 @@ export class MainScreen extends Component {
         data.description = news.newsLanguages[idLanguage].description;
         data.imageUrl = news.imageUrl;
         data.creationDate = news.creationDate.split("T")[0];
-        data.hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
-        data.fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
-        data.fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
+
+        //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
+        //data.hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
+        //data.fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
+        //data.fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
+        
+        data.hasFile = false;
         await this.setState({ data: data });
     }
 

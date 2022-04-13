@@ -7,21 +7,19 @@ export class NewsFilters extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            focused: false,
-            search: ""
+            search: "",
+            expanded: false
         }
-    }
-
-    handleFocus = () => {
-        this.setState({ focused: !this.state.focused });
     }
 
     handleRead = () => {
         this.props.handleRead();
+        this.toggleExpanded();
     }
 
     handleSigned = () => {
         this.props.handleSigned();
+        this.toggleExpanded();
     }
 
     handleChangeText = (text) => {
@@ -30,6 +28,17 @@ export class NewsFilters extends Component {
 
     handleSearch = () => {
         this.props.handleSearch(this.state.search);
+        this.toggleExpanded();
+    }
+
+    clear = async () => {
+        await this.setState({ search: "" });
+        this.props.handleSearch(this.state.search);
+        this.toggleExpanded();
+    }
+
+    toggleExpanded = () => {
+        this.setState({ expanded: !this.state.expanded });
     }
 
     render() {
@@ -37,8 +46,8 @@ export class NewsFilters extends Component {
             <View style={styles.container}>
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
-                        <List.Accordion theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
-                            <TextInput onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} onBlur={() => this.handleFocus()} onFocus={() => this.handleFocus()} left={<TextInput.Icon icon="magnify" color={this.state.focused ? backgroundColor : "grey"} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
+                            <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} right={<TextInput.Icon onPress={this.clear} icon="window-close" color={backgroundColor} size={30} />} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
                             <View style={styles.viewCheckboxes}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
                                     <Text style={styles.label}>No leído: </Text>
