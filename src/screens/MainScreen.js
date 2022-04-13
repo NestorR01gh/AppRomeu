@@ -57,7 +57,7 @@ export class MainScreen extends Component {
         req.withAuth();
         try {
             let res = await req.execute();
-            this.setState({ profileImage: res.data });
+            this.setState({ profileImage: res.data.data });
         } catch (e) {
             this.setState({ profileImage: undefined });
         }
