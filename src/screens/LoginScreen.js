@@ -55,23 +55,21 @@ export class LoginScreen extends Component {
 
     render() {
         return (
-            <Provider>
+            <View style={styles.container}>
                 <LoadingModal animating={this.state.loading} color={backgroundColor} />
-                <View style={styles.container}>
-                    <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
-                        <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
-                    </View>
-                    <View style={styles.viewLogo}>
-                        <Image style={styles.imageLogo} source={require('../assets/logos/login.png')} />
-                    </View>
-                    <View style={styles.viewInfo}>
-                        <ButtonDescription onPress={() => this.handlePress()} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
-                        <View style={{ alignItems: 'center' }}>
-                            <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fontFamily, fontSize: 20 }}>{this.state.error}</Text>
-                        </View>
+                <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
+                    <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
+                </View>
+                <View style={styles.viewLogo}>
+                    <Image style={styles.imageLogo} source={require('../assets/logos/login.png')} />
+                </View>
+                <View style={styles.viewInfo}>
+                    <ButtonDescription onPress={() => this.handlePress()} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
+                    <View style={{ alignItems: 'center' }}>
+                        <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fontFamily, fontSize: 20 }}>{this.state.error}</Text>
                     </View>
                 </View>
-            </Provider>
+            </View>
         );
     }
 }

@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { StaffChip } from './StaffChip';
-import { newsList } from '../utils/Constants';
 
 export class StaffList extends Component {
 
-    getStaff = (onPress) => {
-        return (
-            newsList.map(function (item, index) {
-                return <StaffChip key={index} onPress={() => onPress.navigate("Employee", { employeeId: index + 73453 })} name={"José Ramírez"} image="https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1425034585/content-items/001/228/844/sesion-estudio-barcelona-10-original.jpg?1425034585" />
-            })
-        );
+    getStaff = (onPress, list) => {
+        if (list.length > 0) {
+            return (
+                list.map(function (item, index) {
+                    return <StaffChip key={index} onPress={() => onPress.navigate("Employee", { loginName: item.loginName })} name={item.userName} image={item.photo} />
+                })
+            );
+        } else {
+            return (
+                <View>
+                    <Text>Vacío</Text>
+                </View>
+            );
+        }
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                    {this.getStaff(this.props.navigation)}
+                    {this.getStaff(this.props.navigation, this.props.list)}
                 </ScrollView>
             </View>
         );

@@ -14,6 +14,7 @@ export class StaffFilters extends Component {
 
     clean = () => {
         this.setState({ search: "" });
+        this.props.handleSearch(this.state.search);
     }
 
     setInputValue = (value) => {
@@ -21,14 +22,14 @@ export class StaffFilters extends Component {
     }
 
     handleSearch = () => {
-        this.props.setSearch(this.state.search);
+        this.props.handleSearch(this.state.search);
     }  
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput onSubmitEditing={() => this.handleSearch} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={() => this.setInputValue()} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
+                    <TextInput onSubmitEditing={this.handleSearch} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
                     <TouchableHighlight onPress={() => this.clean()} style={styles.buttonClean}><Text style={styles.buttonLabelClean}>Limpiar</Text></TouchableHighlight>
                 </View>
             </View>

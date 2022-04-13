@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Provider, DataTable } from 'react-native-paper';
 import { StaffFilters } from './StaffFilters';
 import { StaffList } from './StaffList';
-import { backgroundColor } from '../utils/Constants';
+import { backgroundColor, urlApi } from '../utils/Constants';
+import { LoadingModal } from './LoadingModal';
+import { Request } from '../utils/Request';
 
 const staffPerPageList = [5, 10, 15]
 
@@ -14,16 +16,21 @@ export class StaffSection extends Component {
             page: 0,
             staffPerPage: staffPerPageList[0],
             totalCount: 1,
-            search: ""
+            search: "",
+            loading: false,
+            staffList: [],
+            totalCount: 1
         }
     }
 
     setPage = (page) => {
         this.setState({ page: page });
+        this.getStaffList();
     }
 
     setStaffPerPage = (npp) => {
         this.setState({ staffPerPage: npp });
+        this.getStaffList();
     }
 
     getPaginationLabel = () => {
@@ -32,17 +39,33 @@ export class StaffSection extends Component {
         //return `${this.state.page * this.state.staffPerPage + 1}-${Math.min((this.state.page + 1) * this.state.staffPerPage, this.state.totalCount)} of ${totalCount}`
     }
 
-    handleSearch = (search) => {
-        this.setState({ search: search });
+    setSearch = async (search) => {
+        await this.setState({ search: search });
+        await this.setState({ page: 0 });
+        this.getStaffList();
+    }
+
+    getStaffList = async () => {
+        await this.setState({ loading: true });
+        let requestString = urlApi + `IPCalls/GetCallUsersPaged?page=${this.state.page}&pageSize=${this.state.staffPerPage}&orderColumn=userName&ascendingOrder=ASC`;
+        let request = new Request(requestString, "POST", { "searchtext": `${this.state.search}` });
+        request.withAuth();
+        let response = await request.execute();
+        this.setState({ staffList: response.data.data[0].items });
+        this.setState({ totalCount: response.data.data[0].totalCount });
+        await this.setState({ loading: false });
+    }
+
+    componentDidMount() {
+        this.getStaffList();
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Provider>
-                    <StaffFilters handleSearch={this.handleSearch} />
-                    <StaffList navigation={this.props.navigation} />
-                </Provider>
+                <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                <StaffFilters handleSearch={this.setSearch} />
+                <StaffList list={this.state.staffList} navigation={this.props.navigation} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>

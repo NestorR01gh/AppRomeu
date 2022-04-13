@@ -70,11 +70,9 @@ export class MainScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Provider>
-                    <Header image={this.state.profileImage} navigation={this.props.navigation} />
-                    <NewsModal visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
-                    <NewsSection setModalData={this.setModalData} />
-                </Provider>
+                <Header image={this.state.profileImage} navigation={this.props.navigation} />
+                <NewsModal visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
+                <NewsSection setModalData={this.setModalData} />
             </View>
         );
     }

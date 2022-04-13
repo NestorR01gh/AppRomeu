@@ -10,6 +10,7 @@ import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigatio
 import { backgroundColor, fontFamily } from './utils/Constants';
 import { DrawerItem } from './components/DrawerItem';
 import { LogBox, Text } from 'react-native';
+import { Portal, Provider } from 'react-native-paper';
 
 
 const Stack = createNativeStackNavigator();
@@ -49,13 +50,17 @@ class App extends Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={this.login} />
-          <Stack.Screen name="Main" component={this.main} />
-          <Stack.Screen name="Employee" component={EmployeeScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider>
+        <Portal>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Login" component={this.login} />
+              <Stack.Screen name="Main" component={this.main} />
+              <Stack.Screen name="Employee" component={EmployeeScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Portal>
+      </Provider>
     );
   }
 }

@@ -26,16 +26,14 @@ export class StaffScreen extends Component {
     }
 
     componentDidMount() {
-        this.getPhoto();
+        //this.getPhoto();
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Provider>
-                    <Header image={this.state.profileImage} navigation={this.props.navigation} />
-                    <StaffSection navigation={this.props.navigation} />
-                </Provider>
+                <Header image={this.state.profileImage} navigation={this.props.navigation} />
+                <StaffSection navigation={this.props.navigation} />
             </View>
         );
     }

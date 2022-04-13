@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable, Provider } from 'react-native-paper';
-import { fontFamily, backgroundColor, newsList, urlApi, idLanguage } from '../utils/Constants';
+import { fontFamily, backgroundColor, urlApi, idLanguage } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { LoadingModal } from './LoadingModal';
 
@@ -20,14 +20,9 @@ export class NewsSection extends Component {
             search: "",
             totalCount: 1,
             data: undefined,
-            newsList: newsList,
-            updated: false,
+            newsList: [],
             loading: false
         }
-    }
-
-    setLoading = (loading) => {
-        this.setState({ loading: loading });
     }
 
     setRead = async () => {
@@ -59,10 +54,10 @@ export class NewsSection extends Component {
     }
 
     getPaginationLabel = () => {
-        //return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
+        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
 
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
-        return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
+        //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
 
     getNewsList = async () => {
@@ -92,12 +87,10 @@ export class NewsSection extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Provider>
-                    <LoadingModal color={backgroundColor} animating={this.state.loading} />
-                    <Text style={styles.title}>NOTICIAS {this.state.search}</Text>
-                    <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                    <NewsList list={this.state.newsList} setModalData={this.props.setModalData} />
-                </Provider>
+                <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                <Text style={styles.title}>NOTICIAS</Text>
+                <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
+                <NewsList list={this.state.newsList} setModalData={this.props.setModalData} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>

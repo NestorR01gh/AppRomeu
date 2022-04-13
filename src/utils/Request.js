@@ -2,10 +2,11 @@ import { token } from "./Variables";
 import axios from "axios";
 
 export class Request {
-    constructor(url, method) {
+    constructor(url, method, params) {
         this.url = url;
         this.method = method;
         this.headers = undefined;
+        this.params = params;
     }
 
     withAuth() {
@@ -14,6 +15,6 @@ export class Request {
     }
 
     execute = async () => {
-        return await axios.request({url: this.url,method: this.method, headers: this.headers }).then((response)=>{return response});
+        return await axios.request({ url: this.url, method: this.method, headers: this.headers, data: this.params }).then((response) => { return response });
     }
 }
