@@ -96,7 +96,7 @@ export class NewsSection extends Component {
         //data.hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
         //data.fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
         //data.fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
-        
+
         data.hasFile = false;
         await this.setState({ data: data });
     }
@@ -116,8 +116,10 @@ export class NewsSection extends Component {
     }
 
     setModalData = async (id) => {
+        this.setState({ loading: true });
         await this.setState({ id: id });
         await this.load();
+        this.setState({ loading: false  });
         this.setState({ visible: true });
     }
 
@@ -132,7 +134,7 @@ export class NewsSection extends Component {
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
                 <Text style={styles.title}>NOTICIAS</Text>
                 <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.props.setModalData} />
+                <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
