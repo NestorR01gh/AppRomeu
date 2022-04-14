@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
-import { DataTable, Provider } from 'react-native-paper';
+import { DataTable } from 'react-native-paper';
 import { fontFamily, backgroundColor, urlApi, idLanguage } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { LoadingModal } from './LoadingModal';
+import { NewsModal } from './NewsModal';
 
 const newsPerPageList = [5, 10, 15]
 
@@ -19,9 +20,11 @@ export class NewsSection extends Component {
             signed: false,
             search: "",
             totalCount: 1,
-            data: undefined,
             newsList: [],
-            loading: false
+            loading: false,
+            visible: false,
+            id: 0,
+            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "" }
         }
     }
 
@@ -81,6 +84,43 @@ export class NewsSection extends Component {
         await this.setState({ loading: false });
     }
 
+    load = async () => {
+        let news = await this.getNews();
+        let data = this.state.data;
+        data.title = news.newsLanguages[idLanguage].title;
+        data.description = news.newsLanguages[idLanguage].description;
+        data.imageUrl = news.imageUrl;
+        data.creationDate = news.creationDate.split("T")[0];
+
+        //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
+        //data.hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
+        //data.fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
+        //data.fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
+        
+        data.hasFile = false;
+        await this.setState({ data: data });
+    }
+
+    getNews = async () => {
+        if (this.state.id != 0) {
+            let requestString = urlApi + `News/${this.state.id}`;
+            let request = new Request(requestString, "GET");
+            request.withAuth();
+            let response = await request.execute();
+            return response.data.data[0];
+        }
+    }
+
+    setVisibility = (visible) => {
+        this.setState({ visible: visible });
+    }
+
+    setModalData = async (id) => {
+        await this.setState({ id: id });
+        await this.load();
+        this.setState({ visible: true });
+    }
+
     componentDidMount() {
         this.getNewsList();
     }
@@ -88,6 +128,7 @@ export class NewsSection extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
                 <Text style={styles.title}>NOTICIAS</Text>
                 <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
