@@ -69,7 +69,6 @@ export class NewsModal extends Component {
             .fetch('GET', this.props.data.fileUrl)
             .then((res) => {
                 //Showing alert after successful downloading
-                console.log("RUTA " + options.path);
                 console.log('res -> ', JSON.stringify(res));
                 alert('Se ha descargado correctamente');
             }).catch(function (e) {

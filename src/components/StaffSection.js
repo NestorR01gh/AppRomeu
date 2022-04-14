@@ -49,7 +49,6 @@ export class StaffSection extends Component {
     getStaffList = async () => {
         await this.setState({ loading: true });
         let requestString = urlApi + `IPCalls/GetCallUsersPaged?page=${this.state.page}&pageSize=${this.state.staffPerPage}&orderColumn=userName&ascendingOrder=ASC`;
-        console.log(requestString);
         let request = new Request(requestString, "POST", { "searchtext": `${this.state.search}` });
         request.withAuth();
         let response = await request.execute();
