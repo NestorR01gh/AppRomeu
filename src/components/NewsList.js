@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
-import { News } from './News';
+import News from './News';
 import { NoResultsFound } from './NoResultsFound';
 
 export class NewsList extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { NewsFilters } from './NewsFilters';
+import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
 import { fontFamily, backgroundColor, urlApi } from '../utils/Constants';

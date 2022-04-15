@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { StyleSheet, View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
 
-export class News extends Component {
+class News extends Component {
 
     handlePress = async () => {
         this.props.setModalData(this.props.id);
     }
 
     render() {
+        const { t } = this.props;
         return (
             <TouchableOpacity onPress={() => this.handlePress()}>
                 <View style={styles.container}>
@@ -33,7 +35,7 @@ export class News extends Component {
                         </View>
                         <View style={styles.businessView}>
                             <View style={{ opacity: this.props.read ? 1 : 0, backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, borderTopRightRadius: 10 }}>
-                                <Text style={styles.ImageBackgroundText}>Leído</Text>
+                                <Text style={styles.ImageBackgroundText}>{t("news.read")}</Text>
                             </View>
                             <Image style={styles.imageBusiness} source={this.props.logo} />
                         </View>
@@ -117,3 +119,5 @@ const styles = StyleSheet.create({
         borderRadius: 30,
     }
 });
+
+export default withTranslation("global")(News)

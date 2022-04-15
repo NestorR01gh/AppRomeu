@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Checkbox, IconButton, List, TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
-export class NewsFilters extends Component {
+class NewsFilters extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,24 +44,25 @@ export class NewsFilters extends Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
-                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title="Filtros" left={props => <IconButton {...props} icon="filter" size={30} />}>
-                            <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder='Buscar' underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon="filter" size={30} />}>
+                            <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
                             <View style={styles.viewCheckboxes}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={styles.label}>No leído: </Text>
+                                    <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
                                     <Checkbox color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
                                 </View>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={styles.label}>No firmado: </Text>
+                                    <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
                                     <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
                                 </View>
                             </View>
                             <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
-                                <Text style={styles.buttonLabelClean}>Limpiar</Text>
+                                <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
                             </TouchableOpacity>
                         </List.Accordion>
                     </List.Section>
@@ -122,3 +124,5 @@ const styles = StyleSheet.create({
         color: backgroundColor
     }
 });
+
+export default withTranslation("global")(NewsFilters)
