@@ -129,7 +129,7 @@ export class NewsSection extends Component {
         this.setState({ loading: false  });
         this.setState({ visible: true });
     }
-
+    
     componentDidMount() {
         this.getNewsList();
     }
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
         fontSize: 40,
         color: backgroundColor,
         alignSelf: 'center',
-        padding: 15,
+        padding: 10,
         fontWeight: 'bold'
     },
     paginationView: {

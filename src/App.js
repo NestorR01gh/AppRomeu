@@ -20,7 +20,6 @@ LogBox.ignoreAllLogs();
 
 class App extends Component {
 
-
   login = ({ navigation }) => {
     return <LoginScreen navigation={navigation} />;
   }
@@ -39,7 +38,7 @@ class App extends Component {
     );
   }
 
-  main = ({ navigation }) => {
+  main = () => {
     return (
       <Drawer.Navigator useLegacyImplementation={true} drawerContent={this.customDrawerContent} screenOptions={{ headerShown: false }}>
         <Drawer.Screen name="MainDrawer" component={this.mainScreen} />
