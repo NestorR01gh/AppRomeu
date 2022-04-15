@@ -1,0 +1,11 @@
+{
+    "loginScreen": {
+        "description": "Inicio de sesión para empleados de Grupo Romeu",
+        "buttonLabel": "Entrar"
+    },
+    "drawer": {
+        "title": "MENÚ",
+        "item1": "Principal",
+        "item2": "Personal"
+    }
+}

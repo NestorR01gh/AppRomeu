@@ -1,0 +1,11 @@
+{
+    "loginScreen": {
+        "description": "Sign in GRUPO ROMEU employees",
+        "buttonLabel": "Login"
+    },
+    "drawer": {
+        "title": "MENU",
+        "item1": "Main",
+        "item2": "Staff"
+    }
+}

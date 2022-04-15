@@ -3,10 +3,11 @@ import { StyleSheet, View, Text } from 'react-native';
 import { NewsFilters } from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
-import { fontFamily, backgroundColor, urlApi, idLanguage } from '../utils/Constants';
+import { fontFamily, backgroundColor, urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { LoadingModal } from './LoadingModal';
 import { NewsModal } from './NewsModal';
+import { lang } from '../utils/Variables';
 
 const newsPerPageList = [5, 10, 15]
 
@@ -73,7 +74,7 @@ export class NewsSection extends Component {
 
     getNewsList = async () => {
         await this.setState({ loading: true });
-        let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
+        let requestString = urlApi + `News/Paged?idLanguage=${lang.id}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
         if (this.state.search != "") {
             requestString += `&search=${this.state.search}`
         }
@@ -94,15 +95,15 @@ export class NewsSection extends Component {
     load = async () => {
         let news = await this.getNews();    
         let data = this.state.data;
-        data.title = news.newsLanguages[idLanguage].title;
-        data.description = news.newsLanguages[idLanguage].description;
+        data.title = news.newsLanguages[lang.id].title;
+        data.description = news.newsLanguages[lang.id].description;
         data.imageUrl = news.imageUrl;
         data.creationDate = news.creationDate.split("T")[0];
 
         //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
-        //data.hasFile = news.newsLanguages[idLanguage].attachmentUrl == null ? false : true;
-        //data.fileUrl = news.newsLanguages[idLanguage].attachmentUrl;
-        //data.fileExtension = news.newsLanguages[idLanguage].attachmentExtension;
+        //data.hasFile = news.newsLanguages[lang.id].attachmentUrl == null ? false : true;
+        //data.fileUrl = news.newsLanguages[lang.id].attachmentUrl;
+        //data.fileExtension = news.newsLanguages[lang.id].attachmentExtension;
 
         data.hasFile = false;
         await this.setState({ data: data });

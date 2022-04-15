@@ -1,0 +1,11 @@
+{
+    "loginScreen": {
+        "description": "Connexion pour les employés du Grupo Romeu",
+        "buttonLabel": "Connexion"
+    },
+    "drawer": {
+        "title": "MENU",
+        "item1": "Majeur",
+        "item2": "Personnel"
+    }
+}

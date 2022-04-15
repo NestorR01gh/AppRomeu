@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { backgroundColor, fontFamily, idLanguage } from '../utils/Constants';
-import { urlApi } from '../utils/Constants';
-import { Request } from '../utils/Request';
+import { backgroundColor, fontFamily } from '../utils/Constants';
 
 
 export class News extends Component {

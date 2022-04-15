@@ -5,25 +5,44 @@ import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import { LoadingModal } from '../components/LoadingModal';
-import { token } from '../utils/Variables';
+import { lang, token } from '../utils/Variables';
 import { config } from '../utils/Constants';
+import { withTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
-export class LoginScreen extends Component {
+class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: false,
             showDropDown: false,
-            language: "es",
-            languages: [{ label: "ES", value: "es" }, { label: "EN", value: "en" }, { label: "FR", value: "fr" }, { label: "PT", value: "pt" }],
+            language: 0,
+            languages: [{ label: "ES", value: 0 }, { label: "EN", value: 1 }, { label: "FR", value: 2 }, { label: "PT", value: 3 }],
             error: ""
         }
     }
 
-    setLanguage = (callback) => {
-        this.setState(state => ({
+    setLanguage = async (callback) => {
+        await this.setState(state => ({
             language: callback(state.value)
         }));
+        let lang;
+        switch (this.state.language) {
+            case 0:
+                lang = "es"
+                break;
+            case 1:
+                lang = "en"
+                break;
+            case 2:
+                lang = "fr"
+                break;
+            case 3:
+                lang = "pt"
+                break;
+        }
+        i18next.changeLanguage(lang);
+        lang.id = this.state.language;
     }
 
     setDropDownState = (state) => {
@@ -47,6 +66,7 @@ export class LoginScreen extends Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <View style={styles.container}>
                 <LoadingModal animating={this.state.loading} color={backgroundColor} />
@@ -54,10 +74,10 @@ export class LoginScreen extends Component {
                     <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
                 </View>
                 <View style={styles.viewLogo}>
-                    <Image style={styles.imageLogo} source={require('../assets/logos/login.png')} />
+                    <Image style={styles.imageLogo} source={require('../assets/images/login.png')} />
                 </View>
                 <View style={styles.viewInfo}>
-                    <ButtonDescription onPress={() => this.handlePress()} Description="Sign in GRUPO ROMEU employees" ButtonText="Login" />
+                    <ButtonDescription onPress={() => this.handlePress()} Description={t("loginScreen.description")} ButtonText={t("loginScreen.buttonLabel")} />
                     <View style={{ alignItems: 'center' }}>
                         <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fontFamily, fontSize: 20 }}>{this.state.error}</Text>
                     </View>
@@ -90,3 +110,5 @@ const styles = StyleSheet.create({
         borderRadius: 7
     }
 });
+
+export default withTranslation("global")(LoginScreen);
