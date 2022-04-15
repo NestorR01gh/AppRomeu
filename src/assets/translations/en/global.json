@@ -8,17 +8,20 @@
         "item1": "Main",
         "item2": "Staff"
     },
-    "mainScreen":{
+    "mainScreen": {
         "title": "NEWS",
         "filters": {
             "title": "Filters",
-            "placeholder": "Seacrh",
+            "placeholder": "Search",
             "notRead": "Not read",
             "notSigned": "Not signed",
             "buttonLabel": "Clean"
         }
     },
-    "news":{
+    "news": {
         "read": "Read"
+    },
+    "header": {
+        "logOut": "Log out"
     }
 }

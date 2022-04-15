@@ -20,5 +20,8 @@
     },
     "news":{
         "read": "Lido"
+    },
+    "header": {
+        "logOut": "Sair"
     }
 }

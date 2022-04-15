@@ -20,5 +20,8 @@
     },
     "news":{
         "read": "Lis"
+    },
+    "header": {
+        "logOut": "Sortir"
     }
 }

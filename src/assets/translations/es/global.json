@@ -20,5 +20,8 @@
     },
     "news":{
         "read": "Leído"
+    },
+    "header": {
+        "logOut": "Salir"
     }
 }
