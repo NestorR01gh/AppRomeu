@@ -7,7 +7,7 @@ import { backgroundColor, urlApi } from '../utils/Constants';
 import { LoadingModal } from './LoadingModal';
 import { Request } from '../utils/Request';
 
-const staffPerPageList = [5, 10, 15]
+const staffPerPageList = [10, 15, 20]
 
 export class StaffSection extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export class StaffSection extends Component {
             totalCount: 1
         }
     }
-
+    
     setPage = (page) => {
         this.setState({ page: page });
         this.getStaffList();

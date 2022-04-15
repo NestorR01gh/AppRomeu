@@ -23,7 +23,7 @@ export class StaffFilters extends Component {
 
     handleSearch = () => {
         this.props.handleSearch(this.state.search);
-    }  
+    }
 
     render() {
         return (
@@ -40,7 +40,9 @@ export class StaffFilters extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 0.7,
-        padding: 7
+        padding: 7,
+        borderBottomWidth: 2,
+        borderBottomColor: backgroundColor
     },
     filterLine: {
         flex: 1,

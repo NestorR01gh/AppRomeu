@@ -21,7 +21,7 @@ export class StaffList extends Component {
 
     render() {
         return (
-            <View style={{ flex: 4 }}>
+            <View style={{ flex: 5 }}>
                 <ScrollView>
                     {this.getStaff(this.props.navigation, this.props.list)}
                 </ScrollView>

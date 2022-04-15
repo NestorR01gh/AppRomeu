@@ -8,11 +8,26 @@ export class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            profileImage: undefined,
             focused: false,
             visible: false
         }
     }
 
+    getPhoto = async () => {
+        let req = new Request(urlApi + "User/GetUserPhoto", "POST");
+        req.withAuth();
+        try {
+            let res = await req.execute();
+            this.setState({ profileImage: res.data.data[0] });
+        } catch (e) {
+            this.setState({ profileImage: undefined });
+        }
+    }
+
+    componentDidMount() {
+        this.getPhoto();
+    }
     handlePress = () => {
         this.setState({ visible: !this.state.visible });
     }
@@ -29,7 +44,7 @@ export class Header extends Component {
         return (
             <View style={styles.container}>
                 <IconButton onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())} color="white" size={50} icon="menu" />
-                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: this.props.image } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
+                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title="Salir" onPress={() => this.handleExit()} />
                 </Menu>
             </View>
