@@ -64,6 +64,13 @@ export class NewsSection extends Component {
         //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
 
+    clear = async () => {
+        await this.setState({ search: "" });
+        await this.setState({ read: false });
+        await this.setState({ signed: false });
+        this.getNewsList();
+    }
+
     getNewsList = async () => {
         await this.setState({ loading: true });
         let requestString = urlApi + `News/Paged?idLanguage=${idLanguage}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
@@ -85,7 +92,7 @@ export class NewsSection extends Component {
     }
 
     load = async () => {
-        let news = await this.getNews();
+        let news = await this.getNews();    
         let data = this.state.data;
         data.title = news.newsLanguages[idLanguage].title;
         data.description = news.newsLanguages[idLanguage].description;
@@ -133,7 +140,7 @@ export class NewsSection extends Component {
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
                 <Text style={styles.title}>NOTICIAS</Text>
-                <NewsFilters handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
+                <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />

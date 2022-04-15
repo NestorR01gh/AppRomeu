@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { backgroundColor, fontFamily } from '../utils/Constants';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
 
@@ -28,7 +28,8 @@ export class Header extends Component {
     componentDidMount() {
         this.getPhoto();
     }
-    handlePress = () => {
+
+    handleAvatarPress = () => {
         this.setState({ visible: !this.state.visible });
     }
 
@@ -40,11 +41,16 @@ export class Header extends Component {
         this.props.navigation.navigate("Login")
     }
 
+    handleMenuPress = () => {
+        this.props.navigation.dispatch(DrawerActions.openDrawer())
+        Keyboard.dismiss();
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <IconButton onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())} color="white" size={50} icon="menu" />
-                <Menu onDismiss={() => this.handlePress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handlePress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
+                <IconButton onPress={() =>this.handleMenuPress()} color="white" size={50} icon="menu" />
+                <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title="Salir" onPress={() => this.handleExit()} />
                 </Menu>
             </View>
@@ -54,7 +60,7 @@ export class Header extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1.2,
         flexDirection: 'row',
         backgroundColor: backgroundColor,
         alignItems: 'center',

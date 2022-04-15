@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { StyleSheet, View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
@@ -12,7 +12,7 @@ export class StaffFilters extends Component {
         }
     }
 
-    clean = async () => {
+    clear = async () => {
         await this.setState({ search: "" });
         this.props.handleSearch(this.state.search);
     }
@@ -30,7 +30,9 @@ export class StaffFilters extends Component {
             <View style={styles.container}>
                 <View style={styles.filterLine}>
                     <TextInput onSubmitEditing={this.handleSearch} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
-                    <TouchableHighlight onPress={() => this.clean()} style={styles.buttonClean}><Text style={styles.buttonLabelClean}>Limpiar</Text></TouchableHighlight>
+                    <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
+                        <Text style={styles.buttonLabelClean}>Limpiar</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
