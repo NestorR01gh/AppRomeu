@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { StyleSheet, View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 
-export class StaffFilters extends Component {
+class StaffFilters extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,12 +27,13 @@ export class StaffFilters extends Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput onSubmitEditing={this.handleSearch} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder='Nombre' underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
+                    <TextInput onSubmitEditing={()=>this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
                     <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
-                        <Text style={styles.buttonLabelClean}>Limpiar</Text>
+                        <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -79,3 +81,5 @@ const styles = StyleSheet.create({
         color: backgroundColor
     }
 });
+
+export default withTranslation("global")(StaffFilters)

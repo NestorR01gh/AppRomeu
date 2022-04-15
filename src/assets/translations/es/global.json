@@ -23,5 +23,8 @@
     },
     "header": {
         "logOut": "Salir"
+    },
+    "staffScreen":{
+        "placeholder": "Nombre/Usuario"
     }
 }

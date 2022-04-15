@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
-import { StaffFilters } from './StaffFilters';
+import StaffFilters from './StaffFilters';
 import { StaffList } from './StaffList';
 import { backgroundColor, urlApi } from '../utils/Constants';
 import { LoadingModal } from './LoadingModal';
