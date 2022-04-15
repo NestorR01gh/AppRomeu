@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Header } from '../components/Header';
+import Header from '../components/Header';
 import { StaffSection } from '../components/StaffSection';
 
 export class StaffScreen extends Component {
