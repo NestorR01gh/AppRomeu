@@ -26,22 +26,22 @@ class LoginScreen extends Component {
         await this.setState(state => ({
             language: callback(state.value)
         }));
-        let lang;
+        let language;
         switch (this.state.language) {
             case 0:
-                lang = "es"
+                language = "es"
                 break;
             case 1:
-                lang = "en"
+                language = "en"
                 break;
             case 2:
-                lang = "fr"
+                language = "fr"
                 break;
             case 3:
-                lang = "pt"
+                language = "pt"
                 break;
         }
-        i18next.changeLanguage(lang);
+        i18next.changeLanguage(language);
         lang.id = this.state.language;
     }
 

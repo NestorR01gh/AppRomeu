@@ -7,5 +7,18 @@
         "title": "MENU",
         "item1": "Main",
         "item2": "Staff"
+    },
+    "mainScreen":{
+        "title": "NEWS",
+        "filters": {
+            "title": "Filters",
+            "placeholder": "Seacrh",
+            "notRead": "Not read",
+            "notSigned": "Not signed",
+            "buttonLabel": "Clean"
+        }
+    },
+    "news":{
+        "read": "Read"
     }
 }

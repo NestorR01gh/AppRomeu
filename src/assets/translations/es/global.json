@@ -7,5 +7,18 @@
         "title": "MENÚ",
         "item1": "Principal",
         "item2": "Personal"
+    },
+    "mainScreen":{
+        "title": "NOTICIAS",
+        "filters": {
+            "title": "Filtros",
+            "placeholder": "Buscar",
+            "notRead": "Not leído",
+            "notSigned": "No firmado",
+            "buttonLabel": "Limpiar"
+        }
+    },
+    "news":{
+        "read": "Leído"
     }
 }

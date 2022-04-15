@@ -8,10 +8,11 @@ import { Request } from '../utils/Request';
 import { LoadingModal } from './LoadingModal';
 import { NewsModal } from './NewsModal';
 import { lang } from '../utils/Variables';
+import { withTranslation } from 'react-i18next';
 
 const newsPerPageList = [5, 10, 15]
 
-export class NewsSection extends Component {
+class NewsSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -136,11 +137,12 @@ export class NewsSection extends Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <View style={styles.container}>
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
-                <Text style={styles.title}>NOTICIAS</Text>
+                <Text style={styles.title}>{t("mainScreen.title")}</Text>
                 <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
@@ -170,3 +172,5 @@ const styles = StyleSheet.create({
         borderTopColor: backgroundColor
     }
 });
+
+export default withTranslation("global")(NewsSection);
