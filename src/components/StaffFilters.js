@@ -31,7 +31,7 @@ class StaffFilters extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput onSubmitEditing={()=>this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
+                    <TextInput onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
                     <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
                         <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
                     </TouchableOpacity>

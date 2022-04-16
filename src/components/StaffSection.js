@@ -22,7 +22,7 @@ export class StaffSection extends Component {
             totalCount: 1
         }
     }
-    
+
     setPage = (page) => {
         this.setState({ page: page });
         this.getStaffList();

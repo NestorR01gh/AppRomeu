@@ -38,7 +38,6 @@ class EmployeeScreen extends Component {
     }
 
     componentDidMount() {
-
         this.load();
     }
 

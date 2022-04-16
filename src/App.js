@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import LoginScreen from './screens/LoginScreen';
 import { StaffScreen } from './screens/StaffScreen';
 import { MainScreen } from './screens/MainScreen';
-import  EmployeeScreen  from './screens/EmployeeScreen';
+import EmployeeScreen from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
