@@ -24,17 +24,17 @@ class EmployeeScreen extends Component {
         let response = await request.execute();
         let item = response.data.data[0].items[0];
         this.setState({ data: item });
-        await this.setStreetAdress();
+        await this.setStreetAddress();
         this.setState({ loading: false });
     }
 
-    setStreetAdress = async () => {
+    setStreetAddress = async () => {
         let requestString = urlApi + `IPCalls/GetAdvancedCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
         let request = new Request(requestString, "POST", { "nameUser": `${this.props.route.params.loginName}` });
         request.withAuth();
         let response = await request.execute();
-        let streetAdress = response.data.data[0].items[0].streetAddress;
-        this.setState({ streetAddress: streetAdress });
+        let streetAddress = response.data.data[0].items[0].streetAddress;
+        this.setState({ streetAddress: streetAddress });
     }
 
     componentDidMount() {
@@ -64,7 +64,7 @@ class EmployeeScreen extends Component {
                         </View>
                         <View style={styles.body}>
                             <DisplayDataBox label={t("employeeScreen.mail")} icon="email" value={this.state.data.emailAddress} />
-                            <DisplayDataBox label={t("employeeScreen.adress")} icon="map-marker" value={this.state.streetAddress} />
+                            <DisplayDataBox label={t("employeeScreen.address")} icon="map-marker" value={this.state.streetAddress} />
                             <DisplayDataBox label={t("employeeScreen.manager")} icon="account-tie" value={this.state.data.manager} />
                             <View style={styles.doubleInputView}>
                                 <DisplayDataBox label={t("employeeScreen.office")} icon="office-building-marker" value={this.state.data.office} />

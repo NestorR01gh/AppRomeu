@@ -28,16 +28,16 @@
         "placeholder": "Nome/Usuário"
     },
     "employeeScreen":{
-        "position": "Posición",
-        "company": "Compañía",
-        "mail": "Correo",
-        "adress": "Dirección",
-        "manager": "Mánager",
-        "office": "Oficina",
-        "loginName": "Nombre inicio sesión",
-        "extension": "Extensión",
-        "phone": "Teléfono",
-        "mobilePhone": "Teléfono móvil",
+        "position": "Posiçao",
+        "company": "Companhia",
+        "mail": "Email",
+        "address": "Morada",
+        "manager": "Gerente",
+        "office": "Escritório",
+        "loginName": "Nome de acesso",
+        "extension": "Extençao",
+        "phone": "Telefone",
+        "mobilePhone": "Telemóvel",
         "country": "País",
         "department": "Departamento"
     }

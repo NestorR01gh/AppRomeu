@@ -28,17 +28,17 @@
         "placeholder": "Nom/Utilisateur"
     },
     "employeeScreen":{
-        "position": "Posición",
-        "company": "Compañía",
-        "mail": "Correo",
-        "adress": "Dirección",
-        "manager": "Mánager",
-        "office": "Oficina",
-        "loginName": "Nombre inicio sesión",
-        "extension": "Extensión",
-        "phone": "Teléfono",
-        "mobilePhone": "Teléfono móvil",
-        "country": "País",
-        "department": "Departamento"
+        "position": "Position",
+        "company": "Compagnie",
+        "mail": "Courriel",
+        "address": "Adresse",
+        "manager": "Manager",
+        "office": "Agence",
+        "loginName": "Identifiant",
+        "extension": "Extension",
+        "phone": "Téléphoner",
+        "mobilePhone": "Téléphone portable",
+        "country": "Pays",
+        "department": "Département"
     }
 }
