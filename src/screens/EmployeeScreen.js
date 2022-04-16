@@ -38,12 +38,12 @@ class EmployeeScreen extends Component {
     }
 
     componentDidMount() {
-        
+
         this.load();
     }
 
     render() {
-        const {t} = this.props;
+        const { t } = this.props;
         return (
             <View style={styles.container}>
                 <LoadingModal color={backgroundColor} animating={this.state.loading} />
@@ -58,29 +58,29 @@ class EmployeeScreen extends Component {
                                 <Text style={styles.title}>{this.state.data.iusu}</Text>
                             </View>
                             <View style={styles.labelsImageView}>
-                                <DisplayDataBox editable={false} label={t("employeeScreen.position")} icon="account-cog" value={this.state.data.title} />
-                                <DisplayDataBox editable={false} label={t("employeeScreen.company")} icon="briefcase-variant-outline" value={this.state.data.company} />
+                                <DisplayDataBox label={t("employeeScreen.position")} icon="account-cog" value={this.state.data.title} />
+                                <DisplayDataBox label={t("employeeScreen.company")} icon="briefcase-variant-outline" value={this.state.data.company} />
                             </View>
                         </View>
                         <View style={styles.body}>
-                            <DisplayDataBox editable={false} label={t("employeeScreen.mail")} icon="email" value={this.state.data.emailAddress} />
-                            <DisplayDataBox editable={false} label={t("employeeScreen.adress")} icon="map-marker" value={this.state.streetAddress} />
-                            <DisplayDataBox editable={false} label={t("employeeScreen.manager")} icon="account-tie" value={this.state.data.manager} />
+                            <DisplayDataBox label={t("employeeScreen.mail")} icon="email" value={this.state.data.emailAddress} />
+                            <DisplayDataBox label={t("employeeScreen.adress")} icon="map-marker" value={this.state.streetAddress} />
+                            <DisplayDataBox label={t("employeeScreen.manager")} icon="account-tie" value={this.state.data.manager} />
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox editable={false} label={t("employeeScreen.office")} icon="office-building-marker" value={this.state.data.office} />
-                                <DisplayDataBox editable={false} label={t("employeeScreen.loginName")} icon="account-lock-open" value={this.props.route.params.loginName} />
+                                <DisplayDataBox label={t("employeeScreen.office")} icon="office-building-marker" value={this.state.data.office} />
+                                <DisplayDataBox label={t("employeeScreen.loginName")} icon="account-lock-open" value={this.props.route.params.loginName} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox flex={0.5} editable={false} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extension} />
-                                <DisplayDataBox editable={false} label={t("employeeScreen.phone")} icon="phone" value={this.state.data.phone} />
+                                <DisplayDataBox flex={0.5} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extension} />
+                                <DisplayDataBox label={t("employeeScreen.phone")} icon="phone" value={this.state.data.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox flex={0.5} editable={false} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extensionMobile} />
-                                <DisplayDataBox editable={false} label={t("employeeScreen.mobilePhone")} icon="cellphone" value={this.state.data.mobile} />
+                                <DisplayDataBox flex={0.5} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extensionMobile} />
+                                <DisplayDataBox label={t("employeeScreen.mobilePhone")} icon="cellphone" value={this.state.data.mobile} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox editable={false} label={t("employeeScreen.country")} icon="flag" value={this.state.data.country} />
-                                <DisplayDataBox editable={false} label={t("employeeScreen.department")} icon="account-group" value={this.state.data.department} />
+                                <DisplayDataBox label={t("employeeScreen.country")} icon="flag" value={this.state.data.country} />
+                                <DisplayDataBox label={t("employeeScreen.department")} icon="account-group" value={this.state.data.department} />
                             </View>
                         </View>
                     </View>
