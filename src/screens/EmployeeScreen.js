@@ -38,6 +38,7 @@ class EmployeeScreen extends Component {
     }
 
     componentDidMount() {
+        
         this.load();
     }
 
@@ -71,7 +72,7 @@ class EmployeeScreen extends Component {
                             </View>
                             <View style={styles.doubleInputView}>
                                 <DisplayDataBox flex={0.5} editable={false} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extension} />
-                                <DisplayDataBox editable={false} label="Teléfono" icon={t("employeeScreen.phone")} value={this.state.data.phone} />
+                                <DisplayDataBox editable={false} label={t("employeeScreen.phone")} icon="phone" value={this.state.data.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
                                 <DisplayDataBox flex={0.5} editable={false} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extensionMobile} />
