@@ -6,10 +6,8 @@ import { MainScreen } from './screens/MainScreen';
 import EmployeeScreen from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
-import { backgroundColor, fontFamily } from './utils/Constants';
-import { DrawerItem } from './components/DrawerItem';
-import { LogBox, Text } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { LogBox } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
@@ -17,7 +15,6 @@ import es from './assets/translations/es/global.json'
 import fr from './assets/translations/fr/global.json'
 import en from './assets/translations/en/global.json'
 import pt from './assets/translations/pt/global.json'
-import { withTranslation } from 'react-i18next';
 import DrawerContent from './components/DrawerContent';
 
 const Stack = createNativeStackNavigator();
