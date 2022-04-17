@@ -17,6 +17,8 @@ import es from './assets/translations/es/global.json'
 import fr from './assets/translations/fr/global.json'
 import en from './assets/translations/en/global.json'
 import pt from './assets/translations/pt/global.json'
+import { withTranslation } from 'react-i18next';
+import DrawerContent from './components/DrawerContent';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -54,11 +56,7 @@ class App extends Component {
 
   customDrawerContent = ({ navigation }) => {
     return (
-      <DrawerContentScrollView style={{ backgroundColor: backgroundColor }}>
-        <Text style={{ padding: 20, alignSelf: 'center', fontFamily: fontFamily, color: 'white', fontSize: 40, textDecorationLine: 'underline' }}>MENÚ</Text>
-        <DrawerItem icon="home" label="Principal" onPress={() => navigation.navigate('MainDrawer')} />
-        <DrawerItem icon="account" label="Personal" onPress={() => navigation.navigate('Staff')} />
-      </DrawerContentScrollView>
+      <DrawerContent navigation={navigation}/>
     );
   }
 
