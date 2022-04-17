@@ -42,6 +42,6 @@
         "department": "Departamento"
     },
     "loadingModal":{
-        "label": "CARGANDO"
+        "label": "CARGANDO..."
     }
 }
