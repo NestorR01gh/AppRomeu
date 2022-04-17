@@ -40,5 +40,8 @@
         "mobilePhone": "Téléphone portable",
         "country": "Pays",
         "department": "Département"
+    },
+    "loadingModal":{
+        "label": "CHARGEMENT EN COURS..."
     }
 }

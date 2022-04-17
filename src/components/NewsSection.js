@@ -5,7 +5,7 @@ import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
 import { fontFamily, backgroundColor, urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
-import { LoadingModal } from './LoadingModal';
+import LoadingModal from './LoadingModal';
 import { NewsModal } from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
@@ -94,7 +94,7 @@ class NewsSection extends Component {
     }
 
     load = async () => {
-        let news = await this.getNews();    
+        let news = await this.getNews();
         let data = this.state.data;
         data.title = news.newsLanguages[lang.id].title;
         data.description = news.newsLanguages[lang.id].description;
@@ -128,10 +128,10 @@ class NewsSection extends Component {
         this.setState({ loading: true });
         await this.setState({ id: id });
         await this.load();
-        this.setState({ loading: false  });
+        this.setState({ loading: false });
         this.setState({ visible: true });
     }
-    
+
     componentDidMount() {
         this.getNewsList();
     }

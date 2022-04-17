@@ -40,5 +40,8 @@
         "mobilePhone": "Teléfono móvil",
         "country": "País",
         "department": "Departamento"
+    },
+    "loadingModal":{
+        "label": "CARGANDO"
     }
 }

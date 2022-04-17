@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { DisplayDataBox } from '../components/DisplayDataBox';
-import { LoadingModal } from '../components/LoadingModal';
+import LoadingModal from '../components/LoadingModal';
 import { backgroundColor, fontFamily, urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';

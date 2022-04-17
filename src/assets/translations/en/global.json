@@ -40,5 +40,8 @@
         "mobilePhone": "Mobile phone",
         "country": "Country",
         "department": "Department"
+    },
+    "loadingModal":{
+        "label": "LOADING"
     }
 }

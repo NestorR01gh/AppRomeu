@@ -4,7 +4,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
 import { backgroundColor, fontFamily } from '../utils/Constants';
-import { LoadingModal } from '../components/LoadingModal';
+import LoadingModal from '../components/LoadingModal';
 import { lang, token } from '../utils/Variables';
 import { config } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
