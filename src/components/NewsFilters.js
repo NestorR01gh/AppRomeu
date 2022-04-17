@@ -49,7 +49,7 @@ class NewsFilters extends Component {
             <View style={styles.container}>
                 <View style={styles.listAccordion} >
                     <List.Section style={styles.listSection}>
-                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon="filter" size={30} />}>
+                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter-outline" : "filter"} size={30} />}>
                             <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
                             <View style={styles.viewCheckboxes}>
                                 <View style={{ flex: 1, flexDirection: 'row' }}>
