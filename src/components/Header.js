@@ -11,7 +11,6 @@ class Header extends Component {
         super(props);
         this.state = {
             profileImage: undefined,
-            focused: false,
             visible: false
         }
     }
@@ -33,10 +32,6 @@ class Header extends Component {
 
     handleAvatarPress = () => {
         this.setState({ visible: !this.state.visible });
-    }
-
-    handleFocus = () => {
-        this.setState({ focused: !this.state.focused });
     }
 
     handleExit = () => {
