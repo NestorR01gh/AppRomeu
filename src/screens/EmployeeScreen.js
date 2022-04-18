@@ -70,11 +70,11 @@ class EmployeeScreen extends Component {
                                 <DisplayDataBox label={t("employeeScreen.loginName")} icon="account-lock-open" value={this.props.route.params.loginName} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox flex={0.5} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extension} />
+                                <DisplayDataBox flex={0.5} icon="pound" label={t("employeeScreen.extension")} value={this.state.data.extension} />
                                 <DisplayDataBox label={t("employeeScreen.phone")} icon="phone" value={this.state.data.phone} />
                             </View>
                             <View style={styles.doubleInputView}>
-                                <DisplayDataBox flex={0.5} icon="numeric" label={t("employeeScreen.extension")} value={this.state.data.extensionMobile} />
+                                <DisplayDataBox flex={0.5} icon="pound" label={t("employeeScreen.extension")} value={this.state.data.extensionMobile} />
                                 <DisplayDataBox label={t("employeeScreen.mobilePhone")} icon="cellphone" value={this.state.data.mobile} />
                             </View>
                             <View style={styles.doubleInputView}>
