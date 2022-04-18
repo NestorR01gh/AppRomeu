@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Checkbox, IconButton, List, TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
+import { CustomButton } from './CustomButton';
 
 class NewsFilters extends Component {
     constructor(props) {
@@ -60,9 +61,7 @@ class NewsFilters extends Component {
                                 <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
                             </View>
                         </View>
-                        <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
-                            <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
-                        </TouchableOpacity>
+                        <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear}/>
                     </List.Accordion>
                 </List.Section>
             </View>
@@ -72,7 +71,6 @@ class NewsFilters extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
         borderRadius: 15,
         borderColor: backgroundColor,
         borderWidth: 2,
@@ -103,22 +101,6 @@ const styles = StyleSheet.create({
         fontFamily: fontFamily,
         fontSize: 20
     },
-    buttonClean: {
-        margin: 5,
-        borderRadius: 12,
-        borderWidth: 1,
-        borderColor: backgroundColor,
-        backgroundColor: 'white',
-        height: 50,
-        width: 180,
-        justifyContent: 'center',
-        alignSelf: 'center'
-    },
-    buttonLabelClean: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: backgroundColor
-    }
 });
 
 export default withTranslation("global")(NewsFilters)

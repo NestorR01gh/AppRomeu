@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import AutocompleteInput from 'react-native-autocomplete-input';
-import DropDownPicker from 'react-native-dropdown-picker';
 
 
 export class CustomDropdown extends Component {
