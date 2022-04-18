@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 15,
         marginTop: 15,
-        borderWidth: 2,
+        borderWidth: 1.3,
         borderColor: backgroundColor,
         borderRadius: 15,
         flexDirection: 'row'
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 13,
         borderBottomLeftRadius: 13,
         overflow: 'hidden',
-        borderRightWidth: 1,
+        borderRightWidth: 0.8,
         borderRightColor: backgroundColor,
         justifyContent: 'flex-end'
     },
