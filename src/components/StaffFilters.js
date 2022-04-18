@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
-import { StyleSheet, View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { backgroundColor, fontFamily } from '../utils/Constants';
+import { CustomButton } from './CustomButton'
 
 class StaffFilters extends Component {
     constructor(props) {
@@ -32,9 +32,7 @@ class StaffFilters extends Component {
             <View style={styles.container}>
                 <View style={styles.filterLine}>
                     <TextInput onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
-                    <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
-                        <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
-                    </TouchableOpacity>
+                    <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />
                 </View>
             </View>
         );
