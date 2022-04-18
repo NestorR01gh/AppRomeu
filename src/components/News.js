@@ -14,7 +14,7 @@ class News extends Component {
     render() {
         const { t } = this.props;
         return (
-            <TouchableOpacity onPress={() => this.handlePress()}>
+            <TouchableOpacity style={{ padding: 10 }} onPress={() => this.handlePress()}>
                 <View style={styles.container}>
                     <ImageBackground style={styles.newsImage} source={{ uri: this.props.image }}>
                         <View style={styles.dateReadView}>
@@ -49,12 +49,11 @@ class News extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 15,
         marginTop: 15,
         borderWidth: 1.3,
         borderColor: backgroundColor,
         borderRadius: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     ImageBackgroundText: {
         padding: 2,

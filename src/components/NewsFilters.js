@@ -47,26 +47,24 @@ class NewsFilters extends Component {
         const { t } = this.props;
         return (
             <View style={styles.container}>
-                <View style={styles.listAccordion} >
-                    <List.Section style={styles.listSection}>
-                        <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter-outline" : "filter"} size={30} color={backgroundColor}/>}>
-                            <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
-                            <View style={styles.viewCheckboxes}>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
-                                    <Checkbox color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
-                                </View>
-                                <View style={{ flex: 1, flexDirection: 'row' }}>
-                                    <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
-                                    <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
-                                </View>
+                <List.Section style={styles.listSection}>
+                    <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter" : "filter-outline"} size={30} color={backgroundColor} />}>
+                        <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                        <View style={styles.viewCheckboxes}>
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
+                                <Checkbox color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
                             </View>
-                            <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
-                                <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
-                            </TouchableOpacity>
-                        </List.Accordion>
-                    </List.Section>
-                </View>
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
+                                <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
+                            </View>
+                        </View>
+                        <TouchableOpacity onPress={() => this.clear()} style={styles.buttonClean}>
+                            <Text style={styles.buttonLabelClean}>{t("mainScreen.filters.buttonLabel")}</Text>
+                        </TouchableOpacity>
+                    </List.Accordion>
+                </List.Section>
             </View>
         );
     }
@@ -74,9 +72,7 @@ class NewsFilters extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center'
-    },
-    listAccordion: {
+        justifyContent: 'center',
         borderRadius: 15,
         borderColor: backgroundColor,
         borderWidth: 2,

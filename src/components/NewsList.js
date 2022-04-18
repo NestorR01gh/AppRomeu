@@ -30,7 +30,7 @@ export class NewsList extends Component {
 
     render() {
         return (
-            <View style={{ flex: 7 }}>
+            <View style={{ flex: 7}}>
                 <ScrollView ref={this.myRef}>
                     {this.getNews(this.props.setModalData, this.props.list)}
                 </ScrollView>
