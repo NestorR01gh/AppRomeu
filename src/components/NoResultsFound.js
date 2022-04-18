@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { backgroundColor, fontFamily } from '../utils/Constants';
 import { IconButton } from 'react-native-paper';
+import { withTranslation } from 'react-i18next';
 
-export class NoResultsFound extends Component {
+class NoResultsFound extends Component {
     render() {
+        const { t } = this.props;
         return (
             <View style={styles.viewNoResults}>
                 <IconButton style={{ flex: 1, padding: 5 }} icon="alert-outline" size={40} color={backgroundColor} />
-                <Text style={styles.textNoResults}>Ningún resultado encontrado. Por favor refine su búsqueda.</Text>
+                <Text style={styles.textNoResults}>{t("noResultsFound.label")}</Text>
             </View>
         );
     }
@@ -33,3 +35,5 @@ const styles = StyleSheet.create({
         flex: 5
     }
 });
+
+export default withTranslation("global")(NoResultsFound);

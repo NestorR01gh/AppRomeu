@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { NoResultsFound } from './NoResultsFound';
+import NoResultsFound from './NoResultsFound';
 import { StaffChip } from './StaffChip';
 
 export class StaffList extends Component {

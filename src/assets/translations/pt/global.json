@@ -43,5 +43,8 @@
     },
     "loadingModal":{
         "label": "CARREGANDO..."
+    },
+    "noResultsFound":{
+        "label": "Nenhum resultado encontrado. Por favor define nova pesquisa."
     }
 }

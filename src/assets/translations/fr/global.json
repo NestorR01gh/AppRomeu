@@ -43,5 +43,8 @@
     },
     "loadingModal":{
         "label": "CHARGEMENT EN COURS..."
+    },
+    "noResultsFound":{
+        "label": "Aucun résultat trouvé. Svp veuillez réajuster votre recherche."
     }
 }

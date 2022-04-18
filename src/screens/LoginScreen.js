@@ -42,7 +42,8 @@ class LoginScreen extends Component {
                 break;
         }
         i18next.changeLanguage(language);
-        lang.id = this.state.language;
+        lang.id = 0;
+        //lang.id = this.state.language;
     }
 
     setDropDownState = (state) => {

@@ -43,5 +43,8 @@
     },
     "loadingModal":{
         "label": "LOADING..."
+    },
+    "noResultsFound":{
+        "label": "No results found. Please refine your search."
     }
 }

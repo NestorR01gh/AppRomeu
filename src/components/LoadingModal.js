@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         padding: 30,
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        margin: 20
     }
 });
 
