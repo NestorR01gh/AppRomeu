@@ -19,7 +19,6 @@ class NoResultsFound extends Component {
 const styles = StyleSheet.create({
     viewNoResults: {
         flex: 1,
-        height: 90,
         backgroundColor: '#80bfff',
         borderRadius: 20,
         padding: 10,
