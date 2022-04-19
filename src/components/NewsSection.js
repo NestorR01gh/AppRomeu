@@ -61,7 +61,7 @@ class NewsSection extends Component {
 
     getPaginationLabel = () => {
         return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
-
+        
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
         //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
@@ -93,9 +93,9 @@ class NewsSection extends Component {
         await this.setState({ loading: false });
     }
 
-    hasLanguage(newsLanguages, lang){
-        for(let i = 0; i < newsLanguages.length; i++){
-            if(newsLanguages[i].idLanguage == lang){
+    hasLanguage(newsLanguages, lang) {
+        for (let i = 0; i < newsLanguages.length; i++) {
+            if (newsLanguages[i].idLanguage == lang) {
                 return i;
             }
         }
@@ -110,7 +110,7 @@ class NewsSection extends Component {
         if ((pos = this.hasLanguage(news.newsLanguages, lang.id)) >= 0) {
             data.title = news.newsLanguages[pos].title;
             data.description = news.newsLanguages[pos].description;
-        } else if((pos = this.hasLanguage(news.newsLanguages, 2)) >= 0){
+        } else if ((pos = this.hasLanguage(news.newsLanguages, 2)) >= 0) {
             data.title = news.newsLanguages[pos].title;
             data.description = news.newsLanguages[pos].description;
         } else {
