@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 14,
-        fontFamily: fontFamily
+        fontFamily: fontFamily,
+        color: 'white'
     },
     viewInfo: {
         flex: 0,
@@ -58,6 +59,7 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        fontFamily: fontFamily
+        fontFamily: fontFamily,
+        color: backgroundColor
     }
 });
