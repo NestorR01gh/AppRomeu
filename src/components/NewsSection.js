@@ -85,7 +85,6 @@ class NewsSection extends Component {
         if (this.state.signed) {
             requestString += `&isNotSigned=${this.state.signed}`
         }
-        console.log(requestString);
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
@@ -94,11 +93,30 @@ class NewsSection extends Component {
         await this.setState({ loading: false });
     }
 
+    hasLanguage(newsLanguages, lang){
+        for(let i = 0; i < newsLanguages.length; i++){
+            if(newsLanguages[i].idLanguage == lang){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     load = async () => {
         let news = await this.getNews();
         let data = this.state.data;
-        data.title = news.newsLanguages[lang.id].title;
-        data.description = news.newsLanguages[lang.id].description;
+        let pos;
+
+        if ((pos = this.hasLanguage(news.newsLanguages, lang.id)) >= 0) {
+            data.title = news.newsLanguages[pos].title;
+            data.description = news.newsLanguages[pos].description;
+        } else if((pos = this.hasLanguage(news.newsLanguages, 2)) >= 0){
+            data.title = news.newsLanguages[pos].title;
+            data.description = news.newsLanguages[pos].description;
+        } else {
+            data.title = news.newsLanguages[0].title;
+            data.description = news.newsLanguages[0].description;
+        }
         data.imageUrl = news.imageUrl;
         data.creationDate = news.creationDate.split("T")[0];
 
