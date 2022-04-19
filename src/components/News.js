@@ -34,7 +34,7 @@ class News extends Component {
                             <Text style={styles.titleText}>{this.props.title}</Text>
                         </View>
                         <View style={styles.businessView}>
-                            <View style={{ opacity: this.props.read ? 1 : 0, backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, borderTopRightRadius: 10 }}>
+                            <View style={{ opacity: this.props.read ? 1 : 0, backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, borderLeftWidth: 1, borderTopRightRadius: 10 }}>
                                 <Text style={styles.ImageBackgroundText}>{t("news.read")}</Text>
                             </View>
                             <Image style={styles.imageBusiness} source={this.props.logo} />
