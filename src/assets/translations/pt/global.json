@@ -6,7 +6,8 @@
     "drawer": {
         "title": "MENU",
         "item1": "Principal",
-        "item2": "Pessoal"
+        "item2": "Pessoal",
+        "item3": "Espalhar"
     },
     "mainScreen":{
         "title": "NOTICIAS",
@@ -46,5 +47,8 @@
     },
     "noResultsFound":{
         "label": "Nenhum resultado encontrado. Por favor define nova pesquisa."
+    },
+    "shareScreen":{
+        "title": "Compartilhe esse aplicativo"
     }
 }

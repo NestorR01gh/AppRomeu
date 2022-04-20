@@ -6,7 +6,8 @@
     "drawer": {
         "title": "MENU",
         "item1": "Main",
-        "item2": "Staff"
+        "item2": "Staff",
+        "item3": "Share"
     },
     "mainScreen": {
         "title": "NEWS",
@@ -46,5 +47,8 @@
     },
     "noResultsFound":{
         "label": "No results found. Please refine your search."
+    },
+    "shareScreen":{
+        "title": "Share this app"
     }
 }

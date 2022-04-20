@@ -6,7 +6,8 @@
     "drawer": {
         "title": "MENU",
         "item1": "Majeur",
-        "item2": "Personnel"
+        "item2": "Personnel",
+        "item3": "Partager"
     },
     "mainScreen":{
         "title": "INFORMATIONS",
@@ -46,5 +47,8 @@
     },
     "noResultsFound":{
         "label": "Aucun résultat trouvé. Svp veuillez réajuster votre recherche."
+    },
+    "shareScreen":{
+        "title": "Partagez cette application"
     }
 }

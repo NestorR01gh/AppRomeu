@@ -16,6 +16,7 @@ import fr from './assets/translations/fr/global.json'
 import en from './assets/translations/en/global.json'
 import pt from './assets/translations/pt/global.json'
 import DrawerContent from './components/DrawerContent';
+import { ShareScreen } from './screens/ShareScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,9 +53,11 @@ class App extends Component {
   }
 
   customDrawerContent = ({ navigation }) => {
-    return (
-      <DrawerContent navigation={navigation}/>
-    );
+    return <DrawerContent navigation={navigation} />
+  }
+
+  shareScreen = ({ navigation }) => {
+    return <ShareScreen navigation={navigation} />
   }
 
   main = () => {
@@ -62,6 +65,7 @@ class App extends Component {
       <Drawer.Navigator useLegacyImplementation={true} drawerContent={this.customDrawerContent} screenOptions={{ headerShown: false }}>
         <Drawer.Screen name="MainDrawer" component={this.mainScreen} />
         <Drawer.Screen name="Staff" component={StaffScreen} />
+        <Drawer.Screen name="Share" component={ShareScreen} />
       </Drawer.Navigator>
     );
   }
