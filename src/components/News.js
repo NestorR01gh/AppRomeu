@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { StyleSheet, View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 
 
 class News extends Component {
@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
         borderColor: backgroundColor,
         borderRadius: 15,
         flexDirection: 'row',
+        backgroundColor: 'white'
     },
     ImageBackgroundText: {
-        padding: 2,
-        fontFamily: fontFamily,
+        padding: 3,
+        fontFamily: fonts.openSansRegular,
         color: 'black'
     },
     dateReadView: {
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
     },
     titleText: {
         padding: 10,
-        fontFamily: fontFamily
+        fontFamily: fonts.openSansRegular,
+        color: 'grey'
     },
     imageBusiness: {
         height: 30,
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: backgroundColor,
         padding: 5,
-        fontFamily: fontFamily
+        fontFamily: fonts.openSansSemiBolditalic
     },
     newsTextView: {
         flex: 1,

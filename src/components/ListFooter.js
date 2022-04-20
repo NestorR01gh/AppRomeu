@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export class ListFooter extends Component {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly'
     },
     dropDownText: {
-        fontFamily: fontFamily,
+        fontFamily: fonts.openSansRegular,
         fontSize: 20
     },
     buttonsView: {

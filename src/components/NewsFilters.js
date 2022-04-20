@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Checkbox, IconButton, List, TextInput } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import { CustomButton } from './CustomButton';
 
 class NewsFilters extends Component {
@@ -50,7 +49,7 @@ class NewsFilters extends Component {
             <View style={styles.container}>
                 <List.Section style={styles.listSection}>
                     <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: backgroundColor } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter" : "filter-outline"} size={30} color={backgroundColor} />}>
-                        <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} />
+                        <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })}/>
                         <View style={styles.viewCheckboxes}>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
@@ -80,15 +79,14 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     accordionTitle: {
-        fontFamily: fontFamily,
-        fontSize: 20
+        fontFamily: fonts.openSansBold,
+        fontSize: 21
     },
     textInput: {
         borderRadius: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         margin: 10,
-        fontFamily: fontFamily,
         fontSize: 20
     },
     viewCheckboxes: {
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
         marginLeft: -40
     },
     label: {
-        fontFamily: fontFamily,
+        fontFamily: fonts.openSansRegular,
         fontSize: 20
     },
 });

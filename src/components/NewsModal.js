@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator } from 'react-native';
 import { IconButton, Modal, Portal } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import HtmlText from 'react-native-html-to-text';
 
@@ -98,7 +98,7 @@ export class NewsModal extends Component {
                                 </View>
                                 <View style={styles.publishedClipView}>
                                     <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.data.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
-                                    <Text style={{ fontFamily: fontFamily, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
+                                    <Text style={{ fontFamily: fonts.openSansMediumItalic, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
                                 </View>
                             </View>
                             <View style={styles.descriptionView}>
@@ -151,9 +151,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontFamily: fontFamily,
-        fontSize: 15,
-        fontWeight: 'bold',
+        fontFamily: fonts.openSansExtraBold,
+        fontSize: 17,
         padding: 10
     },
     header: {

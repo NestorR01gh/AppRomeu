@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
-import { fontFamily, backgroundColor, urlApi } from '../utils/Constants';
+import { fonts, backgroundColor, urlApi } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
 import { NewsModal } from './NewsModal';
@@ -179,12 +179,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     title: {
-        fontFamily: fontFamily,
+        fontFamily: fonts.openSansExtraBold,
         fontSize: 40,
         color: backgroundColor,
         alignSelf: 'center',
         padding: 10,
-        fontWeight: 'bold'
     },
     paginationView: {
         borderTopWidth: 1,

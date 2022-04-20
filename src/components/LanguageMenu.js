@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Menu, List } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 
 
 export class LanguageMenu extends Component {
@@ -24,20 +24,20 @@ export class LanguageMenu extends Component {
 
     render() {
         return (
-            <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <View style={styles.container}>
                 <Menu visible={this.state.showDropDown} onDismiss={() => this.setDropDownState(false)} anchor={<Button onPress={() => this.setDropDownState(true)}>{this.state.language}</Button>}>
                     <Menu.Item onPress={() => this.setLanguage("es")} title="ES" />
                     <Menu.Item onPress={() => this.setLanguage("en")} title="EN" />
                     <Menu.Item onPress={() => this.setLanguage("fr")} title="FR" />
                     <Menu.Item onPress={() => this.setLanguage("pt")} title="PT" />
                 </Menu>
-                <List.Section style={{ width: 140, margin: 10 }}>
-                    <List.Accordion style={{ height: 50, justifyContent: 'center', backgroundColor: '#fafafa', borderRadius: 7 }} titleStyle={{ textAlign: 'right' }} title={this.state.language.toUpperCase()} right={() => <List.Icon icon="arrow-down-drop-circle" />}>
+                <List.Section style={styles.listSection}>
+                    <List.Accordion style={styles.listAccordion} titleStyle={{ textAlign: 'right' }} title={this.state.language.toUpperCase()} right={() => <List.Icon icon="arrow-down-drop-circle" />}>
                         <View style={{ borderWidth: 1 }}>
-                            <List.Item style={styles.listItem} title="ES" onPress={() => this.setLanguage("ES")} />
-                            <List.Item style={styles.listItem} title="EN" onPress={() => this.setLanguage("EN")} />
-                            <List.Item style={styles.listItem} title="FR" onPress={() => this.setLanguage("FR")} />
-                            <List.Item style={styles.listItem} title="PT" onPress={() => this.setLanguage("PT")} />
+                            <List.Item title="ES" onPress={() => this.setLanguage("ES")} />
+                            <List.Item title="EN" onPress={() => this.setLanguage("EN")} />
+                            <List.Item title="FR" onPress={() => this.setLanguage("FR")} />
+                            <List.Item title="PT" onPress={() => this.setLanguage("PT")} />
                         </View>
                     </List.Accordion>
                 </List.Section>
@@ -47,37 +47,19 @@ export class LanguageMenu extends Component {
 }
 
 const styles = StyleSheet.create({
-    cajaLogin: {
-        flex: 1,
-    },
-    viewLogin: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        marginBottom: 70
-    },
-    touchableOpacity: {
-        flex: 1,
-        padding: 10
-    },
-    button: {
-        backgroundColor: backgroundColor
-    },
-    buttonText: {
-        fontSize: 14,
-        fontFamily: fontFamily
-    },
-    viewInfo: {
+    container: {
         flex: 0,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
-    textView: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: 10
+    listSection: {
+        width: 140,
+        margin: 10
     },
-    text: {
-        textAlign: 'center',
-        fontFamily: fontFamily
+    listAccordion: {
+        height: 50,
+        justifyContent: 'center',
+        backgroundColor: '#fafafa',
+        borderRadius: 7
     }
 });

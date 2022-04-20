@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import { CustomButton } from './CustomButton'
 
 class StaffFilters extends Component {
@@ -31,7 +31,7 @@ class StaffFilters extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} />
+                    <TextInput onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })}/>
                     <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />
                 </View>
             </View>
@@ -56,10 +56,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        fontFamily: fontFamily,
         borderWidth: 1,
         borderColor: backgroundColor,
-        color: backgroundColor,
         margin: 10,
         height: 50
     },

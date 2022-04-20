@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import LoadingModal from '../components/LoadingModal';
 import { lang, token } from '../utils/Variables';
 import { config } from '../utils/Constants';
@@ -79,7 +79,7 @@ class LoginScreen extends Component {
                 <View style={styles.viewInfo}>
                     <ButtonDescription onPress={() => this.handlePress()} Description={t("loginScreen.description")} ButtonText={t("loginScreen.buttonLabel")} />
                     <View style={{ alignItems: 'center' }}>
-                        <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fontFamily, fontSize: 20 }}>{this.state.error}</Text>
+                        <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fonts.openSansItalic, fontSize: 15 }}>{this.state.error}</Text>
                     </View>
                 </View>
             </View>

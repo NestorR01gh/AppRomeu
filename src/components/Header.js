@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
-        fontFamily: fontFamily,
+        fontFamily: fonts.openSansRegular,
         fontSize: 20
     }
 });

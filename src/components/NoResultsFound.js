@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { backgroundColor, fontFamily } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import { IconButton } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
 
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textNoResults: {
-        fontFamily: fontFamily,
+        fontFamily: fonts.openSansMediumItalic,
         color: backgroundColor,
         fontSize: 20,
         flex: 5

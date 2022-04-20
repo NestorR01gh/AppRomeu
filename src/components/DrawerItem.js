@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { IconButton } from 'react-native-paper';
+import { fonts } from '../utils/Constants';
 
 export class DrawerItem extends Component {
     render() {
         return (
             <TouchableOpacity onPress={this.props.onPress}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={styles.container}>
                     <IconButton icon={this.props.icon} size={40} color='white' />
-                    <Text style={{ fontSize: 35, color: 'white' }}>{this.props.label}</Text>
+                    <Text style={styles.label}>{this.props.label}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -16,5 +17,13 @@ export class DrawerItem extends Component {
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    label: {
+        fontSize: 35,
+        color: 'white',
+        fontFamily: fonts.openSansRegular
+    }
 });
