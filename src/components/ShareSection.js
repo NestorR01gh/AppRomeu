@@ -4,6 +4,7 @@ import { fonts, backgroundColor } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 
 class ShareSection extends Component {
+
     render() {
         const { t } = this.props;
         return (
