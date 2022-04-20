@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
+        backgroundColor: backgroundColor
     },
     publishedClipView: {
         flex: 1,
@@ -151,6 +152,9 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 5,
+        backgroundColor: 'white',
+        borderBottomLeftRadius: 12,
+        borderBottomRightRadius: 12
     },
     title: {
         color: 'white',
