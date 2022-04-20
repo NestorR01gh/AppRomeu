@@ -16,7 +16,7 @@ class LoginScreen extends Component {
         this.state = {
             loading: false,
             showDropDown: false,
-            language: 0,
+            language: 1,
             languages: [{ label: "ES", value: 0 }, { label: "EN", value: 1 }, { label: "FR", value: 2 }, { label: "PT", value: 3 }],
             error: ""
         }
@@ -71,7 +71,7 @@ class LoginScreen extends Component {
             <View style={styles.container}>
                 <LoadingModal animating={this.state.loading} color={backgroundColor} />
                 <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
-                    <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
+                    <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language - 1} open={this.state.showDropDown} value={this.state.language - 1} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
                 </View>
                 <View style={styles.viewLogo}>
                     <Image style={styles.imageLogo} source={require('../assets/images/login.png')} />

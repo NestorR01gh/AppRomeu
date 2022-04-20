@@ -85,6 +85,7 @@ class NewsSection extends Component {
         if (this.state.signed) {
             requestString += `&isNotSigned=${this.state.signed}`
         }
+        console.log(requestString);
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();

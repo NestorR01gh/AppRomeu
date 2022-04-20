@@ -1,2 +1,2 @@
 export let token = { data: "" };
-export let lang = { id: 0 }
+export let lang = { id: 1 }

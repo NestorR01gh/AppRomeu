@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator, useWindowDimensions, Dimensions } from 'react-native';
 import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import HtmlText from 'react-native-html-to-text';
+import RenderHtml from 'react-native-render-html';
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 export class NewsModal extends Component {
     constructor(props) {
@@ -103,7 +107,7 @@ export class NewsModal extends Component {
                             </View>
                             <View style={styles.descriptionView}>
                                 <ScrollView>
-                                    <HtmlText html={this.props.data.description} />
+                                    <RenderHtml contentWidth={width - 80} source={{ html: this.props.data.description }} />
                                 </ScrollView>
                             </View>
                         </View>
@@ -118,8 +122,8 @@ const styles = StyleSheet.create({
     modal: {
         backgroundColor: 'white',
         alignSelf: 'center',
-        width: "90%",
-        height: "90%",
+        width: width - 30,
+        height: height - 50,
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
