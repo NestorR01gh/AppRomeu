@@ -5,6 +5,7 @@
         <item name="android:navigationBarColor">#0D1A32</item>
         <item name="android:statusBarColor">#0D1A32</item>
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
 </resources>
