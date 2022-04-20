@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Appearance } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import StaffFilters from './StaffFilters';
 import { StaffList } from './StaffList';
@@ -68,7 +68,7 @@ export class StaffSection extends Component {
                 <StaffFilters handleSearch={this.setSearch} />
                 <StaffList loading={this.state.loading} list={this.state.staffList} navigation={this.props.navigation} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ color: backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.staffPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.staffPerPage)} showFastPaginationControls />
                 </View>
             </View>
         );

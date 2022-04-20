@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
@@ -61,7 +61,7 @@ class NewsSection extends Component {
 
     getPaginationLabel = () => {
         return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
-        
+
         //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
         //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
@@ -85,7 +85,6 @@ class NewsSection extends Component {
         if (this.state.signed) {
             requestString += `&isNotSigned=${this.state.signed}`
         }
-        console.log(requestString);
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
@@ -166,7 +165,7 @@ class NewsSection extends Component {
                 <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : backgroundColor }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
 

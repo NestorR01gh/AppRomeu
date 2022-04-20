@@ -7,7 +7,7 @@ import EmployeeScreen from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { LogBox } from 'react-native';
+import { Appearance, LogBox } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
@@ -22,6 +22,7 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 LogBox.ignoreAllLogs();
+
 i18next.init({
   compatibilityJSON: 'v3',
   interpolation: { escapeValue: false },

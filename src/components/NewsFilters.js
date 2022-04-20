@@ -49,15 +49,15 @@ class NewsFilters extends Component {
             <View style={styles.container}>
                 <List.Section style={styles.listSection}>
                     <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: "backgroundColor", background: 'transparent' } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter" : "filter-outline"} size={30} color={backgroundColor} />}>
-                        <TextInput value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })}/>
+                        <TextInput placeholderTextColor={backgroundColor} value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })}/>
                         <View style={styles.viewCheckboxes}>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
-                                <Checkbox color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
+                                <Checkbox uncheckedColor='black' color={backgroundColor} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
                             </View>
                             <View style={{ flex: 1, flexDirection: 'row' }}>
                                 <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
-                                <Checkbox color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
+                                <Checkbox uncheckedColor='black' color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
                             </View>
                         </View>
                         <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear}/>
@@ -80,24 +80,29 @@ const styles = StyleSheet.create({
     },
     accordionTitle: {
         fontFamily: fonts.openSansBold,
-        fontSize: 21
+        fontSize: 21,
+        color: backgroundColor
     },
     textInput: {
         borderRadius: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         margin: 10,
-        fontSize: 20
+        fontSize: 20,
+        backgroundColor: "transparent",
+        borderWidth: 1
     },
     viewCheckboxes: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginLeft: -40
+        marginLeft: -40,
+        margin: 5
     },
     label: {
         fontFamily: fonts.openSansRegular,
-        fontSize: 20
+        fontSize: 20,
+        color: 'black'
     },
 });
 

@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
-        marginBottom: 90
     },
     publishedClipView: {
         flex: 1,
