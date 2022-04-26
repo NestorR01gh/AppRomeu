@@ -26,7 +26,7 @@ class NewsSection extends Component {
             loading: false,
             visible: false,
             id: 0,
-            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "" }
+            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0 }
         }
     }
 
@@ -102,11 +102,12 @@ class NewsSection extends Component {
         return -1;
     }
 
-    load = async () => {
+    load = async (acceptOrSignDate, id) => {
         let news = await this.getNews();
         let data = this.state.data;
         let pos;
 
+        data.id = id;
         if ((pos = this.hasLanguage(news.newsLanguages, lang.id)) >= 0) {
             data.title = news.newsLanguages[pos].title;
             data.description = news.newsLanguages[pos].description;
@@ -119,12 +120,17 @@ class NewsSection extends Component {
         }
         data.imageUrl = news.imageUrl;
         data.creationDate = news.creationDate.split("T")[0];
+
         let logo = "https://portal.romeu.com/assets/img/logos/" + news.publishByCompany + ".png";
         data.logo = { uri: logo }
 
+        data.readRequired = news.readRequired;
+        data.signRequired = news.signRequired;
+        data.acceptOrSignDate = acceptOrSignDate;
+
         //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
-        //data.hasFile = news.newsLanguages[lang.id].attachmentUrl == null ? false : true;
-        //data.fileUrl = news.newsLanguages[lang.id].attachmentUrl;
+        //data.hasFile = news.thumbs == null ? false : true;
+        //data.fileUrl = news.thumbs;
         //data.fileExtension = news.newsLanguages[lang.id].attachmentExtension;
 
         data.hasFile = false;
@@ -145,10 +151,10 @@ class NewsSection extends Component {
         this.setState({ visible: visible });
     }
 
-    setModalData = async (id) => {
+    setModalData = async (id, acceptOrSignDate) => {
         this.setState({ loading: true });
         await this.setState({ id: id });
-        await this.load();
+        await this.load(acceptOrSignDate, id);
         this.setState({ loading: false });
         this.setState({ visible: true });
     }

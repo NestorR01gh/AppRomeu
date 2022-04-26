@@ -4,6 +4,7 @@ import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import RenderHtml from 'react-native-render-html';
+import { NewsModalFooterResolver } from './NewsModalFooterResolver';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -111,7 +112,8 @@ export class NewsModal extends Component {
                             </View>
                             <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: backgroundColor }}>
                                 <Image style={styles.imageBusiness} source={this.props.data.logo}/>
-                                <Text>ACEP/FIRM</Text>
+                                <NewsModalFooterResolver closeModal={this.handlePress} id={this.props.data.id} date={this.props.data.acceptOrSignDate} signRequired={this.props.data.signRequired} readRequired={this.props.data.readRequired} />
+                                {/* <Text style={{opacity: !this.props.data.signRequired && !this.props.data.readRequired ? 0 : 1}}>ACEP/FIRM</Text> */}
                             </View>
                         </View>
                     </View>

@@ -8,7 +8,7 @@ import { backgroundColor, fonts } from '../utils/Constants';
 class News extends Component {
 
     handlePress = async () => {
-        this.props.setModalData(this.props.id);
+        this.props.setModalData(this.props.id, this.props.acceptOrSignDate);
     }
 
     render() {
