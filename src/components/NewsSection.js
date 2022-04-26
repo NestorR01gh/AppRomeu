@@ -10,7 +10,7 @@ import { NewsModal } from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
 
-const newsPerPageList = [5, 10, 15]
+const newsPerPageList = [10, 15, 20]
 
 class NewsSection extends Component {
     constructor(props) {
