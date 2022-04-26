@@ -28,7 +28,7 @@ class NewsModalFooterResolver extends Component {
         if (this.props.signRequired) {
             if (this.props.date != undefined) {
                 return (
-                    <View>
+                    <View style={{padding: 5}}>
                         <Text>{t("newsModalFooterResolver.signed.title")}</Text>
                         <Text>{this.props.date}</Text>
                     </View>
@@ -43,7 +43,7 @@ class NewsModalFooterResolver extends Component {
         } else if (this.props.readRequired) {
             if (this.props.date != undefined) {
                 return (
-                    <View>
+                    <View style={{padding: 5}}>
                         <Text>{t("newsModalFooterResolver.accepted.title")}</Text>
                         <Text>{this.props.date}</Text>
                     </View>
