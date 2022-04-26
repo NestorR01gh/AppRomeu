@@ -26,7 +26,7 @@ class NewsSection extends Component {
             loading: false,
             visible: false,
             id: 0,
-            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "" }
+            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "" }
         }
     }
 
@@ -119,6 +119,8 @@ class NewsSection extends Component {
         }
         data.imageUrl = news.imageUrl;
         data.creationDate = news.creationDate.split("T")[0];
+        let logo = "https://portal.romeu.com/assets/img/logos/" + news.publishByCompany + ".png";
+        data.logo = { uri: logo }
 
         //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
         //data.hasFile = news.newsLanguages[lang.id].attachmentUrl == null ? false : true;

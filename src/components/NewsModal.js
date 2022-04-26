@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator, useWindowDimensions, Dimensions } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator, Dimensions } from 'react-native';
 import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
-import HtmlText from 'react-native-html-to-text';
 import RenderHtml from 'react-native-render-html';
 
 const width = Dimensions.get('window').width;
@@ -110,6 +109,10 @@ export class NewsModal extends Component {
                                     <RenderHtml contentWidth={width - 80} source={{ html: this.props.data.description }} />
                                 </ScrollView>
                             </View>
+                            <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: backgroundColor }}>
+                                <Image style={styles.imageBusiness} source={this.props.data.logo}/>
+                                <Text>ACEP/FIRM</Text>
+                            </View>
                         </View>
                     </View>
                 </Modal>
@@ -127,7 +130,14 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         borderWidth: 2,
         borderColor: backgroundColor,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        marginBottom: 50
+    },
+    imageBusiness: {
+        height: 30,
+        width: 80,
+        resizeMode: 'contain',
+        margin: 10,
     },
     publishedClipView: {
         flex: 1,
