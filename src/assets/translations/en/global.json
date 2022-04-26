@@ -50,5 +50,15 @@
     },
     "shareScreen":{
         "title": "Share this app"
+    },
+    "newsModalFooterResolver":{
+        "signed":{
+            "title": "Signed",
+            "button": "Sign"
+        },
+        "accepted":{
+            "title": "Accepted",
+            "button": "Accept"
+        }
     }
 }

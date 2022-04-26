@@ -50,5 +50,15 @@
     },
     "shareScreen":{
         "title": "Comparte esta aplicación"
+    },
+    "newsModalFooterResolver":{
+        "signed":{
+            "title": "Firmado el",
+            "button": "Firmar"
+        },
+        "accepted":{
+            "title": "Aceptado el",
+            "button": "Aceptar"
+        }
     }
 }

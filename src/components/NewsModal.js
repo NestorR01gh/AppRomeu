@@ -4,7 +4,7 @@ import { IconButton, Modal, Portal } from 'react-native-paper';
 import { backgroundColor, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import RenderHtml from 'react-native-render-html';
-import { NewsModalFooterResolver } from './NewsModalFooterResolver';
+import NewsModalFooterResolver from './NewsModalFooterResolver';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

@@ -3,8 +3,9 @@ import { Text, View } from 'react-native';
 import { urlApi } from '../utils/Constants';
 import { CustomButton } from './CustomButton';
 import { Request } from '../utils/Request';
+import { withTranslation } from 'react-i18next';
 
-export class NewsModalFooterResolver extends Component {
+class NewsModalFooterResolver extends Component {
 
     sign = async () => {
         let requestString = urlApi + `News/${this.props.id}/Sign`;
@@ -21,20 +22,21 @@ export class NewsModalFooterResolver extends Component {
         await request.execute();
         this.props.closeModal();
     }
-    
+
     render() {
+        const { t } = this.props;
         if (this.props.signRequired) {
             if (this.props.date != undefined) {
                 return (
                     <View>
-                        <Text>Firmado el</Text>
+                        <Text>{t("newsModalFooterResolver.signed.title")}</Text>
                         <Text>{this.props.date}</Text>
                     </View>
                 );
             } else {
-                return(
+                return (
                     <View>
-                        <CustomButton label={"Firmar"} onPress={this.sign}/>
+                        <CustomButton label={t("newsModalFooterResolver.signed.button")} onPress={this.sign} />
                     </View>
                 );
             }
@@ -42,14 +44,14 @@ export class NewsModalFooterResolver extends Component {
             if (this.props.date != undefined) {
                 return (
                     <View>
-                        <Text>Aceptado el</Text>
+                        <Text>{t("newsModalFooterResolver.accepted.title")}</Text>
                         <Text>{this.props.date}</Text>
                     </View>
                 );
             } else {
-                return(
+                return (
                     <View>
-                        <CustomButton label={"Aceptar"} onPress={this.accept}/>
+                        <CustomButton label={t("newsModalFooterResolver.accepted.title")} onPress={this.accept} />
                     </View>
                 );
             }
@@ -58,3 +60,5 @@ export class NewsModalFooterResolver extends Component {
         }
     }
 }
+
+export default withTranslation("global")(NewsModalFooterResolver);

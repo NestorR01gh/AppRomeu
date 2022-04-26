@@ -50,5 +50,15 @@
     },
     "shareScreen":{
         "title": "Compartilhe esse aplicativo"
+    },
+    "newsModalFooterResolver":{
+        "signed":{
+            "title": "Assinado no dia",
+            "button": "Sinal"
+        },
+        "accepted":{
+            "title": "Aceito no dia",
+            "button": "Aceitar"
+        }
     }
 }
