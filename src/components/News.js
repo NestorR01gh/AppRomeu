@@ -11,6 +11,14 @@ class News extends Component {
         this.props.setModalData(this.props.id, this.props.acceptOrSignDate);
     }
 
+    getAcceptSignIconOpacity = () => {
+        if((this.props.readRequired || this.props.signRequired) && this.props.acceptOrSignDate == null){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     render() {
         const { t } = this.props;
         return (
@@ -29,9 +37,9 @@ class News extends Component {
                                 <IconButton color='white' size={20} icon={this.props.isNews ? "newspaper" : "inbox"} />
                             </View>
                             <Text style={styles.sectionText}>{this.props.section}</Text>
-                            {/* <View style={styles.acceptOrSignIcon}>
-                                <IconButton color={backgroundColor} size={25} icon={this.props.isNews ? "thumb-up" : "file-sign"} />
-                            </View> */}
+                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getAcceptSignIconOpacity() }}>
+                                <IconButton color={backgroundColor} size={25} icon={this.props.readRequired ? "thumb-up" : "file-sign"} />
+                            </View>
                         </View>
                         <View style={styles.newsTextView}>
                             <Text style={styles.titleText}>{this.props.title}</Text>
@@ -58,11 +66,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'row',
         backgroundColor: 'white'
-    },
-    acceptOrSignIcon:{
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end'
     },
     ImageBackgroundText: {
         padding: 3,
@@ -91,6 +94,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     sectionText: {
+        flex: 3,
         fontSize: 20,
         color: backgroundColor,
         padding: 5,
@@ -120,6 +124,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     badge: {
+        flex: 1,
         alignSelf: 'flex-start',
         marginLeft: 10,
         marginTop: -17,
