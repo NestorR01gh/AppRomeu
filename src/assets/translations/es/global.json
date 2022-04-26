@@ -14,7 +14,7 @@
         "filters": {
             "title": "Filtros",
             "placeholder": "Buscar",
-            "notRead": "Not leído",
+            "notRead": "No leído",
             "notSigned": "No firmado",
             "buttonLabel": "Limpiar"
         }
