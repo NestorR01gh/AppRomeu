@@ -51,7 +51,7 @@ class NewsModalFooterResolver extends Component {
             } else {
                 return (
                     <View>
-                        <CustomButton label={t("newsModalFooterResolver.accepted.title")} onPress={this.accept} />
+                        <CustomButton label={t("newsModalFooterResolver.accepted.button")} onPress={this.accept} />
                     </View>
                 );
             }
