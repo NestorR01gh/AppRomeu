@@ -21,7 +21,7 @@ export class NewsModalFooterResolver extends Component {
         await request.execute();
         this.props.closeModal();
     }
-
+    
     render() {
         if (this.props.signRequired) {
             if (this.props.date != undefined) {

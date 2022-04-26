@@ -15,6 +15,7 @@ export const fonts = {
     openSansSemiBolditalic: "OpenSans-SemiBoldItalic"
 }
 
+
 export const urlApi = "https://romeunet-api.development.grm.zone/api/";
 //export const urlApi = "https://portal-staging-api.grm-e.com/api/";
 

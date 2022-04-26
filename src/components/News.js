@@ -29,6 +29,9 @@ class News extends Component {
                                 <IconButton color='white' size={20} icon={this.props.isNews ? "newspaper" : "inbox"} />
                             </View>
                             <Text style={styles.sectionText}>{this.props.section}</Text>
+                            {/* <View style={styles.acceptOrSignIcon}>
+                                <IconButton color={backgroundColor} size={25} icon={this.props.isNews ? "thumb-up" : "file-sign"} />
+                            </View> */}
                         </View>
                         <View style={styles.newsTextView}>
                             <Text style={styles.titleText}>{this.props.title}</Text>
@@ -55,6 +58,11 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'row',
         backgroundColor: 'white'
+    },
+    acceptOrSignIcon:{
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
     ImageBackgroundText: {
         padding: 3,
@@ -91,8 +99,7 @@ const styles = StyleSheet.create({
     newsTextView: {
         flex: 1,
         flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'flex-start'
+        flexDirection: 'row'
     },
     imageView: {
         flex: 1,
