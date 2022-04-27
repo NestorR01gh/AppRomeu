@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
-import { fonts, backgroundColor, urlApi } from '../utils/Constants';
+import { fonts, backgroundColor, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
 import { NewsModal } from './NewsModal';
@@ -75,7 +75,7 @@ class NewsSection extends Component {
 
     getNewsList = async () => {
         await this.setState({ loading: true });
-        let requestString = urlApi + `News/Paged?idLanguage=${lang.id}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
+        let requestString = api.url + `News/Paged?idLanguage=${lang.id}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
         if (this.state.search != "") {
             requestString += `&search=${this.state.search}`
         }
@@ -139,7 +139,7 @@ class NewsSection extends Component {
 
     getNews = async () => {
         if (this.state.id != 0) {
-            let requestString = urlApi + `News/${this.state.id}`;
+            let requestString = api.url + `News/${this.state.id}`;
             let request = new Request(requestString, "GET");
             request.withAuth();
             let response = await request.execute();

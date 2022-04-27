@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { urlApi } from '../utils/Constants';
+import { api } from '../utils/Constants';
 import { CustomButton } from './CustomButton';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 class NewsModalFooterResolver extends Component {
 
     sign = async () => {
-        let requestString = urlApi + `News/${this.props.id}/Sign`;
+        let requestString = api.url + `News/${this.props.id}/Sign`;
         let request = new Request(requestString, "PUT", { "idNews": this.props.id });
         request.withAuth();
         await request.execute();
@@ -16,7 +16,7 @@ class NewsModalFooterResolver extends Component {
     }
 
     accept = async () => {
-        let requestString = urlApi + `News/${this.props.id}/Accept`;
+        let requestString = api.url + `News/${this.props.id}/Accept`;
         let request = new Request(requestString, "PUT", { "idNews": this.props.id });
         request.withAuth();
         await request.execute();

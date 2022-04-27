@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { DisplayDataBox } from '../components/DisplayDataBox';
 import LoadingModal from '../components/LoadingModal';
-import { backgroundColor, fonts, urlApi } from '../utils/Constants';
+import { backgroundColor, fonts, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
 
@@ -18,7 +18,7 @@ class EmployeeScreen extends Component {
 
     load = async () => {
         this.setState({ loading: true });
-        let requestString = urlApi + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
+        let requestString = api.url + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
         let request = new Request(requestString, "POST", { "searchtext": `${this.props.route.params.loginName}` });
         request.withAuth();
         let response = await request.execute();
@@ -29,7 +29,7 @@ class EmployeeScreen extends Component {
     }
 
     setStreetAddress = async () => {
-        let requestString = urlApi + `IPCalls/GetAdvancedCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
+        let requestString = api.url + `IPCalls/GetAdvancedCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
         let request = new Request(requestString, "POST", { "nameUser": `${this.props.route.params.loginName}` });
         request.withAuth();
         let response = await request.execute();

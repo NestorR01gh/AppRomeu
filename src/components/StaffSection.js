@@ -3,7 +3,7 @@ import { StyleSheet, View, Appearance } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import StaffFilters from './StaffFilters';
 import { StaffList } from './StaffList';
-import { backgroundColor, urlApi } from '../utils/Constants';
+import { backgroundColor, api } from '../utils/Constants';
 import LoadingModal from './LoadingModal';
 import { Request } from '../utils/Request';
 
@@ -48,7 +48,7 @@ export class StaffSection extends Component {
 
     getStaffList = async () => {
         await this.setState({ loading: true });
-        let requestString = urlApi + `IPCalls/GetCallUsersPaged?page=${this.state.page}&pageSize=${this.state.staffPerPage}&orderColumn=userName&ascendingOrder=ASC`;
+        let requestString = api.url + `IPCalls/GetCallUsersPaged?page=${this.state.page}&pageSize=${this.state.staffPerPage}&orderColumn=userName&ascendingOrder=ASC`;
         let request = new Request(requestString, "POST", { "searchtext": `${this.state.search}` });
         request.withAuth();
         let response = await request.execute();

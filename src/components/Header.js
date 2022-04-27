@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { backgroundColor, fonts, api } from '../utils/Constants';
 import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
-import { urlApi } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 
 class Header extends Component {
@@ -16,7 +15,7 @@ class Header extends Component {
     }
 
     getPhoto = async () => {
-        let req = new Request(urlApi + "User/GetUserPhoto", "POST");
+        let req = new Request(api.url + "User/GetUserPhoto", "POST");
         req.withAuth();
         try {
             let res = await req.execute();
