@@ -15,7 +15,7 @@
             "title": "Filters",
             "placeholder": "Search",
             "notRead": "Not read",
-            "notSigned": "Not signed",
+            "notSigned": "Not signed/accepted",
             "buttonLabel": "Clean"
         }
     },
