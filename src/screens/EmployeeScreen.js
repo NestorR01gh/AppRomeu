@@ -54,7 +54,7 @@ class EmployeeScreen extends Component {
                         <View style={styles.viewImageAndLabels}>
                             <View style={{ flex: 1, alignItems: 'center' }}>
                                 <Image resizeMode='cover' source={this.state.data.photo == undefined ? require("../assets/images/usr.png") : { uri: `data:image/png;base64,${this.state.data.photo}` }} style={styles.image} />
-                                <Text style={styles.title}>{this.state.data.iusu}</Text>
+                                <Text style={styles.iusu}>{this.state.data.iusu}</Text>
                             </View>
                             <View style={styles.labelsImageView}>
                                 <DisplayDataBox label={t("employeeScreen.position")} icon="account-cog" value={this.state.data.title} />
@@ -93,10 +93,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    iusu:{
+        fontFamily: fonts.openSansSemiBold,
+        fontSize: 30,
+        color: backgroundColor,
+    },
     title: {
         fontFamily: fonts.openSansExtraBold,
         fontSize: 30,
         color: backgroundColor,
+        textAlign: 'center'
     },
     viewTitle: {
         padding: 15,
