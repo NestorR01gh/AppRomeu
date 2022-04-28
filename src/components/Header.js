@@ -4,6 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
 import { withTranslation } from 'react-i18next';
+import { Request } from '../utils/Request';
 
 class Header extends Component {
     constructor(props) {
@@ -15,11 +16,11 @@ class Header extends Component {
     }
 
     getPhoto = async () => {
-        let req = new Request(api.url + "User/GetUserPhoto", "POST");
+        let req = new Request(api.url + "User/GetUserPhoto", "GET", {}, 'blob');
         req.withAuth();
         try {
             let res = await req.execute();
-            this.setState({ profileImage: res.data.data[0] });
+            this.setState({ profileImage: res.data });
         } catch (e) {
             this.setState({ profileImage: undefined });
         }
@@ -46,7 +47,7 @@ class Header extends Component {
         const { t } = this.props;
         return (
             <View style={styles.container}>
-                <IconButton onPress={() =>this.handleMenuPress()} color="white" size={50} icon="menu" />
+                <IconButton onPress={() => this.handleMenuPress()} color="white" size={50} icon="menu" />
                 <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title={t("header.logOut")} onPress={() => this.handleExit()} />
                 </Menu>

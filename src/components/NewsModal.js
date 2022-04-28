@@ -111,7 +111,7 @@ export class NewsModal extends Component {
                                 </ScrollView>
                             </View>
                             <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: backgroundColor }}>
-                                <Image style={styles.imageBusiness} source={this.props.data.logo}/>
+                                <Image style={styles.imageBusiness} source={this.props.data.logo} />
                                 <NewsModalFooterResolver closeModal={this.handlePress} id={this.props.data.id} date={this.props.data.acceptOrSignDate} signRequired={this.props.data.signRequired} readRequired={this.props.data.readRequired} />
                             </View>
                         </View>
