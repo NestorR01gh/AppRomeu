@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
         margin: 10,
         fontSize: 20,
         backgroundColor: "transparent",
-        borderWidth: 1
+        borderWidth: 1,
+        height: 45
     },
     viewCheckboxes: {
         flexDirection: 'row',
