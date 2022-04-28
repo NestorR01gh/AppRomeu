@@ -70,13 +70,12 @@ class NewsFilters extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 15,
-        borderColor: backgroundColor,
-        borderWidth: 2,
-        margin: 10
+        padding: 10
     },
     listSection: {
-        margin: 5
+        borderRadius: 15,
+        borderColor: backgroundColor,
+        borderWidth: 2
     },
     accordionTitle: {
         fontFamily: fonts.openSansBold,
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginLeft: -40,
+        marginLeft: "-10%",
         margin: 5
     },
     label: {
