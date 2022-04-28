@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     badge: {
-        flex: 1,
         alignSelf: 'flex-start',
         marginLeft: 10,
         marginTop: -17,
