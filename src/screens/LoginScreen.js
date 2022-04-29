@@ -3,13 +3,13 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
-import { backgroundColor, fonts, getData, storeData } from '../utils/Constants';
+import { backgroundColor, fonts } from '../utils/Constants';
 import LoadingModal from '../components/LoadingModal';
 import { lang, token } from '../utils/Variables';
-import { config } from '../utils/Constants';
+import { identityConfig } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
-
+import { LocalStorage } from '../utils/LocalStorage'
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -28,9 +28,9 @@ class LoginScreen extends Component {
     }
 
     loadLanguage = async () => {
-        let lang = await getData("languageId");
+        let lang = await LocalStorage.getData("languageId");
         if (lang == undefined) {
-            await storeData("languageId", "0");
+            await LocalStorage.storeData("languageId", "0");
             lang = 0;
         }
         lang = parseInt(lang);
@@ -56,7 +56,7 @@ class LoginScreen extends Component {
             default:
                 language = "es";
         }
-        await storeData("languageId", this.state.language.toString())
+        await LocalStorage.storeData("languageId", this.state.language.toString())
         i18next.changeLanguage(language);
         lang.id = this.state.language + 1;
     }
@@ -76,7 +76,7 @@ class LoginScreen extends Component {
         this.setState({ loading: true });
 
         try {
-            const result = await authorize(config);
+            const result = await authorize(identityConfig);
             token.data = result;
             this.setState({ error: "" })
             this.props.navigation.navigate('Main');
