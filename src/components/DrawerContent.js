@@ -5,12 +5,32 @@ import { withTranslation } from 'react-i18next';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { DrawerItem } from './DrawerItem';
 import { StyleSheet, View } from 'react-native';
+import { Request } from '../utils/Request'
+import { t } from 'i18next';
 
 class DrawerContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             checked: false,
+            opacityDev: 0
+        }
+    }
+
+    componentDidMount() {
+        this.setOpacity();
+    }
+
+    setOpacity = async () => {
+        let requestString = api.url + "User/GetUser";
+        let request = new Request(requestString, "POST");
+        request.withAuth();
+        let response = await request.execute();
+        let id = response.data.data[0].userId;
+        if ((this.state.checked && id == 83288) || (!this.state.checked && id == 73634)) {
+            this.setState({ opacityDev: 1 });
+        } else {
+            this.setState({ opacityDev: 0 });
         }
     }
 
@@ -23,6 +43,7 @@ class DrawerContent extends Component {
             api.url = "https://romeunet-api.development.grm.zone/api/";
 
         }
+        this.setOpacity();
     }
 
     render() {
@@ -35,9 +56,8 @@ class DrawerContent extends Component {
                 <DrawerItem icon="home" label={t("drawer.item1")} onPress={() => this.props.navigation.navigate('MainDrawer')} />
                 <DrawerItem icon="account" label={t("drawer.item2")} onPress={() => this.props.navigation.navigate('Staff')} />
                 <DrawerItem icon="qrcode-scan" label={t("drawer.item3")} onPress={() => this.props.navigation.navigate('Share')} />
-                <View style={{flexDirection: 'row'}}>
+                <View style={{ flexDirection: 'row' }}>
                     <Checkbox color='white' status={this.state.checked ? 'checked' : 'unchecked'} onPress={this.handleCheck} />
-                    <Text>DEV</Text>
                 </View>
             </DrawerContentScrollView>
         );
