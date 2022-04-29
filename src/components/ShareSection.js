@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
         padding: 25,
-        fontFamily: fonts.openSansExtraBold,
+        fontFamily: fonts.openSans.ExtraBold,
         fontSize: 31,
         textAlignVertical: 'bottom',
         color: backgroundColor

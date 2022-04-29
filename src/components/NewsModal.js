@@ -102,7 +102,7 @@ export class NewsModal extends Component {
                                 </View>
                                 <View style={styles.publishedClipView}>
                                     <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.data.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
-                                    <Text style={{ fontFamily: fonts.openSansMediumItalic, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
+                                    <Text style={{ fontFamily: fonts.openSans.MediumItalic, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
                                 </View>
                             </View>
                             <View style={styles.descriptionView}>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontFamily: fonts.openSansExtraBold,
+        fontFamily: fonts.openSans.ExtraBold,
         fontSize: 17,
         padding: 10
     },

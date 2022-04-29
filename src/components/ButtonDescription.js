@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 14,
-        fontFamily: fonts.openSansBold,
+        fontFamily: fonts.openSans.Bold,
         color: 'white'
     },
     viewInfo: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         color: backgroundColor
     }
 });

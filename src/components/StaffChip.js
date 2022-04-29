@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     text: {
         flex: 3,
         alignSelf: 'center',
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         color: backgroundColor
     }
 });

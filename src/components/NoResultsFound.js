@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textNoResults: {
-        fontFamily: fonts.openSansMediumItalic,
+        fontFamily: fonts.openSans.MediumItalic,
         color: backgroundColor,
         fontSize: 20,
         flex: 5

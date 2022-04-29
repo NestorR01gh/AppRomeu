@@ -3,18 +3,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const backgroundColor = "#0D1A32";
 
 export const fonts = {
-    openSansBold: "OpenSans-Bold",
-    openSansBolditalic: "OpenSans-BoldItalic",
-    openSansExtraBold: "OpenSans-ExtraBold",
-    openSansExtraBoldItalic: "OpenSans-ExtraBoldItalic",
-    openSansItalic: "OpenSans-Italic",
-    openSansLight: "OpenSans-Light",
-    openSansLightItalic: "OpenSans-LightItalic",
-    openSansMedium: "OpenSans-Medium",
-    openSansMediumItalic: "OpenSans-MediumItalic",
-    openSansRegular: "OpenSans-Regular",
-    openSansSemiBold: "OpenSans-SemiBold",
-    openSansSemiBolditalic: "OpenSans-SemiBoldItalic"
+    openSans: {
+        Bold: "OpenSans-Bold",
+        Bolditalic: "OpenSans-BoldItalic",
+        ExtraBold: "OpenSans-ExtraBold",
+        ExtraBoldItalic: "OpenSans-ExtraBoldItalic",
+        Italic: "OpenSans-Italic",
+        Light: "OpenSans-Light",
+        LightItalic: "OpenSans-LightItalic",
+        Medium: "OpenSans-Medium",
+        MediumItalic: "OpenSans-MediumItalic",
+        Regular: "OpenSans-Regular",
+        SemiBold: "OpenSans-SemiBold",
+        SemiBoldItalic: "OpenSans-SemiBoldItalic"
+    }
 }
 
 

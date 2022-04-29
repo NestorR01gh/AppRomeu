@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     ImageBackgroundText: {
         padding: 3,
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         color: 'black'
     },
     dateReadView: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         padding: 10,
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         color: 'grey'
     },
     imageBusiness: {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: backgroundColor,
         padding: 5,
-        fontFamily: fonts.openSansSemiBolditalic
+        fontFamily: fonts.openSans.SemiBoldItalic
     },
     newsTextView: {
         flex: 1,

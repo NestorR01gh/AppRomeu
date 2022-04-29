@@ -14,7 +14,7 @@ export class DisplayDataBox extends Component {
                         <TextInput.Icon color={backgroundColor} icon={this.props.icon} size={30} />
                     </View>
                     <View style={{ flex: 4, alignItems: 'center' }}>
-                        <Text style={{ color: backgroundColor, fontFamily: fonts.openSansRegular, fontSize: 15 }}>{this.props.value}</Text>
+                        <Text style={{ color: backgroundColor, fontFamily: fonts.openSans.Regular, fontSize: 15 }}>{this.props.value}</Text>
                     </View>
                 </View>
             </View>
@@ -24,7 +24,7 @@ export class DisplayDataBox extends Component {
 
 const styles = StyleSheet.create({
     label: {
-        fontFamily: fonts.openSansExtraBold,
+        fontFamily: fonts.openSans.ExtraBold,
         color: backgroundColor,
         fontSize: 13
     },

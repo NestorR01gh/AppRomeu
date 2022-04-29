@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
         flex: 1
     },
     iusu:{
-        fontFamily: fonts.openSansSemiBold,
+        fontFamily: fonts.openSans.SemiBold,
         fontSize: 30,
         color: backgroundColor,
     },
     title: {
-        fontFamily: fonts.openSansExtraBold,
+        fontFamily: fonts.openSans.ExtraBold,
         fontSize: 30,
         color: backgroundColor,
         textAlign: 'center'

@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         fontSize: 20
     }
 });

@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     title: {
-        fontFamily: fonts.openSansExtraBold,
+        fontFamily: fonts.openSans.ExtraBold,
         fontSize: 40,
         color: backgroundColor,
         alignSelf: 'center',

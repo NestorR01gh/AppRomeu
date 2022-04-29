@@ -31,7 +31,7 @@ class StaffFilters extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput placeholderTextColor={backgroundColor} onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon color={backgroundColor} icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })}/>
+                    <TextInput placeholderTextColor={backgroundColor} onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon color={backgroundColor} icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSans.SemiBold, color: backgroundColor } })}/>
                     <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />
                 </View>
             </View>

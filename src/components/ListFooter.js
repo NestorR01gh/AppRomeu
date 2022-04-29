@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly'
     },
     dropDownText: {
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         fontSize: 20
     },
     buttonsView: {

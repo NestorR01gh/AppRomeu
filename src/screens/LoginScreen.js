@@ -102,7 +102,7 @@ class LoginScreen extends Component {
                 <View style={styles.viewInfo}>
                     <ButtonDescription onPress={() => this.handlePress()} Description={t("loginScreen.description")} ButtonText={t("loginScreen.buttonLabel")} />
                     <View style={{ alignItems: 'center' }}>
-                        <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fonts.openSansItalic, fontSize: 15 }}>{this.state.error}</Text>
+                        <Text style={{ color: 'red', opacity: this.state.error != "" ? 1 : 0, fontFamily: fonts.openSans.Italic, fontSize: 15 }}>{this.state.error}</Text>
                     </View>
                 </View>
             </View>

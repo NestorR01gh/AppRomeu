@@ -49,7 +49,7 @@ class NewsFilters extends Component {
             <View style={styles.container}>
                 <List.Section style={styles.listSection}>
                     <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { primary: "backgroundColor", background: 'transparent' } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter" : "filter-outline"} size={30} color={backgroundColor} />}>
-                        <TextInput placeholderTextColor={backgroundColor} value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSansSemiBold, color: backgroundColor } })} />
+                        <TextInput placeholderTextColor={backgroundColor} value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={backgroundColor} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor="transparent" style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSans.SemiBold, color: backgroundColor } })} />
                         <View style={{ flexDirection: 'row', padding: 5 }}>
                             <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
                             <Checkbox uncheckedColor='black' color={backgroundColor} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         borderWidth: 2
     },
     accordionTitle: {
-        fontFamily: fonts.openSansBold,
+        fontFamily: fonts.openSans.Bold,
         fontSize: 21,
         color: backgroundColor
     },
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         margin: 5
     },
     label: {
-        fontFamily: fonts.openSansRegular,
+        fontFamily: fonts.openSans.Regular,
         fontSize: 20,
         color: 'black'
     },

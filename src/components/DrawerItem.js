@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 35,
         color: 'white',
-        fontFamily: fonts.openSansRegular
+        fontFamily: fonts.openSans.Regular
     }
 });
