@@ -31,7 +31,7 @@ class StaffFilters extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.filterLine}>
-                    <TextInput placeholderTextColor={colors.primary} onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon color={colors.primary} icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor='transparent' style={styles.input} value={this.state.search} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSans.SemiBold, color: colors.primary } })}/>
+                    <TextInput placeholderTextColor={colors.primary} onSubmitEditing={() => this.handleSearch()} left={<TextInput.Icon color={colors.primary} icon="magnify" size={30} />} onChangeText={this.setInputValue} placeholder={t("staffScreen.placeholder")} underlineColor='transparent' activeUnderlineColor={colors.secondary} style={styles.input} value={this.state.search} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSans.SemiBold, color: colors.primary } })}/>
                     <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />
                 </View>
             </View>
@@ -53,9 +53,9 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        borderRadius: 20,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
+        borderRadius: 10,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
         borderWidth: 1,
         borderColor: colors.primary,
         margin: 10,
