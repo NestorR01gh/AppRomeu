@@ -29,7 +29,7 @@ class LoginScreen extends Component {
 
     loadLanguage = async () => {
         let lang = await getData("languageId");
-        if (isNaN(lang)) {
+        if (lang == undefined) {
             await storeData("languageId", "0");
             lang = 0;
         }
