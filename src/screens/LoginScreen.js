@@ -3,12 +3,13 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { backgroundColor, fonts, getData, storeData } from '../utils/Constants';
 import LoadingModal from '../components/LoadingModal';
 import { lang, token } from '../utils/Variables';
 import { config } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
+
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -22,10 +23,22 @@ class LoginScreen extends Component {
         }
     }
 
-    setLanguage = async (callback) => {
-        await this.setState(state => ({
-            language: callback(state.value)
-        }));
+    componentDidMount() {
+        this.loadLanguage();
+    }
+
+    loadLanguage = async () => {
+        let lang = await getData("languageId");
+        if (isNaN(lang)) {
+            await storeData("languageId", "0");
+            lang = 0;
+        }
+        lang = parseInt(lang);
+        await this.setState({ language: lang });
+        this.handleLanguageChange();
+    }
+
+    handleLanguageChange = async () => {
         let language;
         switch (this.state.language) {
             case 0:
@@ -40,9 +53,19 @@ class LoginScreen extends Component {
             case 3:
                 language = "pt"
                 break;
+            default:
+                language = "es";
         }
+        await storeData("languageId", this.state.language.toString())
         i18next.changeLanguage(language);
         lang.id = this.state.language + 1;
+    }
+
+    setLanguage = async (callback) => {
+        await this.setState(state => ({
+            language: callback(state.value)
+        }));
+        this.handleLanguageChange();
     }
 
     setDropDownState = (state) => {
