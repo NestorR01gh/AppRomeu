@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { api, backgroundColor, fonts } from '../utils/Constants';
+import { api, colors, fonts } from '../utils/Constants';
 import { Checkbox, Text } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
@@ -49,7 +49,7 @@ class DrawerContent extends Component {
     render() {
         const { t } = this.props;
         return (
-            <DrawerContentScrollView style={{ backgroundColor: backgroundColor }}>
+            <DrawerContentScrollView style={{ backgroundColor: colors.primary }}>
                 <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: 'white' }}>
                     <Text style={styles.title}>{t("drawer.title")}</Text>
                 </View>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 import { StyleSheet, View, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 
 
 class News extends Component {
@@ -38,7 +38,7 @@ class News extends Component {
                             </View>
                             <Text style={styles.sectionText}>{this.props.section}</Text>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getAcceptSignIconOpacity() }}>
-                                <IconButton color={backgroundColor} size={25} icon={this.props.readRequired ? "thumb-up" : "file-sign"} />
+                                <IconButton color={colors.primary} size={25} icon={this.props.readRequired ? "thumb-up" : "file-sign"} />
                             </View>
                         </View>
                         <View style={styles.newsTextView}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 15,
         borderWidth: 1.3,
-        borderColor: backgroundColor,
+        borderColor: colors.primary,
         borderRadius: 15,
         flexDirection: 'row',
         backgroundColor: 'white'
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     sectionText: {
         flex: 3,
         fontSize: 20,
-        color: backgroundColor,
+        color: colors.primary,
         padding: 5,
         fontFamily: fonts.openSans.SemiBoldItalic
     },
@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 13,
         overflow: 'hidden',
         borderRightWidth: 0.8,
-        borderRightColor: backgroundColor,
+        borderRightColor: colors.primary,
         justifyContent: 'flex-end'
     },
     badge: {
         alignSelf: 'flex-start',
         marginLeft: 10,
         marginTop: -17,
-        backgroundColor: backgroundColor,
+        backgroundColor: colors.primary,
         borderRadius: 30,
     }
 });

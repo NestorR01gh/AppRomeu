@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import { IconButton } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
 
@@ -9,7 +9,7 @@ class NoResultsFound extends Component {
         const { t } = this.props;
         return (
             <View style={styles.viewNoResults}>
-                <IconButton style={{ flex: 1, padding: 5 }} icon="alert-outline" size={40} color={backgroundColor} />
+                <IconButton style={{ flex: 1, padding: 5 }} icon="alert-outline" size={40} color={colors.primary} />
                 <Text style={styles.textNoResults}>{t("noResultsFound.label")}</Text>
             </View>
         );
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     },
     textNoResults: {
         fontFamily: fonts.openSans.MediumItalic,
-        color: backgroundColor,
+        color: colors.primary,
         fontSize: 20,
         flex: 5
     }

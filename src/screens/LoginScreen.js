@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import LoadingModal from '../components/LoadingModal';
 import { lang, token } from '../utils/Variables';
 import { identityConfig } from '../utils/Constants';
@@ -92,7 +92,7 @@ class LoginScreen extends Component {
         const { t } = this.props;
         return (
             <View style={styles.container}>
-                <LoadingModal animating={this.state.loading} color={backgroundColor} />
+                <LoadingModal animating={this.state.loading} color={colors.primary} />
                 <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
                     <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
                 </View>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View, Image, PermissionsAndroid, ActivityIndicator, Dimensions } from 'react-native';
 import { IconButton, Modal, Portal } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import RenderHtml from 'react-native-render-html';
 import NewsModalFooterResolver from './NewsModalFooterResolver';
@@ -110,7 +110,7 @@ export class NewsModal extends Component {
                                     <RenderHtml contentWidth={width - 80} source={{ html: this.props.data.description }} />
                                 </ScrollView>
                             </View>
-                            <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: backgroundColor }}>
+                            <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: colors.primary }}>
                                 <Image style={styles.imageBusiness} source={this.props.data.logo} />
                                 <NewsModalFooterResolver closeModal={this.handlePress} id={this.props.data.id} date={this.props.data.acceptOrSignDate} signRequired={this.props.data.signRequired} readRequired={this.props.data.readRequired} />
                             </View>
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
         height: height - 50,
         borderRadius: 15,
         borderWidth: 2,
-        borderColor: backgroundColor,
-        backgroundColor: backgroundColor,
+        borderColor: colors.primary,
+        backgroundColor: colors.primary,
         marginBottom: 50
     },
     imageBusiness: {
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 1,
-        backgroundColor: backgroundColor,
+        backgroundColor: colors.primary,
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
         flexDirection: 'row'

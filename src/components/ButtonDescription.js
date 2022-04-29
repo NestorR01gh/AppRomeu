@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { Button } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 
 
 export class ButtonDescription extends Component {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     button: {
-        backgroundColor: backgroundColor,
+        backgroundColor: colors.primary,
         borderRadius: 7
     },
     buttonText: {
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: fonts.openSans.Regular,
-        color: backgroundColor
+        color: colors.primary
     }
 });

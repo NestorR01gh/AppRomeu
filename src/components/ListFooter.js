@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { IconButton } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export class ListFooter extends Component {
@@ -38,10 +38,10 @@ export class ListFooter extends Component {
                 <DropDownPicker textStyle={styles.dropDownText} containerStyle={{ width: 80 }} placeholder={this.state.pageSize} open={this.state.showDropDown} value={this.state.pageSize} items={this.state.pageSizes} setOpen={this.setDropDownState} setValue={this.setPageSize} />
                 <Text>{this.getRange()}</Text>
                 <View style={styles.buttonsView}>
-                    <IconButton onPress={() => this.props.firstPage()} icon="arrow-collapse-left" size={20} color={backgroundColor} />
-                    <IconButton onPress={() => this.props.prevPage()} icon="arrow-expand-left" size={20} color={backgroundColor} />
-                    <IconButton onPress={() => this.props.nextPage()} icon="arrow-expand-right" size={20} color={backgroundColor} />
-                    <IconButton onPress={() => this.props.lastPage()} icon="arrow-collapse-right" size={20} color={backgroundColor} />
+                    <IconButton onPress={() => this.props.firstPage()} icon="arrow-collapse-left" size={20} color={colors.primary} />
+                    <IconButton onPress={() => this.props.prevPage()} icon="arrow-expand-left" size={20} color={colors.primary} />
+                    <IconButton onPress={() => this.props.nextPage()} icon="arrow-expand-right" size={20} color={colors.primary} />
+                    <IconButton onPress={() => this.props.lastPage()} icon="arrow-collapse-right" size={20} color={colors.primary} />
                 </View>
             </View>
         );

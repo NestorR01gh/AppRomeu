@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { fonts, backgroundColor } from '../utils/Constants';
+import { fonts, colors } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 
 class ShareSection extends Component {
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.openSans.ExtraBold,
         fontSize: 31,
         textAlignVertical: 'bottom',
-        color: backgroundColor
+        color: colors.primary
     },
     image: {
         height: "90%",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 
 
 export class StaffChip extends Component {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         margin: 7,
         padding: 10,
         borderWidth: 1,
-        borderColor: backgroundColor,
+        borderColor: colors.primary,
         flexDirection: 'row',
         backgroundColor: 'white'
     },
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
         flex: 3,
         alignSelf: 'center',
         fontFamily: fonts.openSans.Regular,
-        color: backgroundColor
+        color: colors.primary
     }
 });

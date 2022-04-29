@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 
 export class DisplayDataBox extends Component {
 
@@ -11,10 +11,10 @@ export class DisplayDataBox extends Component {
                 <Text style={styles.label}>{this.props.label}</Text>
                 <View style={styles.container}>
                     <View style={{ flex: 1, justifyContent: 'center'}}>
-                        <TextInput.Icon color={backgroundColor} icon={this.props.icon} size={30} />
+                        <TextInput.Icon color={colors.primary} icon={this.props.icon} size={30} />
                     </View>
                     <View style={{ flex: 4, alignItems: 'center' }}>
-                        <Text style={{ color: backgroundColor, fontFamily: fonts.openSans.Regular, fontSize: 15 }}>{this.props.value}</Text>
+                        <Text style={{ color: colors.primary, fontFamily: fonts.openSans.Regular, fontSize: 15 }}>{this.props.value}</Text>
                     </View>
                 </View>
             </View>
@@ -25,13 +25,13 @@ export class DisplayDataBox extends Component {
 const styles = StyleSheet.create({
     label: {
         fontFamily: fonts.openSans.ExtraBold,
-        color: backgroundColor,
+        color: colors.primary,
         fontSize: 13
     },
     container: {
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: backgroundColor,
+        borderColor: colors.primary,
         flexDirection: 'row',
         padding: 15
     }

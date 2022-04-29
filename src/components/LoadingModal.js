@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { backgroundColor, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import { StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Modal, Portal, Text } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         borderWidth: 1,
-        borderColor: backgroundColor,
+        borderColor: colors.primary,
         borderRadius: 10,
         alignSelf: 'center',
         padding: 30,

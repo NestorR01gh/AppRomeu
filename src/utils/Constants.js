@@ -1,4 +1,4 @@
-export const backgroundColor = "#0D1A32";
+export const colors = { primary: "#0D1A32", secondary: "#4CBC74" }
 
 export const fonts = {
     openSans: {

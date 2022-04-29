@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
-import { fonts, backgroundColor, api } from '../utils/Constants';
+import { fonts, colors, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
 import { NewsModal } from './NewsModal';
@@ -168,12 +168,12 @@ class NewsSection extends Component {
         return (
             <View style={styles.container}>
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
-                <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                <LoadingModal color={colors.primary} animating={this.state.loading} />
                 <Text style={styles.title}>{t("mainScreen.title")}</Text>
                 <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : backgroundColor }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
 
@@ -189,13 +189,13 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.openSans.ExtraBold,
         fontSize: 40,
-        color: backgroundColor,
+        color: colors.primary,
         alignSelf: 'center',
         padding: 10,
     },
     paginationView: {
         borderTopWidth: 1,
-        borderTopColor: backgroundColor
+        borderTopColor: colors.primary
     }
 });
 

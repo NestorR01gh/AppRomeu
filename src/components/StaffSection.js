@@ -3,7 +3,7 @@ import { StyleSheet, View, Appearance } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import StaffFilters from './StaffFilters';
 import { StaffList } from './StaffList';
-import { backgroundColor, api } from '../utils/Constants';
+import { colors, api } from '../utils/Constants';
 import LoadingModal from './LoadingModal';
 import { Request } from '../utils/Request';
 
@@ -64,11 +64,11 @@ export class StaffSection extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                <LoadingModal color={colors.primary} animating={this.state.loading} />
                 <StaffFilters handleSearch={this.setSearch} />
                 <StaffList loading={this.state.loading} list={this.state.staffList} navigation={this.props.navigation} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : backgroundColor }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.staffPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} onItemsPerPageChange={(npp) => this.setStaffPerPage(npp)} numberOfItemsPerPageList={staffPerPageList} numberOfItemsPerPage={this.state.staffPerPage} label={this.getPaginationLabel()} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.staffPerPage)} showFastPaginationControls />
                 </View>
             </View>
         );
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
     },
     paginationView: {
         borderTopWidth: 1,
-        borderTopColor: backgroundColor
+        borderTopColor: colors.primary
     }
 });

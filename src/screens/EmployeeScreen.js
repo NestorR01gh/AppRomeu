@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { DisplayDataBox } from '../components/DisplayDataBox';
 import LoadingModal from '../components/LoadingModal';
-import { backgroundColor, fonts, api } from '../utils/Constants';
+import { colors, fonts, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
 
@@ -45,7 +45,7 @@ class EmployeeScreen extends Component {
         const { t } = this.props;
         return (
             <View style={styles.container}>
-                <LoadingModal color={backgroundColor} animating={this.state.loading} />
+                <LoadingModal color={colors.primary} animating={this.state.loading} />
                 <View style={styles.viewTitle}>
                     <Text style={styles.title}>{this.state.data.userName}</Text>
                 </View>
@@ -96,19 +96,19 @@ const styles = StyleSheet.create({
     iusu:{
         fontFamily: fonts.openSans.SemiBold,
         fontSize: 30,
-        color: backgroundColor,
+        color: colors.primary,
     },
     title: {
         fontFamily: fonts.openSans.ExtraBold,
         fontSize: 30,
-        color: backgroundColor,
+        color: colors.primary,
         textAlign: 'center'
     },
     viewTitle: {
         padding: 15,
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: backgroundColor
+        borderBottomColor: colors.primary
     },
     viewImageAndLabels: {
         flex: 1,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         width: 90,
         borderRadius: 150,
         borderWidth: 1,
-        borderColor: backgroundColor
+        borderColor: colors.primary
     },
     labelsImageView: {
         flex: 2,

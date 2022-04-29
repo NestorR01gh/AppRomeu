@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { backgroundColor, fonts, api } from '../utils/Constants';
+import { colors, fonts, api } from '../utils/Constants';
 import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1.2,
         flexDirection: 'row',
-        backgroundColor: backgroundColor,
+        backgroundColor: colors.primary,
         alignItems: 'center',
         justifyContent: 'space-between'
     },
