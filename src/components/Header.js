@@ -34,8 +34,29 @@ class Header extends Component {
     handleAvatarPress = () => {
         this.setState({ visible: !this.state.visible });
     }
+    
+    load = async () => {
+        this.setState({ loading: true });
+        let requestString = api.url + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
+        let request = new Request(requestString, "POST", { "searchtext": `${this.props.route.params.loginName}` });
+        request.withAuth();
+        let response = await request.execute();
+        let item = response.data.data[0].items[0];
+        this.setState({ data: item });
+        await this.setStreetAddress();
+        this.setState({ loading: false });
+    }
 
-    handleExit = () => {
+    logout = async () => {
+        let requestString = api.url + `User/Logout`;
+        let request = new Request(requestString, "POST");
+        request.withAuth();
+        let response = await request.execute();
+        console.log(response);
+    }
+
+    handleExit = async () => {
+        await this.logout();
         this.props.navigation.navigate("Login")
     }
 
