@@ -32,6 +32,7 @@
     "react-native-html-to-text": "^0.0.5",
     "react-native-material-design": "^0.3.7",
     "react-native-oidc-client": "^1.5.2",
+    "react-native-pagination": "^1.5.5",
     "react-native-paper": "^4.11.2",
     "react-native-paper-dropdown": "^1.0.7",
     "react-native-reanimated": "^2.5.0",

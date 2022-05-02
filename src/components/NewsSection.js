@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
-import { DataTable } from 'react-native-paper';
 import { fonts, colors, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
@@ -10,14 +9,13 @@ import { NewsModal } from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
 
-const newsPerPageList = [10, 15, 20]
+const newsPerPage = 10;
 
 class NewsSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             page: 0,
-            newsPerPage: newsPerPageList[0],
             read: false,
             signed: false,
             search: "",
@@ -42,28 +40,10 @@ class NewsSection extends Component {
         this.getNewsList();
     }
 
-    setPage = async (page) => {
-        await this.setState({ page: page });
-        this.getNewsList();
-    }
-
-    setNewsPerPage = async (npp) => {
-        await this.setState({ newsPerPage: npp });
-        this.setState({ page: 0 });
-        this.getNewsList();
-    }
-
     setSearch = async (search) => {
         await this.setState({ search: search });
         await this.setState({ page: 0 });
         this.getNewsList();
-    }
-
-    getPaginationLabel = () => {
-        return this.state.page + 1 + "/" + Math.ceil(this.state.totalCount / this.state.newsPerPage);
-
-        //Esto es el label que hay en portal pero se descudra cuando hay muchos registros
-        //return `${this.state.page * this.state.newsPerPage + 1}-${Math.min((this.state.page + 1) * this.state.newsPerPage, this.state.totalCount)} of ${this.state.totalCount}`
     }
 
     clear = async () => {
@@ -75,7 +55,7 @@ class NewsSection extends Component {
 
     getNewsList = async () => {
         await this.setState({ loading: true });
-        let requestString = api.url + `News/Paged?idLanguage=${lang.id}&page=${this.state.page}&pageSize=${this.state.newsPerPage}`;
+        let requestString = api.url + `News/Paged?idLanguage=${lang.id}&page=${this.state.page}&pageSize=${newsPerPage}`;
         if (this.state.search != "") {
             requestString += `&search=${this.state.search}`
         }
@@ -88,9 +68,14 @@ class NewsSection extends Component {
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
-        this.setState({ newsList: response.data.data[0].items });
         this.setState({ totalCount: response.data.data[0].totalCount });
-        await this.setState({ loading: false });
+        if (this.state.newsList.length == 0) {
+            this.setState({ newsList: response.data.data[0].items });
+            await this.setState({ loading: false });
+        } else {
+            await this.setState({ loading: false });
+            return response.data.data[0].items;
+        }
     }
 
     hasLanguage(newsLanguages, lang) {
@@ -163,6 +148,14 @@ class NewsSection extends Component {
         this.getNewsList();
     }
 
+    endReached = async () => {
+        await this.setState({ page: this.state.page + 1 });
+        let news = await this.getNewsList();
+        let existingNews = this.state.newsList;
+        let newsResult = existingNews.concat(news);
+        await this.setState({ newsList: newsResult });
+    }
+
     render() {
         const { t } = this.props;
         return (
@@ -171,10 +164,7 @@ class NewsSection extends Component {
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
                 <Text style={styles.title}>{t("mainScreen.title")}</Text>
                 <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
-                <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
-                <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
-                </View>
+                <NewsList endReached={this.endReached} loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
             </View>
         );
     }
