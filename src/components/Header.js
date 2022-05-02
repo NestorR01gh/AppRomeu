@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default withTranslation("global")(Header)
+export default withTranslation("global")(Header);

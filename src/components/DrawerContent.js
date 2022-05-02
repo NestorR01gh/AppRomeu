@@ -50,7 +50,7 @@ class DrawerContent extends Component {
         const { t } = this.props;
         return (
             <DrawerContentScrollView style={{ backgroundColor: colors.primary }}>
-                <View style={{ flex: 1, borderBottomWidth: 2, borderBottomColor: 'white' }}>
+                <View style={styles.titleView}>
                     <Text style={styles.title}>{t("drawer.title")}</Text>
                 </View>
                 <DrawerItem icon="home" label={t("drawer.item1")} onPress={() => this.props.navigation.navigate('MainDrawer')} />
@@ -71,6 +71,12 @@ const styles = StyleSheet.create({
         fontFamily: fonts.openSans.ExtraBold,
         color: 'white',
         fontSize: 40,
+    },
+    titleView: {
+        flex: 1,
+        borderBottomWidth: 2,
+        borderBottomColor: 'white',
+        marginBottom: 10
     }
 });
 
