@@ -71,6 +71,10 @@ class App extends Component {
     );
   }
 
+  employeeScreen = ({ navigation }) => {
+    return <EmployeeScreen navigation={navigation} />
+  }
+
   render() {
     return (
       <I18nextProvider i18n={i18next}>

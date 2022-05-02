@@ -5,6 +5,7 @@ import LoadingModal from '../components/LoadingModal';
 import { colors, fonts, api } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
+import { IconButton } from 'react-native-paper';
 
 class EmployeeScreen extends Component {
     constructor(props) {
@@ -46,8 +47,11 @@ class EmployeeScreen extends Component {
         return (
             <View style={styles.container}>
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
-                <View style={styles.viewTitle}>
-                    <Text style={styles.title}>{this.state.data.userName}</Text>
+                <View style={styles.headerView}>
+                    <IconButton style={{alignSelf: 'center'}} icon="arrow-left-circle" size={30} color={colors.secondary} onPress={() => this.props.navigation.navigate("Staff")} />
+                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                        <Text style={styles.title}>{this.state.data.userName}</Text>
+                    </View>
                 </View>
                 <ScrollView>
                     <View style={{ flex: 1, padding: 10 }}>
@@ -93,7 +97,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    iusu:{
+    iusu: {
         fontFamily: fonts.openSans.SemiBold,
         fontSize: 30,
         color: colors.primary,
@@ -101,14 +105,15 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: fonts.openSans.ExtraBold,
         fontSize: 30,
-        color: colors.primary,
-        textAlign: 'center'
+        color: "white",
+        marginLeft: 10
     },
-    viewTitle: {
+    headerView: {
         padding: 15,
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: colors.primary
+        borderBottomWidth: 2,
+        borderBottomColor: colors.secondary,
+        flexDirection: 'row',
+        backgroundColor: colors.primary
     },
     viewImageAndLabels: {
         flex: 1,

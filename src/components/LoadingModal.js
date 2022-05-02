@@ -4,7 +4,6 @@ import { StyleSheet, View } from 'react-native';
 import { ActivityIndicator, Modal, Portal, Text } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
 
-
 class LoadingModal extends Component {
     render() {
         const { t } = this.props;
