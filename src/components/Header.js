@@ -49,7 +49,7 @@ class Header extends Component {
         return (
             <View style={styles.container}>
                 <IconButton onPress={() => this.handleMenuPress()} color="white" size={50} icon="menu" />
-                <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10 }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
+                <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10, justifyContent: 'center' }} ><Avatar.Image size={50} source={this.props.image != undefined ? { uri: `data:image/png;base64,${this.state.profileImage}` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title={t("header.logOut")} onPress={() => this.handleExit()} />
                 </Menu>
             </View>
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
         flex: 1.2,
         flexDirection: 'row',
         backgroundColor: colors.primary,
-        alignItems: 'center',
         justifyContent: 'space-between'
     },
     image: {
