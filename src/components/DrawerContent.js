@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { api, colors, fonts } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import { Checkbox, Text } from 'react-native-paper';
 import { withTranslation } from 'react-i18next';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { DrawerItem } from './DrawerItem';
 import { StyleSheet, View } from 'react-native';
 import { Request } from '../utils/Request'
-import { t } from 'i18next';
+import { api } from '../utils/Variables';
 
 class DrawerContent extends Component {
     constructor(props) {

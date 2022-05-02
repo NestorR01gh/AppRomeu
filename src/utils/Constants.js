@@ -17,10 +17,6 @@ export const fonts = {
     }
 }
 
-
-//export const api = "https://romeunet-api.development.grm.zone/api/";
-export const api = { url: "https://portal-staging-api.grm-e.com/api/" };
-
 export const identityConfig = {
     issuer: 'https://grm-dev-identityserver.azurewebsites.net',
     clientId: 'Gr.Portal.Mobile',

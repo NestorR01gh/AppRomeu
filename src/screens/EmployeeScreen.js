@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { DisplayDataBox } from '../components/DisplayDataBox';
 import LoadingModal from '../components/LoadingModal';
-import { colors, fonts, api } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
 import { IconButton } from 'react-native-paper';
+import { api } from '../utils/Variables';
 
 class EmployeeScreen extends Component {
     constructor(props) {

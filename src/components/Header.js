@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { colors, fonts, api } from '../utils/Constants';
+import { colors, fonts } from '../utils/Constants';
 import { StyleSheet, View, TouchableOpacity, Keyboard } from 'react-native';
 import { Avatar, IconButton, Menu } from 'react-native-paper';
 import { DrawerActions } from '@react-navigation/native';
 import { withTranslation } from 'react-i18next';
 import { Request } from '../utils/Request';
+import { api } from '../utils/Variables';
 
 class Header extends Component {
     constructor(props) {

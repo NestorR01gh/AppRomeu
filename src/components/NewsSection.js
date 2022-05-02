@@ -3,12 +3,13 @@ import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
 import { DataTable } from 'react-native-paper';
-import { fonts, colors, api } from '../utils/Constants';
+import { fonts, colors } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
 import { NewsModal } from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
+import { api } from '../utils/Variables';
 
 const newsPerPageList = [10, 15, 20]
 

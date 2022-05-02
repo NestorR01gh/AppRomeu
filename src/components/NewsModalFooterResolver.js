@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { api } from '../utils/Constants';
+import { api } from '../utils/Variables';
 import { CustomButton } from './CustomButton';
 import { Request } from '../utils/Request';
 import { withTranslation } from 'react-i18next';
