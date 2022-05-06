@@ -11,10 +11,10 @@ import { LogBox } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
-import es from './assets/translations/es/global.json'
-import fr from './assets/translations/fr/global.json'
-import en from './assets/translations/en/global.json'
-import pt from './assets/translations/pt/global.json'
+import es from './assets/translations/es/global.json';
+import fr from './assets/translations/fr/global.json';
+import en from './assets/translations/en/global.json';
+import pt from './assets/translations/pt/global.json';
 import DrawerContent from './components/DrawerContent';
 import { ShareScreen } from './screens/ShareScreen';
 
