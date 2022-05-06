@@ -29,6 +29,12 @@ class News extends Component {
         }
     }
 
+    geticonStyle = () => {
+        if (this.props.expired) {
+            return { backgroundColor: "#ffeea4", borderColor: colors.primary, borderWidth: 1.2 }
+        }
+    }
+
     render() {
         const { t } = this.props;
         return (
@@ -48,7 +54,7 @@ class News extends Component {
                             </View>
                             <Text style={styles.sectionText}>{this.props.section}</Text>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getIconOpacity() }}>
-                                <IconButton color={colors.primary} size={25} icon={this.getIcon()} />
+                                <IconButton style={this.geticonStyle()} color={colors.primary} size={21} icon={this.getIcon()} />
                             </View>
                         </View>
                         <View style={styles.newsTextView}>
