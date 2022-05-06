@@ -11,11 +11,21 @@ class News extends Component {
         this.props.setModalData(this.props.id, this.props.acceptOrSignDate);
     }
 
-    getAcceptSignIconOpacity = () => {
-        if ((this.props.readRequired || this.props.signRequired) && this.props.acceptOrSignDate == null) {
+    getIconOpacity = () => {
+        if (((this.props.readRequired || this.props.signRequired) && this.props.acceptOrSignDate == null) || this.props.expired) {
             return 1;
         } else {
             return 0;
+        }
+    }
+
+    getIcon = () => {
+        if (this.props.expired) {
+            return "alert-outline"
+        } else if (this.props.signRequired) {
+            return "file-sign"
+        } else {
+            return "thumb-up"
         }
     }
 
@@ -25,9 +35,6 @@ class News extends Component {
             <TouchableOpacity style={{ padding: 10 }} onPress={() => this.handlePress()}>
                 <View style={styles.container}>
                     <ImageBackground style={styles.newsImage} source={{ uri: this.props.image }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', opacity: this.props.expired ? 1 : 0}}>
-                            <IconButton style={{ backgroundColor: "#ffff80", borderColor: "black", borderWidth: 1 }} icon={"alert-outline"} size={20} color='black' />
-                        </View>
                         <View style={styles.dateReadView}>
                             <View style={{ backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, paddingLeft: 3, borderTopRightRadius: 10 }}>
                                 <Text style={styles.ImageBackgroundText}>{this.props.date}</Text>
@@ -40,8 +47,8 @@ class News extends Component {
                                 <IconButton color='white' size={20} icon={this.props.isNews ? "newspaper" : "inbox"} />
                             </View>
                             <Text style={styles.sectionText}>{this.props.section}</Text>
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getAcceptSignIconOpacity() }}>
-                                <IconButton color={colors.primary} size={25} icon={this.props.readRequired ? "thumb-up" : "file-sign"} />
+                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getIconOpacity() }}>
+                                <IconButton color={colors.primary} size={25} icon={this.getIcon()} />
                             </View>
                         </View>
                         <View style={styles.newsTextView}>
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRightWidth: 0.8,
         borderRightColor: colors.primary,
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end'
     },
     badge: {
         alignSelf: 'flex-start',
