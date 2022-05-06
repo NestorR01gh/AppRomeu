@@ -60,5 +60,9 @@
             "title": "Aceptado el",
             "button": "Aceptar"
         }
+    },
+    "newsModal":{
+        "published": "Publicado el",
+        "expired": "Expirado"
     }
 }

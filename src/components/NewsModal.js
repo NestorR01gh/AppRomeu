@@ -5,11 +5,12 @@ import { colors, fonts } from '../utils/Constants';
 import RNFetchBlob from 'rn-fetch-blob';
 import RenderHtml from 'react-native-render-html';
 import NewsModalFooterResolver from './NewsModalFooterResolver';
+import { withTranslation } from 'react-i18next';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export class NewsModal extends Component {
+class NewsModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -82,6 +83,7 @@ export class NewsModal extends Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <Portal>
                 <Modal onDismiss={() => this.handlePress()} visible={this.props.visible}>
@@ -100,9 +102,10 @@ export class NewsModal extends Component {
                                 <View style={styles.imageView}>
                                     <Image style={styles.image} source={{ uri: this.props.data.imageUrl }} />
                                 </View>
-                                <View style={styles.publishedClipView}>
+                                <View style={styles.headerDataView}>
                                     <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.data.hasFile ? 1 : 0 }} size={35} icon="paperclip" />
-                                    <Text style={{ fontFamily: fonts.openSans.MediumItalic, fontSize: 13, color: 'black', textAlign: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>Publicado el {this.props.data.creationDate}</Text>
+                                    <Text style={{ fontFamily: fonts.openSans.MediumItalic, fontSize: 13, color: 'black', alignSelf: 'center', marginTop: this.props.data.hasFile ? 0 : -60 }}>{t("newsModal.published")} {this.props.data.creationDate}</Text>
+                                    <Text style={{ opacity: this.props.data.expired ? 1 : 0, alignSelf: 'center' }}>({t("newsModal.expired")})</Text>
                                 </View>
                             </View>
                             <View style={styles.descriptionView}>
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         margin: 10,
     },
-    publishedClipView: {
+    headerDataView: {
         flex: 1,
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -187,11 +190,13 @@ const styles = StyleSheet.create({
     },
     closeView: {
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end'
+        alignItems: 'flex-end',
+        justifyContent: 'space-between'
     },
     descriptionView: {
         flex: 5,
         padding: 20,
     }
 });
+
+export default withTranslation("global")(NewsModal);

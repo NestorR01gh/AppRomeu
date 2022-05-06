@@ -7,7 +7,7 @@ import EmployeeScreen from './screens/EmployeeScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Appearance, AppState, LogBox } from 'react-native';
+import { LogBox } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';

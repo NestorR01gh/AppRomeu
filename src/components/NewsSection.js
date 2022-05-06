@@ -6,7 +6,7 @@ import { DataTable } from 'react-native-paper';
 import { fonts, colors } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
-import { NewsModal } from './NewsModal';
+import NewsModal from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
 import { api } from '../utils/Variables';
@@ -27,7 +27,7 @@ class NewsSection extends Component {
             loading: false,
             visible: false,
             id: 0,
-            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0 }
+            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0, expired: false }
         }
     }
 
@@ -128,6 +128,7 @@ class NewsSection extends Component {
         data.readRequired = news.readRequired;
         data.signRequired = news.signRequired;
         data.acceptOrSignDate = acceptOrSignDate;
+        data.expired = news.expired;
 
         //NO ESTÁ DEL TODO CLARO EL TEMA DE DESCARGA DE DOCUMENTOS
         //data.hasFile = news.thumbs == null ? false : true;

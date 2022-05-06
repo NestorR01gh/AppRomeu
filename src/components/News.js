@@ -12,7 +12,7 @@ class News extends Component {
     }
 
     getAcceptSignIconOpacity = () => {
-        if((this.props.readRequired || this.props.signRequired) && this.props.acceptOrSignDate == null){
+        if ((this.props.readRequired || this.props.signRequired) && this.props.acceptOrSignDate == null) {
             return 1;
         } else {
             return 0;
@@ -25,6 +25,9 @@ class News extends Component {
             <TouchableOpacity style={{ padding: 10 }} onPress={() => this.handlePress()}>
                 <View style={styles.container}>
                     <ImageBackground style={styles.newsImage} source={{ uri: this.props.image }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', opacity: this.props.expired ? 1 : 0}}>
+                            <IconButton style={{ backgroundColor: "#ffff80", borderColor: "black", borderWidth: 1 }} icon={"alert-outline"} size={20} color='black' />
+                        </View>
                         <View style={styles.dateReadView}>
                             <View style={{ backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, paddingLeft: 3, borderTopRightRadius: 10 }}>
                                 <Text style={styles.ImageBackgroundText}>{this.props.date}</Text>
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRightWidth: 0.8,
         borderRightColor: colors.primary,
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between'
     },
     badge: {
         alignSelf: 'flex-start',
