@@ -86,7 +86,7 @@ class NewsModal extends Component {
         const { t } = this.props;
         return (
             <Portal>
-                <Modal onDismiss={() => this.handlePress()} visible={this.props.visible}>
+                <Modal dismissable={false} visible={this.props.visible}>
                     <View style={styles.modal}>
                         <View style={styles.header}>
                             <View style={styles.titleView}>
@@ -127,7 +127,6 @@ class NewsModal extends Component {
 
 const styles = StyleSheet.create({
     modal: {
-        backgroundColor: 'white',
         alignSelf: 'center',
         width: width - 30,
         height: height - 50,

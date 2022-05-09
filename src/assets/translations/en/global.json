@@ -70,5 +70,11 @@
         "all": "All",
         "news": "News",
         "comunicates": "Comunicate"
+    },
+    "newsLegendModal": {
+        "title": "LEGEND",
+        "expired": "Expired",
+        "accept": "Pending acceptance",
+        "sign": "Pending signature"
     }
 }

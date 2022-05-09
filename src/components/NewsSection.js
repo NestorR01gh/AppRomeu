@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Appearance } from 'react-native';
 import NewsFilters from './NewsFilters';
 import { NewsList } from './NewsList';
-import { DataTable } from 'react-native-paper';
+import { DataTable, IconButton } from 'react-native-paper';
 import { fonts, colors } from '../utils/Constants';
 import { Request } from '../utils/Request';
 import LoadingModal from './LoadingModal';
@@ -10,6 +10,7 @@ import NewsModal from './NewsModal';
 import { lang } from '../utils/Variables';
 import { withTranslation } from 'react-i18next';
 import { api } from '../utils/Variables';
+import NewsLegendModal from './NewsLegendModal';
 
 const newsPerPageList = [10, 15, 20]
 
@@ -28,8 +29,13 @@ class NewsSection extends Component {
             visible: false,
             id: 0,
             type: 0,
+            legendVisible: false,
             data: { title: "", description: "", imageUrl: { uri: "" }, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0, expired: false }
         }
+    }
+
+    setLegendVisibility = (visible) => {
+        this.setState({ legendVisible: visible });
     }
 
     setType = async (value) => {
@@ -179,9 +185,13 @@ class NewsSection extends Component {
         const { t } = this.props;
         return (
             <View style={styles.container}>
+                <NewsLegendModal handlePress={this.setLegendVisibility} visible={this.state.legendVisible} />
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
-                <Text style={styles.title}>{t("mainScreen.title")}</Text>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
+                    <Text style={styles.title}>{t("mainScreen.title")}</Text>
+                    <IconButton onPress={() => this.setLegendVisibility(true)} icon="information" size={40} color={colors.primary} />
+                </View>
                 <NewsFilters setType={this.setType} type={this.state.type} clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
@@ -199,10 +209,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: fonts.openSans.ExtraBold,
-        fontSize: 40,
-        color: colors.primary,
-        alignSelf: 'center',
-        padding: 10,
+        fontSize: 35,
+        color: colors.primary
     },
     paginationView: {
         borderTopWidth: 1,

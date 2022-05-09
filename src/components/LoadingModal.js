@@ -9,7 +9,7 @@ class LoadingModal extends Component {
         const { t } = this.props;
         return (
             <Portal>
-                <Modal visible={this.props.animating}>
+                <Modal dismissable={false} visible={this.props.animating}>
                     <View style={styles.container}>
                         <Text style={{ fontFamily: fonts.openSans.SemiBold, fontSize: 25, marginBottom: 50, color: this.props.color, textAlign: 'center' }}>{t("loadingModal.label")}</Text>
                         <ActivityIndicator size={60} animating={this.props.animating} color={colors.secondary} />

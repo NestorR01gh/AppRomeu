@@ -70,5 +70,11 @@
         "all": "Tous",
         "news": "Nouvelles",
         "comunicates": "Libération"
+    },
+    "newsLegendModal": {
+        "title": "LEGÉNDE",
+        "expired": "Expireé",
+        "accept": "En attente d'acceptation",
+        "sign": "En attente de signature"
     }
 }
