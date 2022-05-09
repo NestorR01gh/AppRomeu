@@ -188,7 +188,7 @@ class NewsSection extends Component {
                 <NewsLegendModal handlePress={this.setLegendVisibility} visible={this.state.legendVisible} />
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
+                <View style={{ flex: 1.5, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
                     <Text style={styles.title}>{t("mainScreen.title")}</Text>
                     <IconButton onPress={() => this.setLegendVisibility(true)} icon="information" size={40} color={colors.primary} />
                 </View>

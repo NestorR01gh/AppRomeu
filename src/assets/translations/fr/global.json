@@ -10,7 +10,7 @@
         "item3": "Partager"
     },
     "mainScreen":{
-        "title": "INFORMATIONS",
+        "title": "NOUVELLES",
         "filters": {
             "title": "Filtres",
             "placeholder": "Chercher",
