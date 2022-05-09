@@ -188,14 +188,14 @@ class NewsSection extends Component {
                 <NewsLegendModal handlePress={this.setLegendVisibility} visible={this.state.legendVisible} />
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
-                <View style={{ flex: 1.5, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
+                <View style={{ flex: 1.3, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
                     <Text style={styles.title}>{t("mainScreen.title")}</Text>
                     <IconButton onPress={() => this.setLegendVisibility(true)} icon="information" size={40} color={colors.primary} />
                 </View>
                 <NewsFilters setType={this.setType} type={this.state.type} clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls/>
                 </View>
             </View>
         );

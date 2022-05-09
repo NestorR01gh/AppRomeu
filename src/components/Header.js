@@ -34,7 +34,7 @@ class Header extends Component {
     handleAvatarPress = () => {
         this.setState({ visible: !this.state.visible });
     }
-    
+
     load = async () => {
         this.setState({ loading: true });
         let requestString = api.url + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
