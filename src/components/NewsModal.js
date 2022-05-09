@@ -100,7 +100,7 @@ class NewsModal extends Component {
                             <ActivityIndicator size={30} style={{ opacity: this.props.data.loading ? 1 : 0, padding: 10, alignSelf: 'flex-end', flex: 0.5 }} />
                             <View style={styles.bodyHeader}>
                                 <View style={styles.imageView}>
-                                    <Image style={styles.image} source={{ uri: this.props.data.imageUrl }} />
+                                    <Image style={styles.image} source={ this.props.data.imageUrl } />
                                 </View>
                                 <View style={styles.headerDataView}>
                                     <IconButton onPress={() => this.handleClipPress()} style={{ rotation: -50, opacity: this.props.data.hasFile ? 1 : 0 }} size={35} icon="paperclip" />

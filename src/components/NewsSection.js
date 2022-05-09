@@ -27,8 +27,15 @@ class NewsSection extends Component {
             loading: false,
             visible: false,
             id: 0,
-            data: { title: "", description: "", imageUrl: undefined, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0, expired: false }
+            type: 0,
+            data: { title: "", description: "", imageUrl: { uri: "" }, creationDate: "", hasFile: false, fileUrl: "", fileExtension: "", logo: "", signRequired: false, readRequired: false, acceptOrSignDate: undefined, id: 0, expired: false }
         }
+    }
+
+    setType = async (value) => {
+        this.setState({ type: value });
+        await this.setState({ page: 0 });
+        this.getNewsList();
     }
 
     setRead = async () => {
@@ -86,6 +93,9 @@ class NewsSection extends Component {
         if (this.state.signed) {
             requestString += `&isNotSigned=${this.state.signed}`
         }
+        if (this.state.type == 1 || this.state.type == 2) {
+            requestString += `&newsType=${this.state.type}`
+        }
         let request = new Request(requestString, "GET");
         request.withAuth();
         let response = await request.execute();
@@ -119,7 +129,7 @@ class NewsSection extends Component {
             data.title = news.newsLanguages[0].title;
             data.description = news.newsLanguages[0].description;
         }
-        data.imageUrl = news.imageUrl;
+        data.imageUrl = { uri: news.imageUrl };
         data.creationDate = news.creationDate.split("T")[0];
 
         let logo = "https://portal.romeu.com/assets/img/logos/" + news.publishByCompany + ".png";
@@ -172,7 +182,7 @@ class NewsSection extends Component {
                 <NewsModal getNewsList={this.getNewsList} visible={this.state.visible} setVisibility={this.setVisibility} data={this.state.data} />
                 <LoadingModal color={colors.primary} animating={this.state.loading} />
                 <Text style={styles.title}>{t("mainScreen.title")}</Text>
-                <NewsFilters clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
+                <NewsFilters setType={this.setType} type={this.state.type} clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
                     <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />

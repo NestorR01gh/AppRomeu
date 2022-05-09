@@ -64,5 +64,11 @@
     "newsModal":{
         "published": "Publié le",
         "expired": "Expiré"
+    },
+    "newsTypeFilter": {
+        "title": "Type",
+        "all": "Tous",
+        "news": "Nouvelles",
+        "comunicates": "Libération"
     }
 }

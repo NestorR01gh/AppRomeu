@@ -38,11 +38,11 @@ class News extends Component {
     render() {
         const { t } = this.props;
         return (
-            <TouchableOpacity style={{ padding: 10 }} onPress={() => this.handlePress()}>
+            <TouchableOpacity style={{ margin: 10 }} onPress={() => this.handlePress()}>
                 <View style={styles.container}>
                     <ImageBackground style={styles.newsImage} source={{ uri: this.props.image }}>
                         <View style={styles.dateReadView}>
-                            <View style={{ backgroundColor: 'white', borderTopWidth: 1, borderRightWidth: 1, paddingLeft: 3, borderTopRightRadius: 10 }}>
+                            <View style={styles.dateView}>
                                 <Text style={styles.ImageBackgroundText}>{this.props.date}</Text>
                             </View>
                         </View>
@@ -82,6 +82,13 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'row',
         backgroundColor: 'white'
+    },
+    dateView: {
+        backgroundColor: 'white',
+        borderTopWidth: 1,
+        borderRightWidth: 1,
+        paddingLeft: 3,
+        borderTopRightRadius: 10
     },
     ImageBackgroundText: {
         padding: 3,

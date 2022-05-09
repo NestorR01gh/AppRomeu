@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Checkbox, IconButton, List, TextInput } from 'react-native-paper';
 import { colors, fonts } from '../utils/Constants';
 import { CustomButton } from './CustomButton';
+import NewsTypeFilter from './NewsTypeFilter';
 
 class NewsFilters extends Component {
     constructor(props) {
@@ -43,6 +44,11 @@ class NewsFilters extends Component {
         this.setState({ expanded: !this.state.expanded });
     }
 
+    setType = (value) => {
+        this.props.setType(value);
+        this.toggleExpanded();
+    }
+
     render() {
         const { t } = this.props;
         return (
@@ -50,14 +56,15 @@ class NewsFilters extends Component {
                 <List.Section style={styles.listSection}>
                     <List.Accordion onPress={this.toggleExpanded} expanded={this.state.expanded} theme={{ colors: { background: 'transparent' } }} titleStyle={styles.accordionTitle} title={t("mainScreen.filters.title")} left={props => <IconButton {...props} icon={this.state.expanded ? "filter" : "filter-outline"} size={30} color={colors.primary} />}>
                         <TextInput placeholderTextColor={colors.primary} value={this.state.search} onSubmitEditing={this.handleSearch} onChangeText={this.handleChangeText} left={<TextInput.Icon icon="magnify" color={colors.primary} size={30} />} placeholder={t("mainScreen.filters.placeholder")} underlineColor='transparent' activeUnderlineColor={colors.secondary} style={styles.textInput} ref={ref => ref && ref.setNativeProps({ style: { fontFamily: fonts.openSans.SemiBold, color: colors.primary } })} />
+                        <NewsTypeFilter setType={this.setType} type={this.props.type}/>
                         <View style={{ flexDirection: 'row', padding: 5 }}>
                             <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
-                            <Checkbox uncheckedColor='black' color={colors.secondary} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
+                            <Checkbox disabled={this.props.read} uncheckedColor={colors.primary} color={colors.secondary} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
                         </View>
                         <View style={styles.viewCheckboxes}>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                                 <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
-                                <Checkbox uncheckedColor='black' color={colors.secondary} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
+                                <Checkbox disabled={this.props.signed} uncheckedColor='black' color={colors.secondary} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
                             </View>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                                 <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
     label: {
         fontFamily: fonts.openSans.Regular,
         fontSize: 20,
-        color: 'black'
+        color: colors.primary
     },
 });
 

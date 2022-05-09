@@ -64,5 +64,11 @@
     "newsModal":{
         "published": "Publicado el",
         "expired": "Expirado"
+    },
+    "newsTypeFilter": {
+        "title": "Tipo",
+        "all": "Todos",
+        "news": "Noticia",
+        "comunicates": "Comunicado"
     }
 }
