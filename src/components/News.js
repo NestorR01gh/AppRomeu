@@ -52,11 +52,11 @@ class News extends Component {
                             <View style={styles.badge}>
                                 <IconButton color='white' size={20} icon={this.props.isNews ? "newspaper" : "inbox"} />
                             </View>
-                            <Text style={styles.sectionText}>{this.props.section}</Text>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', opacity: this.getIconOpacity() }}>
                                 <IconButton style={this.geticonStyle()} color={colors.primary} size={21} icon={this.getIcon()} />
                             </View>
                         </View>
+                        <Text style={styles.sectionText}>{this.props.section}</Text>
                         <View style={styles.newsTextView}>
                             <Text style={styles.titleText}>{this.props.title}</Text>
                         </View>
@@ -118,10 +118,10 @@ const styles = StyleSheet.create({
     },
     sectionText: {
         flex: 3,
-        fontSize: 20,
+        fontSize: 13,
         color: colors.primary,
-        padding: 5,
-        fontFamily: fonts.openSans.SemiBoldItalic
+        padding: 10,
+        fontFamily: fonts.openSans.BoldItalic
     },
     newsTextView: {
         flex: 1,

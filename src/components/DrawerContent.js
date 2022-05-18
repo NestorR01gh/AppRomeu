@@ -17,35 +17,6 @@ class DrawerContent extends Component {
         }
     }
 
-    componentDidMount() {
-        this.setOpacity();
-    }
-
-    setOpacity = async () => {
-        let requestString = api.url + "User/GetUser";
-        let request = new Request(requestString, "POST");
-        request.withAuth();
-        let response = await request.execute();
-        let id = response.data.data[0].userId;
-        if ((this.state.checked && id == 83288) || (!this.state.checked && id == 73634)) {
-            this.setState({ opacityDev: 1 });
-        } else {
-            this.setState({ opacityDev: 0 });
-        }
-    }
-
-    handleCheck = () => {
-        if (this.state.checked) {
-            this.setState({ checked: false });
-            api.url = "https://portal-staging-api.grm-e.com/api/";
-        } else {
-            this.setState({ checked: true });
-            api.url = "https://romeunet-api.development.grm.zone/api/";
-
-        }
-        this.setOpacity();
-    }
-
     render() {
         const { t } = this.props;
         return (

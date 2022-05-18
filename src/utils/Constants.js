@@ -3,7 +3,7 @@ export const colors = { primary: "#0D1A32", secondary: "#4CBC74" }
 export const fonts = {
     openSans: {
         Bold: "OpenSans-Bold",
-        Bolditalic: "OpenSans-BoldItalic",
+        BoldItalic: "OpenSans-BoldItalic",
         ExtraBold: "OpenSans-ExtraBold",
         ExtraBoldItalic: "OpenSans-ExtraBoldItalic",
         Italic: "OpenSans-Italic",

@@ -12,7 +12,8 @@ class Header extends Component {
         super(props);
         this.state = {
             profileImage: undefined,
-            visible: false
+            visible: false,
+            userId: 0
         }
     }
 
@@ -28,31 +29,39 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        this.getPhoto();
+        this.load();
     }
 
     handleAvatarPress = () => {
         this.setState({ visible: !this.state.visible });
     }
 
-    load = async () => {
-        this.setState({ loading: true });
-        let requestString = api.url + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
-        let request = new Request(requestString, "POST", { "searchtext": `${this.props.route.params.loginName}` });
+    getUser = async () => {
+        let requestString = api.url + `User/GetUser`;
+        let request = new Request(requestString, "POST");
         request.withAuth();
         let response = await request.execute();
-        let item = response.data.data[0].items[0];
-        this.setState({ data: item });
-        await this.setStreetAddress();
-        this.setState({ loading: false });
+        return response.data.data[0].userName;
+    }
+
+    setImage = async (loginName) => {
+        let requestString = api.url + `IPCalls/GetCallUsersPaged?page=0&pageSize=1&orderColumn=userName&ascendingOrder=ASC`;
+        let request = new Request(requestString, "POST", { "searchtext": `${loginName}` });
+        request.withAuth();
+        let response = await request.execute();
+        this.setState({ profileImage: response.data.data[0].items[0].photo });
+    }
+
+    load = async () => {
+        let loginName = await this.getUser();
+        await this.setImage(loginName);
     }
 
     logout = async () => {
         let requestString = api.url + `User/Logout`;
         let request = new Request(requestString, "POST");
         request.withAuth();
-        let response = await request.execute();
-        console.log(response);
+        await request.execute();
     }
 
     handleExit = async () => {
@@ -70,7 +79,7 @@ class Header extends Component {
         return (
             <View style={styles.container}>
                 <IconButton onPress={() => this.handleMenuPress()} color="white" size={50} icon="menu" />
-                <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10, justifyContent: 'center' }} ><Avatar.Image size={50} source={this.state.profileImage != undefined ? { uri: `url(data:image/jpg;base64,${this.state.profileImage})` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
+                <Menu onDismiss={() => this.handleAvatarPress()} visible={this.state.visible} anchor={<TouchableOpacity onPress={() => this.handleAvatarPress()} style={{ flex: 1, padding: 10, justifyContent: 'center' }} ><Avatar.Image size={50} source={this.state.profileImage != undefined ? { uri: `data:image/png;base64,${this.state.profileImage})` } : require('../assets/images/usr.png')} /></TouchableOpacity>}>
                     <Menu.Item icon="power" titleStyle={styles.text} title={t("header.logOut")} onPress={() => this.handleExit()} />
                 </Menu>
             </View>

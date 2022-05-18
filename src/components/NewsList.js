@@ -32,7 +32,11 @@ export class NewsList extends Component {
                     }
                     
                     let logo = "https://portal.romeu.com/assets/img/logos/" + item.CompaniaPublicadora + ".png";
-                    return <News id={item.IdNews} expired={item.Expired} setModalData={setModalData} key={index} title={item.Titulo} logo={{ uri: logo }} image={item.ImageUrl} section={item.SectionName} read={item.ReadDate != null ? true : false} isNews={item.Type == "Comunicados" ? false : true} date={pubDateString} acceptOrSignDate={acceptOrSignDate} readRequired={item.AcceptRequired} signRequired={item.SignRequired} />
+                    let imageUrl = item.ImageUrl;
+                    if(imageUrl.substring(0, 3) == "GRM"){
+                        imageUrl = "https://portal.romeu.com/" + imageUrl;
+                    }
+                    return <News id={item.IdNews} expired={item.Expired} setModalData={setModalData} key={index} title={item.Titulo} logo={{ uri: logo }} image={imageUrl} section={item.SectionName} read={item.ReadDate != null ? true : false} isNews={item.Type == "Comunicados" ? false : true} date={pubDateString} acceptOrSignDate={acceptOrSignDate} readRequired={item.AcceptRequired} signRequired={item.SignRequired} />
                 })
             );
         } else if (!this.props.loading) {
