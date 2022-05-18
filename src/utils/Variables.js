@@ -1,6 +1,7 @@
 export let token = { data: "" };
 export let lang = { id: 1 }
 
-//export const api = "https://portal-staging-api.grm-e.com/api/";
-//export const api = "https://romeunet-api.development.grm.zone/api/";
-export const api = { url: "https://portal-staging-api.grm-e.com/api/" };
+//DEV => "https://romeunet-api.development.grm.zone/api/";
+//PRE => "https://portal-staging-api.grm-e.com/api/";
+//PRO => "https://portal-api.romeu.com/api/";
+export const api = { url: "https://portal-api.romeu.com/api/" };

@@ -17,10 +17,18 @@ export const fonts = {
     }
 }
 
+// export const identityConfig = {
+//     issuer: 'https://grm-dev-identityserver.azurewebsites.net',
+//     clientId: 'Gr.Portal.Mobile',
+//     redirectUrl: 'net.azurewebsites.grm-dev-identityserver:/oauth2redirect',
+//     scopes: ['openid', 'roles', 'gr-portal', 'email', 'profile'],
+//     clientSecret: '6k_2Sd-&wA4n2CZn'
+// };
+
 export const identityConfig = {
-    issuer: 'https://grm-dev-identityserver.azurewebsites.net',
+    issuer: 'https://grm-pro-identityserver.azurewebsites.net',
     clientId: 'Gr.Portal.Mobile',
-    redirectUrl: 'net.azurewebsites.grm-dev-identityserver:/oauth2redirect',
+    redirectUrl: 'net.azurewebsites.grm-pro-identityserver:/oauth2redirect',
     scopes: ['openid', 'roles', 'gr-portal', 'email', 'profile'],
-    clientSecret: '6k_2Sd-&wA4n2CZn'
+    clientSecret: `RRFegQ]s9s@4PUlr`
 };
