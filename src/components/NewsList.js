@@ -23,13 +23,14 @@ export class NewsList extends Component {
                     } else if (item.SignRequired) {
                         acceptOrSignDate = item.SignDate;
                     }
-                    
-                    let pubDate = new Date(item.FechaPublicacion);
-                    let pubDateString = pubDate.getDate()+"/"+pubDate.getMonth()+"/"+pubDate.getFullYear().toString().slice(2);
 
-                    if(acceptOrSignDate != undefined){
-                        acceptOrSignDate = acceptOrSignDate?.split("T")[0]; 
+                    let pubDate = new Date(item.FechaPublicacion);
+                    let pubDateString = pubDate.getDate() + "/" + pubDate.getMonth() + "/" + pubDate.getFullYear().toString().slice(2);
+
+                    if (acceptOrSignDate != undefined) {
+                        acceptOrSignDate = acceptOrSignDate?.split("T")[0];
                     }
+                    
                     let logo = "https://portal.romeu.com/assets/img/logos/" + item.CompaniaPublicadora + ".png";
                     return <News id={item.IdNews} expired={item.Expired} setModalData={setModalData} key={index} title={item.Titulo} logo={{ uri: logo }} image={item.ImageUrl} section={item.SectionName} read={item.ReadDate != null ? true : false} isNews={item.Type == "Comunicados" ? false : true} date={pubDateString} acceptOrSignDate={acceptOrSignDate} readRequired={item.AcceptRequired} signRequired={item.SignRequired} />
                 })
