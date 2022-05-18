@@ -27,9 +27,6 @@ class DrawerContent extends Component {
                 <DrawerItem icon="home" label={t("drawer.item1")} onPress={() => this.props.navigation.navigate('MainDrawer')} />
                 <DrawerItem icon="account" label={t("drawer.item2")} onPress={() => this.props.navigation.navigate('Staff')} />
                 <DrawerItem icon="qrcode-scan" label={t("drawer.item3")} onPress={() => this.props.navigation.navigate('Share')} />
-                <View style={{ flexDirection: 'row' }}>
-                    <Checkbox color='white' status={this.state.checked ? 'checked' : 'unchecked'} />
-                </View>
             </DrawerContentScrollView>
         );
     }
