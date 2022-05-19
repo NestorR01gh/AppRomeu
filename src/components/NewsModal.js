@@ -110,7 +110,7 @@ class NewsModal extends Component {
                             </View>
                             <View style={styles.descriptionView}>
                                 <ScrollView>
-                                    <RenderHtml contentWidth={width - 80} source={{ html: this.props.data.description }} />
+                                    <RenderHtml contentWidth={width - 90} source={{ html: this.props.data.description }} />
                                 </ScrollView>
                             </View>
                             <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 5, borderTopWidth: 1, borderTopColor: colors.primary }}>
