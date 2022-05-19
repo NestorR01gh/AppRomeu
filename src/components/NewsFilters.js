@@ -59,12 +59,12 @@ class NewsFilters extends Component {
                         <NewsTypeFilter setType={this.setType} type={this.props.type}/>
                         <View style={{ flexDirection: 'row', padding: 5 }}>
                             <Text style={styles.label}>{t("mainScreen.filters.notSigned")}: </Text>
-                            <Checkbox disabled={this.props.read} uncheckedColor={colors.primary} color={colors.secondary} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
+                            <Checkbox uncheckedColor={colors.primary} color={colors.secondary} onPress={() => this.handleSigned()} status={this.props.signed ? 'checked' : 'unchecked'} />
                         </View>
                         <View style={styles.viewCheckboxes}>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                                 <Text style={styles.label}>{t("mainScreen.filters.notRead")}: </Text>
-                                <Checkbox disabled={this.props.signed} uncheckedColor='black' color={colors.secondary} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
+                                <Checkbox uncheckedColor='black' color={colors.secondary} onPress={() => this.handleRead()} status={this.props.read ? 'checked' : 'unchecked'} />
                             </View>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
                                 <CustomButton label={t("mainScreen.filters.buttonLabel")} clear={true} onPress={this.clear} />

@@ -46,12 +46,14 @@ class NewsSection extends Component {
 
     setRead = async () => {
         await this.setState({ read: !this.state.read });
+        await this.setState({ signed: false });
         await this.setState({ page: 0 });
         this.getNewsList();
     }
 
     setSigned = async () => {
         await this.setState({ signed: !this.state.signed });
+        await this.setState({ read: false });
         await this.setState({ page: 0 });
         this.getNewsList();
     }
