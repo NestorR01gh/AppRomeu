@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
     },
     label: {
         fontFamily: fonts.openSans.Regular,
-        fontSize: 15,
+        fontSize: 14,
         color: colors.primary
     },
     title: {
         fontFamily: fonts.openSans.Regular,
-        fontSize: 20,
+        fontSize: 18,
         color: colors.primary
     }
 });

@@ -36,7 +36,7 @@ class Header extends Component {
         this.setState({ visible: !this.state.visible });
     }
 
-    getUser = async () => {
+    getLoginName = async () => {
         let requestString = api.url + `User/GetUser`;
         let request = new Request(requestString, "POST");
         request.withAuth();
@@ -53,7 +53,7 @@ class Header extends Component {
     }
 
     load = async () => {
-        let loginName = await this.getUser();
+        let loginName = await this.getLoginName();
         await this.setImage(loginName);
     }
 
