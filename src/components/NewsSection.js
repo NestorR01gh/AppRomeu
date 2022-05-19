@@ -86,6 +86,7 @@ class NewsSection extends Component {
         await this.setState({ search: "" });
         await this.setState({ read: false });
         await this.setState({ signed: false });
+        await this.setState({ type: 0 });
         this.getNewsList();
     }
 
