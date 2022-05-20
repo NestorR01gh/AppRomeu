@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Dimensions } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
@@ -11,6 +11,7 @@ import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { LocalStorage } from '../utils/LocalStorage'
 import { LangSelector } from '../components/LangSelector';
+
 
 class LoginScreen extends Component {
     constructor(props) {
