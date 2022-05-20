@@ -17,7 +17,6 @@ class LoginScreen extends Component {
         super(props);
         this.state = {
             loading: false,
-            showDropDown: false,
             language: 0,
             languages: [{ label: "ES", value: 0 }, { label: "EN", value: 1 }, { label: "FR", value: 2 }, { label: "PT", value: 3 }],
             error: ""
@@ -65,10 +64,6 @@ class LoginScreen extends Component {
     setLanguage = async(lang) => {
         await this.setState({ language: lang });
         this.handleLanguageChange();
-    }
-
-    setDropDownState = (state) => {
-        this.setState({ showDropDown: state });
     }
 
     async handlePress() {
