@@ -10,6 +10,7 @@ import { identityConfig } from '../utils/Constants';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { LocalStorage } from '../utils/LocalStorage'
+import { LangSelector } from '../components/LangSelector';
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -23,8 +24,8 @@ class LoginScreen extends Component {
         }
     }
 
-    componentDidMount() {
-        this.loadLanguage();
+    componentDidMount = async () => {
+        await this.loadLanguage();
     }
 
     loadLanguage = async () => {
@@ -61,10 +62,8 @@ class LoginScreen extends Component {
         lang.id = this.state.language + 1;
     }
 
-    setLanguage = async (callback) => {
-        await this.setState(state => ({
-            language: callback(state.value)
-        }));
+    setLanguage = async(lang) => {
+        await this.setState({ language: lang });
         this.handleLanguageChange();
     }
 
@@ -93,8 +92,8 @@ class LoginScreen extends Component {
         return (
             <View style={styles.container}>
                 <LoadingModal animating={this.state.loading} color={colors.primary} />
-                <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
-                    <DropDownPicker containerStyle={{ width: "22%" }} placeholder={this.state.language} open={this.state.showDropDown} value={this.state.language} items={this.state.languages} setOpen={this.setDropDownState} setValue={this.setLanguage} />
+                <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 20 }}>
+                    <LangSelector setLanguage={this.setLanguage} lang={this.state.language} />
                 </View>
                 <View style={styles.viewLogo}>
                     <Image style={styles.imageLogo} source={require('../assets/images/login.png')} />

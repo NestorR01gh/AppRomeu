@@ -1,5 +1,11 @@
 export const colors = { primary: "#0D1A32", secondary: "#4CBC74" }
 
+export const langImages = [require('../assets/images/lang/spain.png'),
+require('../assets/images/lang/uk.png'),
+require('../assets/images/lang/france.png'),
+require('../assets/images/lang/portugal.png')
+]
+
 export const fonts = {
     openSans: {
         Bold: "OpenSans-Bold",
