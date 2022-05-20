@@ -131,14 +131,30 @@ class NewsSection extends Component {
         if ((pos = this.hasLanguage(news.newsLanguages, lang.id)) >= 0) {
             data.title = news.newsLanguages[pos].title;
             data.description = news.newsLanguages[pos].description;
+            data.imageUrl = { uri: news.newsLanguages[pos].imageUrl };
+            console.log("El idioma es el seleccionado y la imagen es " + data.imageUrl.uri)
         } else if ((pos = this.hasLanguage(news.newsLanguages, 2)) >= 0) {
             data.title = news.newsLanguages[pos].title;
             data.description = news.newsLanguages[pos].description;
+            data.imageUrl = { uri: news.newsLanguages[pos].imageUrl };
+            console.log("El idioma es inglés(default) y la imagen es " + data.imageUrl)
         } else {
             data.title = news.newsLanguages[0].title;
             data.description = news.newsLanguages[0].description;
+            data.imageUrl = { uri: news.newsLanguages[0].imageUrl };
+            console.log("El idioma es el que haya y la imagen es " + data.imageUrl)
         }
-        data.imageUrl = { uri: news.imageUrl };
+
+        if (data.imageUrl.uri == null) {
+            console.log("La imagen es nula");
+            data.imageUrl = { uri: news.imageUrl };
+            console.log(news.imageUrl + " se añade al 'data' y se queda así: " + data.imageUrl.uri)
+        }
+
+        if (data.imageUrl.uri?.substring(0, 3) == "GRM") {
+            data.imageUrl = { uri: "https://portal.romeu.com/" + data.imageUrl.uri };
+        }
+
         data.creationDate = news.creationDate.split("T")[0];
 
         let logo = "https://portal.romeu.com/assets/img/logos/" + news.publishByCompany + ".png";
@@ -198,7 +214,7 @@ class NewsSection extends Component {
                 <NewsFilters setType={this.setType} type={this.state.type} clear={this.clear} handleSearch={this.setSearch} read={this.state.read} handleRead={this.setRead} signed={this.state.signed} handleSigned={this.setSigned} />
                 <NewsList loading={this.state.loading} list={this.state.newsList} setModalData={this.setModalData} />
                 <View style={styles.paginationView}>
-                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls/>
+                    <DataTable.Pagination style={{ backgroundColor: Appearance.getColorScheme() == "light" ? "#f2f2f2" : colors.primary }} label={this.getPaginationLabel()} onItemsPerPageChange={(npp) => this.setNewsPerPage(npp)} numberOfItemsPerPageList={newsPerPageList} numberOfItemsPerPage={this.state.newsPerPage} onPageChange={(page) => this.setPage(page)} page={this.state.page} numberOfPages={Math.ceil(this.state.totalCount / this.state.newsPerPage)} showFastPaginationControls />
                 </View>
             </View>
         );
