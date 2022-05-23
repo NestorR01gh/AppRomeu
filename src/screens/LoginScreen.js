@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Text, Dimensions } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import { ButtonDescription } from '../components/ButtonDescription';
 import { authorize } from 'react-native-app-auth';
 import { colors, fonts } from '../utils/Constants';
@@ -62,7 +61,7 @@ class LoginScreen extends Component {
         lang.id = this.state.language + 1;
     }
 
-    setLanguage = async(lang) => {
+    setLanguage = async (lang) => {
         await this.setState({ language: lang });
         this.handleLanguageChange();
     }
@@ -88,7 +87,7 @@ class LoginScreen extends Component {
         return (
             <View style={styles.container}>
                 <LoadingModal animating={this.state.loading} color={colors.primary} />
-                <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'flex-end', padding: 20 }}>
+                <View style={styles.viewLanguage}>
                     <LangSelector setLanguage={this.setLanguage} lang={this.state.language} />
                 </View>
                 <View style={styles.viewLogo}>
@@ -126,7 +125,13 @@ const styles = StyleSheet.create({
     },
     listItem: {
         borderRadius: 7
-    }
+    },
+    viewLanguage: {
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        padding: 20
+    },
 });
 
 export default withTranslation("global")(LoginScreen);

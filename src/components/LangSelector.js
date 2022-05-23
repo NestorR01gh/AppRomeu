@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Image, TouchableOpacity } from 'react-native';
 import { langImages } from '../utils/Constants';
 
 export class LangSelector extends Component {
@@ -30,7 +29,3 @@ export class LangSelector extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-
-});
